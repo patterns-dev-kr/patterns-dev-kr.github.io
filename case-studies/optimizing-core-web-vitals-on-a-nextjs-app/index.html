@@ -1,0 +1,611 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta name="generator" content="Gatsby 4.21.0"/><meta name="description" content="성능 최적화 사례 분석 - Vercel이 개발한 Next.js는 React 메타 프레임웍으로 React 개발 경험을 향상시킨다. Next.js…" data-gatsby-head="true"/><meta property="og:url" content="https://patterns-dev-kr.github.io/case-studies/optimizing-core-web-vitals-on-a-nextjs-app/" data-gatsby-head="true"/><meta property="og:title" content="Optimizing Core Web Vitals on a Next.js app" data-gatsby-head="true"/><meta property="og:description" content="성능 최적화 사례 분석 - Vercel이 개발한 Next.js는 React 메타 프레임웍으로 React 개발 경험을 향상시킨다. Next.js…" data-gatsby-head="true"/><meta property="og:site_name" content="Patterns.dev.kr  - 모던 웹 앱 디자인 패턴" data-gatsby-head="true"/><meta property="og:type" content="website" data-gatsby-head="true"/><meta property="og:image" content="https://patterns-dev-kr.github.io/static/6acdcf564b95cd0a461929377eaaffec/optimizing-core-web-vitals-on-a-nextjs-app.jpg" data-gatsby-head="true"/><meta name="twitter:card" content="summary" data-gatsby-head="true"/><meta name="twitter:creator" content="@johnny_devjs" data-gatsby-head="true"/><meta name="twitter:title" content="Optimizing Core Web Vitals on a Next.js app" data-gatsby-head="true"/><meta name="twitter:image" content="https://patterns-dev-kr.github.io/static/6acdcf564b95cd0a461929377eaaffec/optimizing-core-web-vitals-on-a-nextjs-app.jpg" data-gatsby-head="true"/><meta name="twitter:image:alt" content="Optimizing Core Web Vitals on a Next.js app" data-gatsby-head="true"/><meta name="twitter:description" content="성능 최적화 사례 분석 - Vercel이 개발한 Next.js는 React 메타 프레임웍으로 React 개발 경험을 향상시킨다. Next.js…" data-gatsby-head="true"/><meta name="google-site-verification" content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0"/><meta name="naver-site-verification" content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d"/><title data-gatsby-head="true">Optimizing Core Web Vitals on a Next.js app | Patterns.dev.kr  - 모던 웹 앱 디자인 패턴</title><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link rel="icon" href="/favicon-32x32.png?v=a5997401b7f875b8087f15896077ec93" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=a5997401b7f875b8087f15896077ec93"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=a5997401b7f875b8087f15896077ec93"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=a5997401b7f875b8087f15896077ec93"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=a5997401b7f875b8087f15896077ec93"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=a5997401b7f875b8087f15896077ec93"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=a5997401b7f875b8087f15896077ec93"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=a5997401b7f875b8087f15896077ec93"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=a5997401b7f875b8087f15896077ec93"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="alternate" type="application/rss+xml" title="https://patterns-dev-kr.github.io/ RSS Feed" href="/rss.xml"/><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css-global u721l2">*,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x:var(--tw-empty,/*!*/ /*!*/);--tw-pan-y:var(--tw-empty,/*!*/ /*!*/);--tw-pinch-zoom:var(--tw-empty,/*!*/ /*!*/);--tw-scroll-snap-strictness:proximity;--tw-ordinal:var(--tw-empty,/*!*/ /*!*/);--tw-slashed-zero:var(--tw-empty,/*!*/ /*!*/);--tw-numeric-figure:var(--tw-empty,/*!*/ /*!*/);--tw-numeric-spacing:var(--tw-empty,/*!*/ /*!*/);--tw-numeric-fraction:var(--tw-empty,/*!*/ /*!*/);--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur:var(--tw-empty,/*!*/ /*!*/);--tw-brightness:var(--tw-empty,/*!*/ /*!*/);--tw-contrast:var(--tw-empty,/*!*/ /*!*/);--tw-grayscale:var(--tw-empty,/*!*/ /*!*/);--tw-hue-rotate:var(--tw-empty,/*!*/ /*!*/);--tw-invert:var(--tw-empty,/*!*/ /*!*/);--tw-saturate:var(--tw-empty,/*!*/ /*!*/);--tw-sepia:var(--tw-empty,/*!*/ /*!*/);--tw-drop-shadow:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-blur:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-brightness:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-contrast:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-grayscale:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-hue-rotate:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-invert:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-opacity:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-saturate:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-sepia:var(--tw-empty,/*!*/ /*!*/);}::before,::after{--tw-content:'';}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";}body{margin:0;line-height:inherit;}hr{height:0;color:inherit;border-top-width:1px;}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted;}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit;}b,strong{font-weight:bolder;}code,kbd,samp,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:1em;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sub{bottom:-0.25em;}sup{top:-0.5em;}table{text-indent:0;border-color:inherit;border-collapse:collapse;}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:inherit;color:inherit;margin:0;padding:0;}button,select{text-transform:none;}button,[type="button"],[type="reset"],[type="submit"]{-webkit-appearance:button;background-color:transparent;background-image:none;}:-moz-focusring{outline:auto;}:-moz-ui-invalid{box-shadow:none;}progress{vertical-align:baseline;}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto;}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px;}::-webkit-search-decoration{-webkit-appearance:none;}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;}summary{display:-webkit-box;display:-webkit-list-item;display:-ms-list-itembox;display:list-item;}blockquote,dl,dd,h1,h2,h3,h4,h5,h6,hr,figure,p,pre{margin:0;}fieldset{margin:0;padding:0;}legend{padding:0;}ol,ul,menu{list-style:none;margin:0;padding:0;}textarea{resize:vertical;}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af;}input:-ms-input-placeholder,textarea:-ms-input-placeholder{opacity:1;color:#9ca3af;}input::-webkit-input-placeholder{opacity:1;color:#9ca3af;}input::-moz-placeholder{opacity:1;color:#9ca3af;}input:-ms-input-placeholder{opacity:1;color:#9ca3af;}textarea::-webkit-input-placeholder{opacity:1;color:#9ca3af;}textarea::-moz-placeholder{opacity:1;color:#9ca3af;}textarea:-ms-input-placeholder{opacity:1;color:#9ca3af;}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af;}button,[role="button"]{cursor:pointer;}:disabled,[disabled]{cursor:default;}img,svg,video,canvas,audio,iframe,embed,object{display:block;vertical-align:middle;}img,video{max-width:100%;height:auto;}[hidden]{display:none;}@-webkit-keyframes spin{to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@keyframes spin{to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@-webkit-keyframes ping{75%,100%{-webkit-transform:scale(2);-moz-transform:scale(2);-ms-transform:scale(2);transform:scale(2);opacity:0;}}@keyframes ping{75%,100%{-webkit-transform:scale(2);-moz-transform:scale(2);-ms-transform:scale(2);transform:scale(2);opacity:0;}}@-webkit-keyframes pulse{50%{opacity:.5;}}@keyframes pulse{50%{opacity:.5;}}@-webkit-keyframes bounce{0%,100%{-webkit-transform:translateY(-25%);-moz-transform:translateY(-25%);-ms-transform:translateY(-25%);transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(0.8,0,1,1);animation-timing-function:cubic-bezier(0.8,0,1,1);}50%{-webkit-transform:none;-moz-transform:none;-ms-transform:none;transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,0.2,1);animation-timing-function:cubic-bezier(0,0,0.2,1);}}@keyframes bounce{0%,100%{-webkit-transform:translateY(-25%);-moz-transform:translateY(-25%);-ms-transform:translateY(-25%);transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(0.8,0,1,1);animation-timing-function:cubic-bezier(0.8,0,1,1);}50%{-webkit-transform:none;-moz-transform:none;-ms-transform:none;transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,0.2,1);animation-timing-function:cubic-bezier(0,0,0.2,1);}}</style><style data-emotion="css-global p1l0m2">:root{--sans-serif:HelveticaNeue,AppleSDGothicNeo-Regular,tahoma,Malgun Gothic,"맑은 고딕",dotum,돋움,sans-serif;--monospace:Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;}html{-webkit-font-smoothing:antialiased;}body,button,input,select,td,textarea,th{font-family:var(--sans-serif);}a{color:#5596ff;-webkit-text-decoration:none;text-decoration:none;}a:visited{color:#bb6dff;}a:hover{-webkit-text-decoration:underline;text-decoration:underline;text-decoration-thickness:1px;}a:focus{outline:2px solid #5596ff;}</style><style data-emotion="css-global 1sob827">.markdown{line-height:1.8rem;word-break:break-word;h4 font-size:1.4rem;}.markdown li p{margin:0;}.markdown p,.markdown .gatsby-highlight{margin:0 0 2rem;}.markdown blockquote{padding:0 1em;color:#6a737d;border-left:0.25em solid #dfe2e5;}.markdown figcaption{font-size:0.8rem;color:#6a737d;}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{font-weight:bold;margin-top:4.5rem;margin-bottom:1.5rem;}.markdown h1{font-size:2rem;}.markdown h2{font-size:1.8rem;}.markdown h3{font-size:1.6rem;}strong{font-weight:bold;}ol{list-style:decimal;margin:0 0 2rem;padding-left:2rem;}ul{list-style-type:disc;margin:0 0 2rem;padding-left:2rem;}sup{font-size:0.8rem;vertical-align:super;}hr{border-top:1px solid #888;border-right:none;border-bottom:none;border-left:none;width:50%;margin:3rem auto;}table,tbody,tfoot,thead,tr,th,td{background:none;margin:0;padding:0;border:0;}table{width:100%;margin-bottom:2rem;border-collapse:collapse;border-spacing:0;}td,th{padding:0.5rem 1rem;border-bottom:1px solid #ccc;}th{font-weight:bold;text-align:left;}td{transition-property:background-color;transition-duration:300ms;transition-timing-function:ease-in-out;}tr:last-of-type td{border-bottom:0;}tr:hover td{background-color:#f7f7f7;}iframe{margin-bottom:2rem;}aside{padding:1rem 2rem;background:#fff2d0;border-radius:0.5rem;margin-bottom:1rem;}</style><style data-emotion="css 18ul0f4">.css-18ul0f4{width:100%;position:fixed;z-index:30;top:0px;--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity));transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:200ms;height:5rem;}</style><header style="will-change:auto" class="css-18ul0f4"><style data-emotion="css cvalrk">.css-cvalrk{margin-left:auto;margin-right:auto;max-width:64rem;height:100%;padding-left:1.5rem;padding-right:1.5rem;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;}</style><div class="css-cvalrk"><a href="/"><style data-emotion="css 1ndo6jw">.css-1ndo6jw{width:75%;height:75%;}@media (min-width: 768px){.css-1ndo6jw{width:auto;height:auto;}}</style><svg xmlns="http://www.w3.org/2000/svg" width="122.187" height="26.406" viewBox="0 0 122.187 26.406" aria-labelledby="logoTitle" class="css-1ndo6jw"><title id="logoTitle">patterns</title><defs><style>
+      .cls-1 {
+        fill-rule: evenodd;
+      }
+    </style></defs><path id="patterns" class="cls-1" d="M312.615,189.135h5.879v-8.819h0.085a4.693,4.693,0,0,0,4.559,2.9c3.493,0,6.433-2.727,6.433-8.393,0-5.921-3.153-8.392-6.39-8.392a4.717,4.717,0,0,0-4.6,3.067h-0.127v-2.854h-5.837v22.494Zm5.751-14.315c0-2.428.98-3.877,2.6-3.877s2.556,1.449,2.556,3.877-0.937,3.877-2.556,3.877S318.366,177.206,318.366,174.82Zm17.489,8.436a4.875,4.875,0,0,0,4.729-2.557h0.128V183h5.5V171.8c0-3.025-2.865-5.368-7.541-5.368-4.888,0-7.295,2.556-7.5,5.538h5.411a1.746,1.746,0,0,1,2-1.491c1.022,0,1.747.468,1.747,1.321v0.042c0,0.948-1.044,1.246-3.792,1.449-3.376.245-6.007,1.608-6.007,5.2C330.53,181.743,332.724,183.256,335.855,183.256Zm1.918-3.707a1.46,1.46,0,0,1-1.705-1.406c0-.841.6-1.491,1.96-1.7a10.679,10.679,0,0,0,2.343-.6v1.363A2.416,2.416,0,0,1,337.773,179.549Zm20.257-12.908h-2.812v-3.92h-5.879v3.92h-2.087v4.26h2.087v7.391c-0.042,3.43,2.077,5.166,6.135,4.942a11.979,11.979,0,0,0,2.854-.511l-0.852-4.132a6.294,6.294,0,0,1-1.15.17,0.932,0.932,0,0,1-1.108-1.022V170.9h2.812v-4.26Zm11.4,0h-2.812v-3.92h-5.879v3.92h-2.087v4.26h2.087v7.391c-0.042,3.43,2.077,5.166,6.135,4.942a11.979,11.979,0,0,0,2.854-.511l-0.852-4.132a6.308,6.308,0,0,1-1.15.17,0.932,0.932,0,0,1-1.108-1.022V170.9h2.812v-4.26ZM378.9,183.3c4.537,0,7.455-2.173,8.009-5.581h-5.368a2.5,2.5,0,0,1-2.513,1.449,2.583,2.583,0,0,1-2.77-2.727v-0.255h10.651V174.82c0-5.208-3.195-8.392-8.137-8.392-5.07,0-8.307,3.365-8.307,8.435C370.468,180.156,373.663,183.3,378.9,183.3Zm-2.642-10.352a2.492,2.492,0,0,1,2.642-2.386,2.448,2.448,0,0,1,2.6,2.386h-5.241ZM388.553,183h5.879v-8.521a2.936,2.936,0,0,1,3.025-3.109,7.888,7.888,0,0,1,2.172.3v-5.017a5.33,5.33,0,0,0-1.491-.223c-1.747,0-3.11,1.022-3.706,3.323h-0.171v-3.11h-5.708V183Zm18.126-9.2a2.322,2.322,0,0,1,2.386-2.6,2.272,2.272,0,0,1,2.343,2.6V183h5.879V172.562c0.011-3.557-2.237-6.134-5.709-6.134a5.048,5.048,0,0,0-5.027,3.323h-0.17v-3.11H400.8V183h5.879v-9.2Zm27.713-1.832c-0.149-3.462-3.024-5.538-7.753-5.538-4.676,0-7.562,1.917-7.541,5.325-0.021,2.577,1.651,4.228,4.985,4.814l2.9,0.511c1.278,0.235,1.853.575,1.874,1.193-0.021.682-.8,1.065-1.874,1.065-1.332,0-2.269-.575-2.429-1.619h-5.836c0.319,3.355,3.216,5.581,8.222,5.581,4.527,0,7.86-2.2,7.882-5.709-0.022-2.417-1.641-3.823-4.985-4.43l-3.323-.6c-1.246-.223-1.6-0.671-1.576-1.15-0.022-.682.82-1.065,1.832-1.065a2,2,0,0,1,2.215,1.619h5.41Z" transform="translate(-312.625 -162.719)"></path></svg></a><style data-emotion="css 1vai8xg">.css-1vai8xg{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;gap:0.75rem;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-right:0px;font-size:0.875rem;line-height:1.25rem;}@media (min-width: 768px){.css-1vai8xg{font-size:1rem;line-height:1.5rem;gap:2.5rem;margin-right:2.5rem;}}</style><div class="css-1vai8xg"><style data-emotion="css 14il7ig">.css-14il7ig{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity));font-weight:600;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:200ms;padding-left:0.75rem;padding-right:0.75rem;padding-top:0.25rem;padding-bottom:0.25rem;--tw-bg-opacity:1;background-color:rgb(243 244 246 / var(--tw-bg-opacity));border-radius:0.5rem;}.css-14il7ig:visited{color:#4b5563;}.css-14il7ig:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity));text-decoration-line:none;}.css-14il7ig:hover{--tw-bg-opacity:1;background-color:rgb(229 231 235 / var(--tw-bg-opacity));}</style><a class="css-14il7ig" href="/">Patterns</a><style data-emotion="css 1d4gbld">.css-1d4gbld{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity));font-weight:600;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:200ms;}.css-1d4gbld:visited{color:#4b5563;}.css-1d4gbld:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity));text-decoration-line:none;}</style><a class="css-1d4gbld" href="/about">About</a></div></div></header><style data-emotion="css 1mvxwse">.css-1mvxwse{margin-left:auto;margin-right:auto;max-width:64rem;}</style><main class="css-1mvxwse"><style data-emotion="css v5bt1q">.css-v5bt1q{padding-top:6rem;padding-bottom:5rem;padding-left:1.5rem;padding-right:1.5rem;}</style><div class="css-v5bt1q"><style data-emotion="css-global 14blgao">pre[class*='language-'],code[class*='language-']{color:#d4d4d4;font-size:13px;text-shadow:none;font-family:var(--monospace);direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;}pre[class*='language-']::selection,code[class*='language-']::selection{text-shadow:none;background:#b3d4fc;}@media print{pre[class*='language-'],code[class*='language-']{text-shadow:none;}}pre[class*='language-']{padding:1em;margin:0.5em 0;overflow:auto;background:#1e1e1e;}:not(pre)>code[class*='language-']{padding:0.1em 0.3em;border-radius:0.3em;color:#db4c69;background:#f9f2f4;word-break:break-all;white-space:normal;}.namespace{opacity:0.7;}.token.comment,.token.prolog,.token.doctype,.token.cdata{color:#6a9955;}.token.punctuation{color:#d4d4d4;}.token.property,.token.tag,.token.boolean,.token.number,.token.constant,.token.symbol,.token.deleted{color:#b5cea8;}.token.selector,.token.attr-name,.token.string,.token.char,.token.builtin,.token.inserted{color:#ce9178;}.token.operator,.token.entity,.token.url,.language-css .token.string,.style .token.string{color:#d4d4d4;background:#1e1e1e;}.token.atrule,.token.attr-value,.token.keyword{color:#c586c0;}.token.function{color:#dcdcaa;}.token.regex,.token.important,.token.variable{color:#d16969;}.token.important,.token.bold{font-weight:bold;}.token.italic{font-style:italic;}.token.constant{color:#9cdcfe;}.token.class-name{color:#4ec9b0;}.token.parameter{color:#9cdcfe;}.token.interpolation{color:#9cdcfe;}.token.punctuation.interpolation-punctuation{color:#569cd6;}.token.boolean{color:#569cd6;}.token.property{color:#9cdcfe;}.token.selector{color:#d7ba7d;}.token.tag{color:#569cd6;}.token.attr-name{color:#9cdcfe;}.token.attr-value{color:#ce9178;}.token.entity{color:#4ec9b0;cursor:unset;}.token.namespace{color:#4ec9b0;}pre[class*='language-javascript'],code[class*='language-javascript']{color:#4ec9b0;}pre[class*='language-css'],code[class*='language-css']{color:#ce9178;}pre[class*='language-html'],code[class*='language-html']{color:#d4d4d4;}.language-html .token.punctuation{color:#808080;}pre[data-line]{position:relative;}pre[class*='language-']>code[class*='language-']{position:relative;z-index:1;}.gatsby-highlight-code-line{background-color:#333;display:block;margin-right:-1em;margin-left:-1em;padding-right:1em;padding-left:0.75em;border-left:0.25em solid #f99;}.gatsby-highlight-code-line .token{background-color:#333;}</style><style data-emotion="css 1ai0s29">.css-1ai0s29{padding-top:5rem;margin-bottom:5rem;position:relative;}</style><header class="css-1ai0s29"><style data-emotion="css 1h2kotv">.css-1h2kotv{margin-bottom:1rem;-webkit-background-clip:text;background-clip:text;background-image:linear-gradient(to right, var(--tw-gradient-stops));overflow-wrap:break-word;font-weight:800;--tw-gradient-from:#ec4899;--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-to, rgb(236 72 153 / 0));font-size:2.75rem;text-align:center;color:transparent;--tw-gradient-to:#3b82f6;letter-spacing:-0.05em;}@media (min-width: 768px){.css-1h2kotv{font-size:5rem;}}</style><h1 class="css-1h2kotv">Optimizing Core Web Vitals on a Next.js app</h1><style data-emotion="css 18sigqj">.css-18sigqj{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity));margin-bottom:2rem;text-align:center;font-size:1.25rem;line-height:1.75rem;}</style><p class="css-18sigqj">성능 최적화 사례 분석</p><style data-emotion="css ptgpyw">.css-ptgpyw{position:absolute;display:block;right:0px;bottom:-2rem;font-size:0.875rem;line-height:1.25rem;font-weight:700;}@media (min-width: 768px){.css-ptgpyw{bottom:0px;}}</style><a href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&amp;entry.2111705104=/case-studies/optimizing-core-web-vitals-on-a-nextjs-app/" target="_blank" rel="noreferrer" class="css-ptgpyw">📮 피드백 보내기</a></header><div class="markdown"><aside>📜 원문: <a href="https://www.patterns.dev/posts/nextjs-casestudy/" target="_blank">patterns.dev - optimizing core web vitals on a next.js app</a></aside>
+<p>Vercel이 개발한 Next.js는 React 메타 프레임웍으로 React 개발 경험을 향상시킨다. Next.js는 프로덕션 에서 바로 사용 가능한 수준의 앱을 만들 수 있게 해 주고. SSG, 쉬운 설정, 빠른 새로고침, 이미지 최적화, 파일 시스템 라우팅, 최적화된 코드 스플리팅 및 번들링 기능을 제공한다.</p>
+<p>3P 의존 모듈을 사용하는 React +Next.js 앱을 최적화 하는 과정을 살펴보기 위해 우리는 <a href="https://movies.zaps.dev/" target="_blank" rel="nofollow">Next.js 기반의 영화 앱</a>을 만들었다. 이 앱은 <a href="https://www.themoviedb.org/" target="_blank" rel="nofollow">TMDB</a>의 기능을 모두 구현한 클라이언트이다. 포괄적이며 분류된 영화 목록을 검색하거나 탐색하고, 세부 정보를 확인하고, 멤버십 및 인증을 통해 개인별 즐겨찾기를 관리할 수 있는 등 다양한 기능들을 구현했다.</p>
+<p><img src="/fb819368e4073504843544e6f33b4f2d/optimizing-core-web-vitals-on-a-nextjs-app01.avif" alt=""></p>
+<p>그 후 Next.js 영화 앱은 여러 성능 트윅을 진행하고 전반적인 사용자 경험 관점에서 유익했던 점을 식별하고 벤치마크했다. 이 글에서는 이 과정에서 이루었던 모든 성능 향상들과 각 트윅에 대해서 이야기 해 보고, 적용 결과에 대해서도 살펴보도록 하자.</p>
+<h2 id="누적된-성능-향상들" style="position:relative;"><a href="#%EB%88%84%EC%A0%81%EB%90%9C-%EC%84%B1%EB%8A%A5-%ED%96%A5%EC%83%81%EB%93%A4" aria-label="누적된 성능 향상들 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>누적된 성능 향상들</h2>
+<p>우리는 모든 최적화를 적용한 후 상당한 총체적 성능 향상을 달성할 수 있었다. 이는 자연스럽게 사용자 경험 향상으로 이어진다. 아래 지표들은 성능을 최적화하기 위한 모든 수정 사항을 적용하기 전과 후에 캡쳐되었다.</p>
+<p><img src="/1fe153974c73978b5696fcdb4207e7c7/optimizing-core-web-vitals-on-a-nextjs-app02.avif" alt=""></p>
+<p>사용자 관점에서 이루어진 전체적인 향상들을 이해하기 위해 이어진 실제 페이지 로딩 경험 비교를 확인해 보자.</p>
+<ul>
+<li>개선 전</li>
+<li>일부 최적화 적용 후</li>
+<li>모든 촤적화 적용 후</li>
+</ul>
+<p><img src="/f6f372966fbf4854782880f7f4f5de6c/optimizing-core-web-vitals-on-a-nextjs-app03.avif" alt=""></p>
+<p>전반적인 성능 향상 외에도 관련 페이지에 대한 코드를 변경한 후 Lighthouse및 WPT를 사용하여 지표들을 캡쳐했다. 이 테스트들은 서버의 슬립 상태에 따른 어떠한 렉이나 변경 이전과 이후의 어떤 조건들을 고려해 여러 번 반복하여 수행해 신뢰할 수 있는 지표를 얻을 수 있도록 했다.</p>
+<p>이런 내용들을 기억한 상태에서 이제 전반적인 성능 향상에 기여했던 변경 사항들이 어떻게 진행되었는지 이야기 해 보자.</p>
+<h2 id="대체된-패키지들" style="position:relative;"><a href="#%EB%8C%80%EC%B2%B4%EB%90%9C-%ED%8C%A8%ED%82%A4%EC%A7%80%EB%93%A4" aria-label="대체된 패키지들 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>대체된 패키지들</h2>
+<p>처음에 영화 앱에서 필요로 하는 각기 다른 기능들을 빠르게 구현하기 위해 여러 3P React 컴포넌트들을 사용했다. 우리는 이 3P 리소스들 모두 개별적으로 가벼운 패키지로 대체해가며 지표들을 분석해보았다. 특히 무겁거나 메인 스레드를 블록하는 것들에 대해서 진행했다.</p>
+<p>이런 시도들의 대부분이 지표 측정치를 낮추는 데 매우 효과적이었다.</p>
+<ul>
+<li><strong>SVG 아이콘을 사용하기 위해 <a href="https://github.com/FortAwesome/Font-Awesome" target="_blank" rel="nofollow">Font-Awesome</a>대신 <a href="https://github.com/gregberge/svgr/tree/master/packages/webpack" target="_blank" rel="nofollow">@svgr/webpack</a>을 사용하여 페이지 속도를 34%이상 향상시켰고, LCP는 23%, TBT는 51% 향상되었다.</strong></li>
+<li><strong><a href="https://www.npmjs.com/package/react-burger-menu" target="_blank" rel="nofollow">react-burger-menu</a>를 사용하는 대신 커스텀 컴포넌트를 만들어 사용하고, <a href="https://github.com/codecks-io/react-sticky-box" target="_blank" rel="nofollow">react-sicky-box</a>에서 resize-observer-polyfill을 제거하여 전체적인 번들 크기가 gzipped 기준 34.28kB 감소하였다.</strong></li>
+<li><strong><a href="https://react-select.com/home" target="_blank" rel="nofollow">react-select</a> 대신 <a href="https://www.npmjs.com/package/react-select-search" target="_blank" rel="nofollow">react-select-search</a>를 사용하여 LCP가 35%향상, CLS는 완전히 해결되었으며 TBT는 18% 향상되었다.</strong></li>
+<li><strong><a href="https://www.npmjs.com/package/react-slick" target="_blank" rel="nofollow">react-slick</a> 대신 <a href="https://www.npmjs.com/package/react-glider" target="_blank" rel="nofollow">react-glider</a>를 사용하여 TBT가 77% 향상되었다.</strong></li>
+<li><strong>브라우저 네이티브 smooth scrolling대신 <a href="https://www.npmjs.com/package/react-scroll" target="_blank" rel="nofollow">react-scroll</a>을 사용하여 여러 브라우저에서 스크롤 기능을 제공했다.</strong></li>
+<li><strong><a href="https://www.npmjs.com/package/react-rating" target="_blank" rel="nofollow">react-rating</a> 대신 <a href="https://www.npmjs.com/package/react-stars" target="_blank" rel="nofollow">react-stars</a>를 사용하여 TBT를 33% 향상시켰다.</strong></li>
+</ul>
+<p>이어서 어떤게 어떻게 바뀌고 왜 바꿨는지 확인해 보자.</p>
+<h3 id="svg-아이콘-라이브러리" style="position:relative;"><a href="#svg-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC" aria-label="svg 아이콘 라이브러리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SVG 아이콘 라이브러리</h3>
+<p>영화 앱에서 필요한 모든 아이콘은 SVG를 사용하기로 했다. 처음에는 많이 쓰이고 또 CSS로 커스터마이징 한 벡터 그래픽 아이콘을 사용하려고 <a href="https://github.com/FortAwesome/Font-Awesome" target="_blank" rel="nofollow">Font-Awesome</a>을 적용했다.</p>
+<p>그러나 <a href="https://downtimemonkey.com/blog/images/plans-webpage-load-time.png" target="_blank" rel="nofollow">Font-Awesome은 라이브러리 자체를 로딩할 때 전송되는 크기가 크기 때문에 로딩 속도에 영향</a>을 준다. 이는 <a href="https://dev.to/lindaojo/how-to-improve-lighthouse-score-performance-57cb" target="_blank" rel="nofollow">Lighthouse 성능 점수에도 악영향</a>을 주고 있다.</p>
+<p>우리는 Font-Awesome을 <a href="https://github.com/gregberge/svgr/tree/master/packages/webpack" target="_blank" rel="nofollow">@svgr/webpack</a>으로 대체했다. 또 페이지에서 여러 아이콘들을 사용하는 경우 아래 예제 코드와 같이 라이브러리 자체를 가져오는 대신 필요한 아이콘만 개별적으로 가져다 쓰도록 변경했다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> FontAwesomeIcon <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@fortawesome/react-fontawesome'</span>
+<span class="token comment">// replaced by</span>
+<span class="token keyword">import</span> HeartIcon <span class="token keyword">from</span> <span class="token string">'public/assets/svgs/icons/heart.svg'</span>
+<span class="token keyword">import</span> PollIcon <span class="token keyword">from</span> <span class="token string">'public/assets/svgs/icons/poll.svg'</span>
+<span class="token keyword">import</span> CalendarIcon <span class="token keyword">from</span> <span class="token string">'public/assets/svgs/icons/calendar.svg'</span>
+<span class="token keyword">import</span> DotCircleIcon <span class="token keyword">from</span> <span class="token string">'public/assets/svgs/icons/dot-circle.svg'</span></code></pre></div>
+<p>이는 Lighthouse점수를 전반적으로 향상시키는 데 도움이 되었다. 아래는 적용 전과 후의 점수 캡쳐 화면이다. 또 200KiB 이상의 전송량이 줄어든 것을 확인할 수 있다.</p>
+<table>
+<thead>
+<tr>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/c92c3796d6512a8921b08d6ec4a308c2/optimizing-core-web-vitals-on-a-nextjs-app04.avif" alt=""></td>
+<td><img src="/129702a8bff1ff25931457d0bf9e2942/optimizing-core-web-vitals-on-a-nextjs-app05.avif" alt=""></td>
+</tr>
+<tr>
+<td><img src="/3aa39b88479e04770914775c5a431010/optimizing-core-web-vitals-on-a-nextjs-app06.avif" alt=""></td>
+<td><img src="/c3fbd4042b1df4d38b249c3a0ba9a21c/optimizing-core-web-vitals-on-a-nextjs-app07.avif" alt=""></td>
+</tr>
+</tbody>
+</table>
+<h3 id="앱-메뉴" style="position:relative;"><a href="#%EC%95%B1-%EB%A9%94%EB%89%B4" aria-label="앱 메뉴 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>앱 메뉴</h3>
+<p>앱의 초기 버전에서는 좌측 햄버거 메뉴 구현을 위해 <a href="https://www.npmjs.com/package/react-burger-menu" target="_blank" rel="nofollow">react-burger-menu</a>를 사용했다. 해당 컴포넌트에는 CSS스타일과 애니메이션 효과들이 포함되어 있었다. 아래는 해당 라이브러리를 사용했던 앱에 대해 번들 분석을 한 결과이다.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/5dbee89cd1b087311578f673c338e71b/optimizing-core-web-vitals-on-a-nextjs-app08.avif" alt=""></td>
+<td><img src="/4d35220e6a12b009f0a07bec3bee716d/optimizing-core-web-vitals-on-a-nextjs-app09.avif" alt=""></td>
+</tr>
+</tbody>
+</table>
+<p>우린 react-burger-menu의 모든 기능이 필요 없다 판단하였고 직접 만들어 제공할수도 있을 것이라 생각했다. 이는 필요 기능에는 차이가 없지만 번들 크기를 줄이는 데 큰 도움이 되었다. 번들 분석 트리맵에서 볼 수 있듯이. 좌측 햄버거 메뉴의 청크는 변경 전 gzipped 기준 <strong>6.73kB</strong> 였으나 변경 후 <strong>879B</strong> 로 감소했다.</p>
+<p>Parsed Size도 <strong>32.74kB</strong>에서 <strong>2.14kB</strong>로 감소했다. 해당 개선은 다운로드 시간 및 청크 구문 분석 시간 모두 줄이는 데 도움이 되었다.</p>
+<aside>💡역자 주: Parsed Size는 UglifyJS같은 minifier가 코드를 압축한 후의 크기를 의미한다. <a href="https://github.com/webpack-contrib/webpack-bundle-analyzer/issues/61#issuecomment-290634958" target="_blank" rel="noopener">webpack-bundle-analyzer 의 지표에 대한 설명</a>을 참고 바란다.</aside>
+<p><img src="/ddbab5f7301ea699ffb7a8775255990a/optimizing-core-web-vitals-on-a-nextjs-app10.avif" alt=""></p>
+<h3 id="정렬-기능을-위한-드롭다운" style="position:relative;"><a href="#%EC%A0%95%EB%A0%AC-%EA%B8%B0%EB%8A%A5%EC%9D%84-%EC%9C%84%ED%95%9C-%EB%93%9C%EB%A1%AD%EB%8B%A4%EC%9A%B4" aria-label="정렬 기능을 위한 드롭다운 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>정렬 기능을 위한 드롭다운</h3>
+<p>영화 앱은 영화들을 장르나 출연 배우에 따라 정렬할 수 있다. 사용자는 인기도, 추천 수, 출시일, 제목을 기준으로 영화를 정렬할 수 있는데 이전에는 <a href="https://github.com/JedWatson/react-select" target="_blank" rel="nofollow">react-select</a> 컴포넌트를 사용하여 구현했다. 해당 컴포넌트는 다중 선택, 검색, 애니메이션, <a href="https://emotion.sh/" target="_blank" rel="nofollow">emotion</a>을 활용한 스타일링을 지원한다. 컴포넌트의 번들 크기는 <strong>27.2kB</strong>이며 7개의 의존 모듈도 포함되어 있다.</p>
+<p>하지만 영화 앱에서는 단일 선택 드롭다운 기능만 필요하고 스타일링 기능은 필요 없었으므로 이를 <a href="https://github.com/tbleckert/react-select-search" target="_blank" rel="nofollow">react-select-search</a> 컴포넌트로 대체했다. 이 컴포넌트는 가벼우며 (gzipped 기준 <strong>3.2kB</strong>)의존 모듈도 없다. 또 필요에 따라 다중 선택과 스타일링 기능을 이용할 수 있었다.</p>
+<p>아래는 컴포넌트의 변경과 그에 따른 Lighthouse 성능 개선으로 인한 변경 사항이다.</p>
+<table>
+<thead>
+<tr>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/4ac1d1bdd524bdf3101f3fc83a9c8af9/optimizing-core-web-vitals-on-a-nextjs-app11.avif" alt=""></td>
+<td><img src="/6f6e10af3333415ee64b7dc03c9ecfb3/optimizing-core-web-vitals-on-a-nextjs-app12.avif" alt=""></td>
+</tr>
+<tr>
+<td><img src="/1d5359a70b3780cfd5515d32abbfc1b4/optimizing-core-web-vitals-on-a-nextjs-app13.avif" alt=""></td>
+<td><img src="/1f12ee8cfaedc5278820a44361df8f9c/optimizing-core-web-vitals-on-a-nextjs-app14.avif" alt=""></td>
+</tr>
+</tbody>
+</table>
+<h3 id="출연진-캐러셀" style="position:relative;"><a href="#%EC%B6%9C%EC%97%B0%EC%A7%84-%EC%BA%90%EB%9F%AC%EC%85%80" aria-label="출연진 캐러셀 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>출연진 캐러셀</h3>
+<p>우리는 React-Slick 컴포넌트를 사용하여 영화 상세 페이지에서 출연진들의 사진과 이름을 가로로 스와이프하여 볼 수 있도록 했다. React-Slick 컴포넌트는 꽤 무겁고(14.7kB) 의존 모듈도 5개나 된다.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/fe0317e53408743ec36405b73191c0fa/optimizing-core-web-vitals-on-a-nextjs-app15.avif" alt=""></td>
+<td><img src="/9b3b7ccd9bbf92a482376640e7b263d8/optimizing-core-web-vitals-on-a-nextjs-app16.avif" alt=""></td>
+</tr>
+</tbody>
+</table>
+<p>우린 더 가벼운 react-glider 라이브러리를 사용했다. 해당 라이브러리는 번들 크기도 작고. CSS인라이닝도 지원한다.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/0a4798e772934df0dff3aa87f461f601/optimizing-core-web-vitals-on-a-nextjs-app17.avif" alt=""></td>
+<td><img src="/0177adbb49585fca49b2dd9fffa8d2b9/optimizing-core-web-vitals-on-a-nextjs-app18.avif" alt=""></td>
+</tr>
+</tbody>
+</table>
+<p>기능의 변경 없이 번들 사이즈가 <strong>14.7kB</strong> 에서 <strong>3.4kB</strong> 로 78% 나 크게 향상되었다. 또 미래에 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scroll_Snap" target="_blank" rel="nofollow">CSS Scroll Snap</a>을 지원하도록 컴포넌트를 다시 만들수도 있다는 장점도 있었다.</p>
+<h3 id="스크롤-컴포넌트" style="position:relative;"><a href="#%EC%8A%A4%ED%81%AC%EB%A1%A4-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8" aria-label="스크롤 컴포넌트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>스크롤 컴포넌트</h3>
+<p>영화 앱은 영화 목록 페이지네이션을 구현하여 여러 페이지에서 목록을 볼 수 있도록 했다. 각 이전 다음 페이지 버튼이 클릭될 때 화면은 맨 위로 스크롤이 뒤어야 한다. 이 스크롤을 부드럽게 처리하기 위해 우리는 네이티브 스크롤 옵션을 사용했다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">window<span class="token punctuation">.</span><span class="token function">scroll</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">top</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token literal-property property">left</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token literal-property property">behavior</span><span class="token operator">:</span> <span class="token string">'smooth'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// and</span>
+document
+  <span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">SCROLL_TO_ELEMENT</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+  <span class="token operator">?.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">behavior</span><span class="token operator">:</span> <span class="token string">'smooth'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div>
+<p>하지만 smooth scroll 기능은 크로스브라우징 이슈가 있다.</p>
+<p><img src="/d479b0e35d99f8097dad3ae5f9850cb1/optimizing-core-web-vitals-on-a-nextjs-app19.avif" alt=""></p>
+<p>수직 스크롤에 애니메이션을 적용하기 위해 <a href="https://github.com/fisshy/react-scroll" target="_blank" rel="nofollow">react-scroll</a> (gzipped 기준 6.8kB) 라이브러리를 사용했다. 이는 다음 비교에서 볼 수 있듯이 약간의 성능 저하는 있지만 모든 브라우저에서 부드러운 스크롤을 수행할 수 있게 되었다.</p>
+<p><strong><a href="https://drive.google.com/file/d/177o4KmlQhOmyr2ZRGg50f1_tConVC4XX/view?usp=sharing" target="_blank" rel="nofollow">변경 전 스크롤 동작</a></strong></p>
+<p><strong><a href="https://drive.google.com/file/d/1MUrX5JoNzm5c6ArWrBHpxFwmX7XrhOcS/view?usp=sharing" target="_blank" rel="nofollow">변경 후 스크롤 동작</a></strong></p>
+<table>
+<thead>
+<tr>
+<th>성능 지표</th>
+<th>FCP(s)</th>
+<th>Speed Index(s)</th>
+<th>LCP(s)</th>
+<th>TTI(s)</th>
+<th>TBT(ms)</th>
+<th>CLS</th>
+<th>성능(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before</td>
+<td>0.8</td>
+<td>3.93</td>
+<td>2.63</td>
+<td>1.73</td>
+<td>16.66</td>
+<td>0</td>
+<td>94.33</td>
+</tr>
+<tr>
+<td>After</td>
+<td>0.92</td>
+<td>3.78</td>
+<td>2.9</td>
+<td>2.26</td>
+<td>66</td>
+<td>0</td>
+<td>92.8</td>
+</tr>
+<tr>
+<td>% Change</td>
+<td>15</td>
+<td>3.81</td>
+<td>10.26</td>
+<td>39.63</td>
+<td>296.15</td>
+<td>0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="레이팅-컴포넌트" style="position:relative;"><a href="#%EB%A0%88%EC%9D%B4%ED%8C%85-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8" aria-label="레이팅 컴포넌트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>레이팅 컴포넌트</h3>
+<p>원래 사용하고 있던 <a href="https://github.com/dreyescat/react-rating" target="_blank" rel="nofollow">React-rating</a>은 레이팅 기능에 여러 다양한 심볼을 사용할 수 있도록 해 준다 (예: 별, 원, 엄지척 등). 하지만 영화 앱에서는 별표만 사용하고 다른 기능은 필요하지 않았다. 다른 기능을 위한 비용이 <strong>2.6kB</strong> 되었다.</p>
+<p><img src="/8ebba0b67b731e8df90ee19b20a7bdf6/optimizing-core-web-vitals-on-a-nextjs-app20.avif" alt=""></p>
+<p><a href="https://github.com/n49/react-stars" target="_blank" rel="nofollow">react-stars</a> 컴포넌트가 요구사항에 딱 맞는 기능만 가지고 있었다. 이 컴포넌트는 gzipped 기준 2kB 여서 우린 해당 컴포넌트를 인라이닝 CSS와 함께 사용했다.</p>
+<p><img src="/c9ef02f99d749bd285eb8ef6d498b690/optimizing-core-web-vitals-on-a-nextjs-app21.avif" alt=""></p>
+<p>라이브러리의 크기가 크게 차이나지는 않지만 react-rating은 컴포넌트에 SVG아이콘을 사용하는 반면, react-stars 컴포넌트는 "★" 기호를 사용한다. 영화 목록 컴포넌트에서 컴포넌트가 20번 이상 반복되어 렌더링되다 보니 아이콘/이미지의 크기도 크기 절감에 기여하게 되었다. 이는 변경 전후의 Lighthouse 점수에서 확인할 수 있다.</p>
+<table>
+<thead>
+<tr>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/832a1ed3bf556a88af79b6ce6eee72e3/optimizing-core-web-vitals-on-a-nextjs-app22.avif" alt=""></td>
+<td><img src="/6e3923328c5908e8230672e9adf100d3/optimizing-core-web-vitals-on-a-nextjs-app23.avif" alt=""></td>
+</tr>
+</tbody>
+</table>
+<p>다른 지표들이 크게 변경되진 않았지만 TBT(33%)의 차이가 크게 벌어졌다. 이는 react-rating 컴포넌트의 청크가 메인 스레드에서 제외된 것에 기인한 것으로 보인다.</p>
+<h2 id="최적화를-위한-다른-기법들" style="position:relative;"><a href="#%EC%B5%9C%EC%A0%81%ED%99%94%EB%A5%BC-%EC%9C%84%ED%95%9C-%EB%8B%A4%EB%A5%B8-%EA%B8%B0%EB%B2%95%EB%93%A4" aria-label="최적화를 위한 다른 기법들 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>최적화를 위한 다른 기법들</h2>
+<p>위와 같이 대체 라이브러리를 찾아 적용하고 테스트하는 것은 성능 분석 및 최적화 프로젝트의 일부였다. 우린 그것 말고도 성능을 향상시키는 것으로 알려진 여러 메커니즘들도 시도해보았다. 여러 시도 들에서 효과가 있던 것과 없던 것 모두 아래에서 살펴보자.</p>
+<h3 id="코드-스플리팅" style="position:relative;"><a href="#%EC%BD%94%EB%93%9C-%EC%8A%A4%ED%94%8C%EB%A6%AC%ED%8C%85" aria-label="코드 스플리팅 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>코드 스플리팅</h3>
+<p>우리는 메뉴 컴포넌트에 대해 코드 스플리팅과 지연 로딩을 적용했다. 모바일에서는 닫힌 상태로 렌더되기 때문에 사용자가 실제로 필요할 때에만 추가적인 동작을 하게 구현할 수 있었다. 처음에는 좌측 버거 메뉴 사이드바 컴포넌트를 지연로딩 했고. 성능을 관찰해보았다. 그 다음 이를 위에서 언급한대로 커스텀 컴포넌트로 대체하였고 역시 지연 로딩을 적용하였다.</p>
+<p>또 React의 <a href="https://github.com/googlechromelabs/adaptive-loading/commit/1309d73ed5e773aa84574bf3959ebbe227594d85" target="_blank" rel="nofollow">lazy()</a>나 <a href="https://reactjs.org/docs/concurrent-mode-suspense.html" target="_blank" rel="nofollow">suspense()</a> 래퍼와 유사하게 동작하는 <a href="https://github.com/googlechromelabs/adaptive-loading/commit/1309d73ed5e773aa84574bf3959ebbe227594d85" target="_blank" rel="nofollow">LazyLoadingErrorBoundary</a> 컴포넌트를 적용하였다. 이로 인해 메뉴 컴포넌트는 페이지 로드 후에 로드되게 되었으며 FCP와 LCP에 큰 변화는 없지만, 다음 비교에서 볼 수 있듯이 TBT가 <strong>78%</strong> 만큼 상당히 감소했다.</p>
+<table>
+<thead>
+<tr>
+<th>성능 지표</th>
+<th>FCP(s)</th>
+<th>Speed Index(s)</th>
+<th>LCP(s)</th>
+<th>TTI(s)</th>
+<th>TBT(ms)</th>
+<th>CLS</th>
+<th>성능(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before</td>
+<td>0.86</td>
+<td>4.2</td>
+<td>3.46</td>
+<td>2.53</td>
+<td>70</td>
+<td>0</td>
+<td>87.66</td>
+</tr>
+<tr>
+<td>After</td>
+<td>0.83</td>
+<td>3.63</td>
+<td>3.3</td>
+<td>1.73</td>
+<td>20</td>
+<td>0</td>
+<td><strong>90.33</strong></td>
+</tr>
+<tr>
+<td>% Change</td>
+<td><strong>3.48</strong></td>
+<td><strong>13.57</strong></td>
+<td><strong>4.62</strong></td>
+<td><strong>31.62</strong></td>
+<td><strong>71.42</strong></td>
+<td>0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="중요-리소스-인라이닝과-중요하지-않은-리소스-지연-처리" style="position:relative;"><a href="#%EC%A4%91%EC%9A%94-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%9D%B8%EB%9D%BC%EC%9D%B4%EB%8B%9D%EA%B3%BC-%EC%A4%91%EC%9A%94%ED%95%98%EC%A7%80-%EC%95%8A%EC%9D%80-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%A7%80%EC%97%B0-%EC%B2%98%EB%A6%AC" aria-label="중요 리소스 인라이닝과 중요하지 않은 리소스 지연 처리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>중요 리소스 인라이닝과 중요하지 않은 리소스 지연 처리</h3>
+<p>Lighthouse 감사는 아래 사항에 대해 조취를 취할 것을 지속적으로 제안하였다.</p>
+<p><img src="/30ba572f323e6471978bcb91cae1e70e/optimizing-core-web-vitals-on-a-nextjs-app24.avif" alt=""></p>
+<p>CSS는 렌더 블록 리소스이기 때문에 페이지 렌더 전에 로드가 완료되어야 한다. 일부 CSS는 초기 페이지 로드에 표시되는 컨텐츠의 스타일 지정을 위해 필요한 경우가 있다. 이것은 페이지를 최적화하기 위해 인라이닝 처리 되어야 하는 중요한 CSS이다. 또한 처음에는 필요하지 않기 때문에 지연될 수 있는 CSS도 존재할 것이다.</p>
+<p>최적화 과정의 일환으로 다크/라이트 모드 전환에 필요한 CSS를 중요한 리소스로 분류하여 인라인 처리하였다.</p>
+<p><a href="https://nextjs.org/docs/basic-features/built-in-css-support#import-styles-from-node_modules" target="_blank" rel="nofollow">Next.js 문서</a>에 따르면 node_modules 내의 일부 CSS를 <code class="language-text">/pages/_app.js</code> 에 포함시켜야 했다. 우리는 <a href="https://www.patterns.dev/posts/nextjs-casestudy/#heading=h.efcrrkswqtk7" target="_blank" rel="nofollow">react-glider</a>와 <a href="https://github.com/appleple/react-modal-video" target="_blank" rel="nofollow">react-modal-video</a>의 CSS를 포함시켜야 했는데. 이를 _app.js에 포함시키면 앱의 모든 페이지에서 쓰지 않는데도 앱의 렌더를 차단시킬 수 있다.</p>
+<p>각 컴포넌트가 필요한 CSS는 인라이닝 처리할 수 있다. 예를 들어 최적화 후. case 컴포넌트는 Glider 컴포넌트와 필요 CSS를 함께 가지고 있도록 리펙토링 되었다.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">ref</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>ref<span class="token punctuation">}</span></span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>cast<span class="token punctuation">'</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Glider</span></span> <span class="token attr-name">hasArrows</span> <span class="token attr-name">slidesToShow</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>slidesToShow<span class="token punctuation">}</span></span> <span class="token attr-name">slidesToScroll</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span></span> <span class="token attr-name">itemWidth</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token constant">GLIDER_ITEM_WIDTH</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+    </span><span class="token punctuation">{</span>cast<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">person</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">PersonLink</span></span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>person<span class="token punctuation">.</span>id<span class="token punctuation">}</span></span> <span class="token attr-name">person</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>person<span class="token punctuation">}</span></span> <span class="token attr-name">baseUrl</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>baseUrl<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token plain-text">
+  </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Glider</span></span><span class="token punctuation">></span></span><span class="token plain-text">
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span> <span class="token attr-name">jsx</span><span class="token punctuation">></span></span><span class="token plain-text">{`/*CSS Classes required for Glider*/`}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span></code></pre></div>
+<p>이로 인해 FCP, LCP, TTI 각 2% ~ 5%의 향상이 측정되었으며 페이지 성능은 <strong>79%</strong> 에서 <strong>81%</strong> 로 향상되었다.</p>
+<h3 id="이미지-가로세로비율-할당" style="position:relative;"><a href="#%EC%9D%B4%EB%AF%B8%EC%A7%80-%EA%B0%80%EB%A1%9C%EC%84%B8%EB%A1%9C%EB%B9%84%EC%9C%A8-%ED%95%A0%EB%8B%B9" aria-label="이미지 가로세로비율 할당 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>이미지 가로세로비율 할당</h3>
+<p>지금까지 논의한 개선 사항들은 다양한 페이지에서 FCP, LCP, TBT, TTI를 개선하는데 도움이 되었다. 이제 Lighthouse 보고서의 마지막 측정 항목 개선 항목인 누적 레이아웃 이동 (CLS)에 대해서 이야기 해 보자. 이에 대한 자세히 알고 싶다면 필자의 <a href="https://web.dev/optimize-cls/" target="_blank" rel="nofollow">CLS최적화</a>를 참고하기 바란다. 최적화 적용 전 영화 상세 페이지에서 Lighthouse 보고서에는 CLS의 원인을 보여주고 있다.</p>
+<p><img src="/2e86ba9296d60af5b17dad345bc0cdb8/optimizing-core-web-vitals-on-a-nextjs-app25.avif" alt=""></p>
+<p>CLS 점수가 0.016으로 임계치보다는 낮지만. 모바일 3g연결에서 페이지를 로드할 때에는 CLS가 발생하였다. 따라서 우리는 해당 엘리먼트에 최적화 작업을 진행해 CLS가 발생하지 않도록 하였다.
+이미지의 사이즈를 직접 지정하는 대신, <a href="https://css-tricks.com/aspect-ratio-boxes/" target="_blank" rel="nofollow">aspect-ratio-boxes</a> 기법을 적용하였다. 이로 인해 이미지가 들어갈 공간을 미리 확보하여 이미지가 로드 완료되었을 때 레이아웃이 움직이는것을 예방할 수 있다. 이 기법을 활용하여 CLS점수를 0으로 만들었다. 해당 측정 제안이 사라졌고 사용자 경험이 눈에 띄개 개선되었다.</p>
+<p>노트: 브라우저가 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio" target="_blank" rel="nofollow">aspect-ratio</a>를 지원하면 더 좋지만 아직 그 기능이 폭넓게 구현되지 않아 위의 방법을 사용했다.</p>
+<p><img src="/c790dbd8368e8495fa62c6f4b9446216/optimizing-core-web-vitals-on-a-nextjs-app26.avif" alt=""></p>
+<h3 id="preconnects" style="position:relative;"><a href="#preconnects" aria-label="preconnects permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Preconnects</h3>
+<p>Preconnects는 브라우저에게 페이지에서 곧 사용될 리소스들에 대한 힌트를 줄 수 있는 기능이다. <code class="language-text">rel="preconnect"</code> 를 사용하면 브라우저는 다른 도메인에 대한 연결을 미리 만들어 빠르게 처리할 수 있도록 해 둔다. 이 힌트는 연결을 미리 준비하기 때문에 리소스 로드 속도를 개선시킬 수 있다.</p>
+<p>우리는 아래와 같이 preconnect 속성을 리소스들에 추가하였다.</p>
+<div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>preconnect<span class="token punctuation">'</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>https://image.tmdb.org<span class="token punctuation">'</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>preconnect<span class="token punctuation">'</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>https://api.themoviedb.org<span class="token punctuation">'</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>preconnect<span class="token punctuation">'</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>https://www.google-analytics.com<span class="token punctuation">'</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>preconnect<span class="token punctuation">'</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">'</span>https://content-autofill.googleapis.com<span class="token punctuation">'</span></span> <span class="token punctuation">/></span></span></code></pre></div>
+<p>아래 표와 같이 큰 차이는 없지만 식별 가능한 수준의 향상이 관측되었다.</p>
+<table>
+<thead>
+<tr>
+<th>성능 지표</th>
+<th>FCP(s)</th>
+<th>Speed Index(s)</th>
+<th>LCP(s)</th>
+<th>TTI(s)</th>
+<th>TBT(ms)</th>
+<th>CLS</th>
+<th>성능(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before</td>
+<td>0.9</td>
+<td>3.9</td>
+<td>3.43</td>
+<td>2.93</td>
+<td>60</td>
+<td>0</td>
+<td>88</td>
+</tr>
+<tr>
+<td>After</td>
+<td>0.83</td>
+<td>3.5</td>
+<td>2.86</td>
+<td>2.63</td>
+<td>53.33</td>
+<td>0</td>
+<td>93.33</td>
+</tr>
+<tr>
+<td>% Change</td>
+<td>7.77</td>
+<td>10.25</td>
+<td>16.61</td>
+<td>10.23</td>
+<td>6.67</td>
+<td>0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="api호출-순서-최적화" style="position:relative;"><a href="#api%ED%98%B8%EC%B6%9C-%EC%88%9C%EC%84%9C-%EC%B5%9C%EC%A0%81%ED%99%94" aria-label="api호출 순서 최적화 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API호출 순서 최적화</h3>
+<p>영화 앱은 TMDB의 클라이언트이기 때문에 영화 목록, 장르, 출연자, 연관 이미지 등의 정보를 얻기 위해 여러 API를 호출한다. API호출 순서 최적화르 위해 사용되는 원칙은 페이지의 메인영역을 위한 데이터를 받아오는 것이 다른 API호출때문에 지연되지 않도록 하는것이다. 이를 염두에 두고 순서를 아래와 같이 변경하였다.</p>
+<table>
+<thead>
+<tr>
+<th>순 서</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>영화 포스터에 대한 API를 호출하는 중에 장르나 구성에 대한 메타데이터를 받아오고 있어서 포스터 API가 지연된다</td>
+<td>사이드 메뉴에 필요한 메타데이터와 영화 포스터 데이터를 동시에 조회한다</td>
+</tr>
+<tr>
+<td>2</td>
+<td>영화 포스터 데이터를 받아온다</td>
+<td>다운로드 받은 영화 포스터 데이터로 홈 페이지를 렌더한다</td>
+</tr>
+<tr>
+<td>3</td>
+<td>다운로드 받은 영화 포스터 데이터로 홈 페이지를 렌더한다</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="api응답-preload" style="position:relative;"><a href="#api%EC%9D%91%EB%8B%B5-preload" aria-label="api응답 preload permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API응답 preload</h3>
+<p>사용자가 영화 앱에 처음 방문했을 때 영화 API를 유명한 순으로 1페이지를 호출할 것이라는 것을 알고 있다. 실제 목록은 TMDB API로부터 받아오는데 이 때 두 가지 파라미터 장르 = "유명한", 페이지 = "1" 를 전달하게 될 것이다. 따라서 해당 파라미터를 포함하는 API를 아래와 같이 preload 처리할 수 있다.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>
+  <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preload<span class="token punctuation">"</span></span>
+  <span class="token attr-name">as</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fetch<span class="token punctuation">"</span></span>
+  <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://api.themoviedb.org/3/movie/popular?api_key=844dba0bfd8f3a4f3799f6130ef9e335&amp;page=1<span class="token punctuation">"</span></span>
+  <span class="token attr-name">crossorigin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>
+<span class="token punctuation">/></span></span></code></pre></div>
+<p>이 코드는 사용자가 다른 페이지에서는 무엇을 할 지 예측할 수 없기 때문에 홈 페이지에서만 사용하게 된다. 만약 사용자가 해당 데이터를 사용하지 않으면 불필요하게 리소스를 낭비하는 것으로 크롬 개발자 도구에서 알려준다. - "The resource <a href="https://api.themoviedb.org/3/movie/popular?api_key=844dba0bfd8f3a4f3799f6130ef9e335&#x26;page=1" target="_blank" rel="nofollow">https://api.themoviedb.org/3/movie/popular?api_key=844dba0bfd8f3a4f3799f6130ef9e335&#x26;page=1</a> was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate as value and it is preloaded intentionally."</p>
+<p>이로 인해 LCP와 TTI는 각각 <strong>12%</strong>, <strong>7.76%</strong> 증가하였고 전체적인 성능 증가는 <strong>91%</strong> 에서 <strong>94%</strong> 로 개선되었다.</p>
+<h3 id="tmdb-로고와-트레이드마크-preload" style="position:relative;"><a href="#tmdb-%EB%A1%9C%EA%B3%A0%EC%99%80-%ED%8A%B8%EB%A0%88%EC%9D%B4%EB%93%9C%EB%A7%88%ED%81%AC-preload" aria-label="tmdb 로고와 트레이드마크 preload permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TMDB 로고와 트레이드마크 preload</h3>
+<p>TMDB의 로고와 트레이드마크는 모든 페이지에서 보여지므로 preloading을 적용할 수 있다. 미디어 쿼리를 사용하여 preload처리하였다.</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>
+  <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preload<span class="token punctuation">"</span></span>
+  <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{LOGO_IMAGE_PATH}<span class="token punctuation">"</span></span>
+  <span class="token attr-name">as</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>image<span class="token punctuation">"</span></span>
+  <span class="token attr-name">media</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>(min-width: 80em)<span class="token punctuation">"</span></span>
+<span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>
+  <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preload<span class="token punctuation">"</span></span>
+  <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{DARK_TMDB_IMAGE_PATH}<span class="token punctuation">"</span></span>
+  <span class="token attr-name">as</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>image<span class="token punctuation">"</span></span>
+  <span class="token attr-name">media</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>(prefers-color-scheme: dark) and (min-width: 80em)<span class="token punctuation">"</span></span>
+<span class="token punctuation">/></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span>
+  <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>preload<span class="token punctuation">"</span></span>
+  <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{LIGHT_TMDB_IMAGE_PATH}<span class="token punctuation">"</span></span>
+  <span class="token attr-name">as</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>image<span class="token punctuation">"</span></span>
+  <span class="token attr-name">media</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>(prefers-color-scheme: light) and (min-width: 80em)<span class="token punctuation">"</span></span>
+<span class="token punctuation">/></span></span></code></pre></div>
+<p>결과적으로 5~6% 정도의 FCP 및 Speed Index 속도가 개선되었다.</p>
+<h2 id="사이트를-반응형으로-만들기" style="position:relative;"><a href="#%EC%82%AC%EC%9D%B4%ED%8A%B8%EB%A5%BC-%EB%B0%98%EC%9D%91%ED%98%95%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0" aria-label="사이트를 반응형으로 만들기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>사이트를 반응형으로 만들기</h2>
+<p>영화 앱은 UI 래퍼를 렌더하기 위해 Next.js 의 SSR을 사용한다. 앱이 데스크톱과 모바일에서 모두 접속할 수 있기 때문에 반응형 디자인이 필수적이다. 그런데 <a href="https://nitayneeman.com/posts/combining-server-side-rendering-and-responsive-design-using-react/" target="_blank" rel="nofollow">반응형 디자인과 SSR을 조합하는게 조금 까다로운데</a>. 이유는</p>
+<ol>
+<li>컨텐츠가 렌더링 되는 서버에서는 클라이언트의 <code class="language-text">window</code> 요소를 알 수 없다. 따라서 클라이언트의 상세 정보를 알기 위해 <a href="https://www.w3schools.com/jsref/met_win_matchmedia.asp" target="_blank" rel="nofollow">window.matchmedia()</a>같은 것을 사용할 수 없다. 또 <a href="https://caniuse.com/?search=client%20hint" target="_blank" rel="nofollow">클라이언트 힌트는 모든 브라우저에서 지원하지 않는다.</a></li>
+<li>CSS 미디어 쿼리를 사용할 경우 데스크탑이던 모바일이던 상관 없이 모든 요소가 렌더링된다.</li>
+</ol>
+<p>이런 문제들을 해결하기 위해 우리는 <a href="https://github.com/artsy/fresnel" target="_blank" rel="nofollow">@artsy/fresnel</a> 라이브러리를 사용했다. 서버에서 특별한 CSS breakpoint와 함께 렌더링을 양쪽 다 하긴 하지만 breakpoint에 매칭되는 컴포넌트만 마운팅된다. 따라서 중복 마크업과 불필요한 렌더링을 피할 수 있었다. 다음 이미지는 동일한 컨텐츠에 대해 변경 전화 후의 마크업 차이를 나타내고 있다.</p>
+<table>
+<thead>
+<tr>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/cb15d75307e4d9a4b6f2c3c0c07a908a/optimizing-core-web-vitals-on-a-nextjs-app27.avif" alt=""></td>
+<td><img src="/63561a948a9747910b6cf61a5e0cde23/optimizing-core-web-vitals-on-a-nextjs-app28.avif" alt=""></td>
+</tr>
+</tbody>
+</table>
+<p>다음은 변경 후 관찰된 Lighthouse 성능의 변화이다.</p>
+<table>
+<thead>
+<tr>
+<th>성능 지표</th>
+<th>FCP(s)</th>
+<th>Speed Index(s)</th>
+<th>LCP(s)</th>
+<th>TTI(s)</th>
+<th>TBT(ms)</th>
+<th>CLS</th>
+<th>성능(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before</td>
+<td>0.93</td>
+<td>3.73</td>
+<td>2.6</td>
+<td>2.63</td>
+<td>60</td>
+<td>0.001</td>
+<td>94.33</td>
+</tr>
+<tr>
+<td>After</td>
+<td>1.06</td>
+<td>3.23</td>
+<td>2.66</td>
+<td>2.66</td>
+<td>63.33</td>
+<td>0</td>
+<td>95</td>
+</tr>
+<tr>
+<td>% Change</td>
+<td>13.97</td>
+<td>13.4</td>
+<td>2.3</td>
+<td>1.14</td>
+<td>5.55</td>
+<td>100</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>FCP, LCP, TTI, TBT에서 약간의 성능 감소가 있었지만 Speed Index와 성능이 향상되었다. @artsy/fresnel 사용으로 청크 크기가 증가했지만 마크업을 줄이면 좋은 절충안이 될 수 있다.</p>
+<h2 id="구글-애널리틱스-적용" style="position:relative;"><a href="#%EA%B5%AC%EA%B8%80-%EC%95%A0%EB%84%90%EB%A6%AC%ED%8B%B1%EC%8A%A4-%EC%A0%81%EC%9A%A9" aria-label="구글 애널리틱스 적용 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>구글 애널리틱스 적용</h2>
+<p>구글 애널리틱스를 포함하여 사이트가 사용자와 어떻게 소통하고 있는지를 알 수 있도록 했다. 다만 이로 인해 약간의 성능 저하가 예상되었다. 코드 변경에 따른 성능의 변화를 추적하기 위해 여러 프로세스들에 대해 변화량을 캡쳐했다. 예상대로 추가 컴포넌트로 인해 약간의 성능 저하가 있었다.</p>
+<table>
+<thead>
+<tr>
+<th>성능 지표</th>
+<th>FCP(s)</th>
+<th>Speed Index(s)</th>
+<th>LCP(s)</th>
+<th>TTI(s)</th>
+<th>TBT(ms)</th>
+<th>CLS</th>
+<th>성능(%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before</td>
+<td>0.8</td>
+<td>3.4</td>
+<td>2.53</td>
+<td>1.8</td>
+<td>26.66</td>
+<td>0.001</td>
+<td>95.66</td>
+</tr>
+<tr>
+<td>After</td>
+<td>0.95</td>
+<td>3.7</td>
+<td>2.93</td>
+<td>2.13</td>
+<td>35</td>
+<td>0</td>
+<td>92.75</td>
+</tr>
+<tr>
+<td>% Change</td>
+<td>18.75</td>
+<td>8.82</td>
+<td>15.61</td>
+<td>18.05</td>
+<td>31.28</td>
+<td>0</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="도움이-되지-않았던-항목들" style="position:relative;"><a href="#%EB%8F%84%EC%9B%80%EC%9D%B4-%EB%90%98%EC%A7%80-%EC%95%8A%EC%95%98%EB%8D%98-%ED%95%AD%EB%AA%A9%EB%93%A4" aria-label="도움이 되지 않았던 항목들 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>도움이 되지 않았던 항목들</h2>
+<p>Lighthouse 리포트의 피드백에 따라 여러 대체 항목과 아이디어들을 시도해 보았지만 성능상의 이점이 없어 포기한 것들도 있다. 아래는 그 요약이다.</p>
+<ol>
+<li>이미지 지연로딩을 위해 react-lazyload 패키지를 사용하고 있었다. 그런데 이 것이 스크롤과 레이팅 컴포넌트와 함께 메인 스레드가 오랫동안 실행되도록 만들었다.
+<img src="/b7cb3511a0c0cb38961af1717d009a9f/optimizing-core-web-vitals-on-a-nextjs-app29.avif" alt=""></li>
+</ol>
+<blockquote>
+<p>우리는 이것을 <a href="https://addyosmani.com/blog/lazy-loading/" target="_blank" rel="nofollow">브라우저 네이티브 지연 로딩</a>으로 대체했고 후속 테스트를 통해 TBT 가 10ms에서 117ms 로 증가하여 LCP가 무시할 수 있는 수준으로 감소했음을 확인했다. 네이티브 이미지 지연 로딩은 뷰포트 근처의 몇 이미지를 로드하는 반면 react-lazyload는 뷰포트 내에 있는 이미지만 로드하여 TBT에서 이런 차이를 일으킨 것으로 보인다.</p>
+</blockquote>
+<p>요즘에는 이런 기능을 위해 <a href="https://nextjs.org/docs/api-reference/next/image" target="_blank" rel="nofollow">Next.js Image Component</a>를 활용할 수 있다.</p>
+<ol>
+<li>이미지에 aspect-ratio를 지정하기 전에 CLS이슈를 해결하기 위해 이미지에 크기를 지정했다. 그 방법도 CLS를 감소시키기 위해 제안되는 방법이긴 하지만 aspect-ratio 설정이 없이 그 방법만으로는 이슈가 해결되지 않았다.</li>
+<li>LCP를 줄이기 위해 SSR을 도입했지만 오히려 성능이 감소되었다. 이는 페이지를 렌더링하는데 필요한 영화데이터를 TMDB API호출을 통해 가져오기 때문일 수 있다. 이로 인해 서버에서 API요청/응답이 처리되는 시간이 늘어나 응답이 느려진 것이다.</li>
+</ol>
+<h2 id="도움이-될-수-있는-아이디어들" style="position:relative;"><a href="#%EB%8F%84%EC%9B%80%EC%9D%B4-%EB%90%A0-%EC%88%98-%EC%9E%88%EB%8A%94-%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EB%93%A4" aria-label="도움이 될 수 있는 아이디어들 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>도움이 될 수 있는 아이디어들</h2>
+<p>아래 항목들은 미래에 시도해 보려고 하는 성능 향상 항목들이다. 여기에는 개별 컴포넌트를 더 가벼운 것으로 대체하는것 부터 본격적으로 SSR을 구현하는 것까지 다양하게 있다. 다음은 앱의 성능에 긍정적인 영향을 미치는지 확인하기 위해 확인해볼 수 있는 사항들이다.</p>
+<ol>
+<li><a href="https://web.dev/preload-responsive-images/" target="_blank" rel="nofollow">preloading을 포함한 반응형 이미지 구현에 관련된 논의</a></li>
+<li><a href="https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker" target="_blank" rel="nofollow">서비스 워커를 이용한 캐시</a></li>
+<li>현재 _app.js에는 redux 관련된 액션, 리듀서와 같은 로직들이 불필요하게 포함되어 있다. 개별 페이지들에 방문했을 때 이런것들이 다 필요없는데도 말이다. 우리는 <a href="https://github.com/vercel/next.js/tree/canary/examples/with-redux-code-splitting" target="_blank" rel="nofollow">redux 로직을 위한 코드 스플리팅</a>을 통해 이런 코드들을 제거하려고 하고 있다.</li>
+<li>redux 없이 SSR을 구현하고 <a href="https://github.com/vercel/next.js/tree/canary/examples/ssr-caching" target="_blank" rel="nofollow">SSR캐싱</a>을 적용한다.</li>
+<li><a href="https://github.com/appleple/react-modal-video" target="_blank" rel="nofollow">react-modal-video</a>를 가벼운 대체 패키지로 바꾼다.</li>
+<li><a href="https://github.com/hipstersmoothie/react-glider" target="_blank" rel="nofollow">react-slider</a> 대신 <a href="https://github.com/rcbyr/keen-slider" target="_blank" rel="nofollow">keen-slider</a>를 사용한다.</li>
+<li><a href="https://github.com/twobin/react-lazyload" target="_blank" rel="nofollow">react-lazyload</a>대신 <a href="https://github.com/wellyshen/react-cool-inview" target="_blank" rel="nofollow">react-cool-inview</a>를 사용한다.</li>
+<li>다양한 <a href="https://quick-teaching-tool.web.app/" target="_blank" rel="nofollow">React loading pattern</a>을 활용하여 3P 라이브러리들에 지연 로딩 및 코드 스플리팅을 적용한다.</li>
+<li><a href="https://github.com/vercel/next.js/pull/15875" target="_blank" rel="nofollow">Image-post-precessing</a>을 사용하여 hero image같은 것을 preload처리한다.</li>
+<li>SVG로딩 스피너를 CSS애니메이션으로 대체한다.</li>
+<li>이미지 렌더링에 내부 자바스크립트를 사용하는 컴포넌트 대신 HTML과 CSS를 활용하는 가벼운 컴포넌트를 사용한다.</li>
+</ol>
+<h2 id="결론" style="position:relative;"><a href="#%EA%B2%B0%EB%A1%A0" aria-label="결론 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>결론</h2>
+<p>성능 최적화는 지금까지도 지속되고 있는 프로세스이다. 지난 6개월 동안 우린 이런 변경사항들을 적용하여 많은 모법 사례들을 테스트 해 보았다. 사실 얼마든지 더 할수도 있긴 하지만 어느 시점에서는 성능 최적화보다 다른 대안을 찾는 것이 나을 수 있다. 사이트에 새로운 기능이 추가될 때 마다 성능 검토는 반복되어 이뤄질 것이다. 그러나 우리는 이런 과정에서 얻은 교훈들을 캡쳐하여 이 글을 읽는 분들 뿐만 아니라 미래를 위한 매뉴얼 역할을 하고 싶었다.</p>
+<p><em>이 글에 기여한 Anton Karlovskiy와 Leena Sohoni-Kasture에게 특별한 감사를 전합니다.</em></p></div></div></main><style data-emotion="css 1lab2dy">.css-1lab2dy{border-top-width:1px;--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity));--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity));}</style><footer class="css-1lab2dy"><style data-emotion="css s75aqh">.css-s75aqh{margin-left:auto;margin-right:auto;max-width:64rem;padding-left:1.5rem;padding-right:1.5rem;padding-top:2rem;padding-bottom:2rem;}</style><div class="css-s75aqh"><style data-emotion="css 1a6mu8v">.css-1a6mu8v{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity));gap:2rem;display:grid;padding-top:2rem;padding-bottom:2rem;}@media (min-width: 640px){.css-1a6mu8v{grid-template-columns:repeat(12, minmax(0, 1fr));}}@media (min-width: 768px){.css-1a6mu8v{padding-top:3rem;padding-bottom:3rem;}}</style><div class="css-1a6mu8v"><style data-emotion="css 1ar8ask">.css-1ar8ask{grid-column:span 3/span 3;}</style><div class="css-1ar8ask"><a href="/"><svg xmlns="http://www.w3.org/2000/svg" width="122.187" height="26.406" viewBox="0 0 122.187 26.406" aria-labelledby="logoFooter"><title id="logoFooter">patterns</title><defs><style>
+      .cls-1 {
+        fill-rule: evenodd;
+      }
+    </style></defs><path id="patterns" class="cls-1" d="M312.615,189.135h5.879v-8.819h0.085a4.693,4.693,0,0,0,4.559,2.9c3.493,0,6.433-2.727,6.433-8.393,0-5.921-3.153-8.392-6.39-8.392a4.717,4.717,0,0,0-4.6,3.067h-0.127v-2.854h-5.837v22.494Zm5.751-14.315c0-2.428.98-3.877,2.6-3.877s2.556,1.449,2.556,3.877-0.937,3.877-2.556,3.877S318.366,177.206,318.366,174.82Zm17.489,8.436a4.875,4.875,0,0,0,4.729-2.557h0.128V183h5.5V171.8c0-3.025-2.865-5.368-7.541-5.368-4.888,0-7.295,2.556-7.5,5.538h5.411a1.746,1.746,0,0,1,2-1.491c1.022,0,1.747.468,1.747,1.321v0.042c0,0.948-1.044,1.246-3.792,1.449-3.376.245-6.007,1.608-6.007,5.2C330.53,181.743,332.724,183.256,335.855,183.256Zm1.918-3.707a1.46,1.46,0,0,1-1.705-1.406c0-.841.6-1.491,1.96-1.7a10.679,10.679,0,0,0,2.343-.6v1.363A2.416,2.416,0,0,1,337.773,179.549Zm20.257-12.908h-2.812v-3.92h-5.879v3.92h-2.087v4.26h2.087v7.391c-0.042,3.43,2.077,5.166,6.135,4.942a11.979,11.979,0,0,0,2.854-.511l-0.852-4.132a6.294,6.294,0,0,1-1.15.17,0.932,0.932,0,0,1-1.108-1.022V170.9h2.812v-4.26Zm11.4,0h-2.812v-3.92h-5.879v3.92h-2.087v4.26h2.087v7.391c-0.042,3.43,2.077,5.166,6.135,4.942a11.979,11.979,0,0,0,2.854-.511l-0.852-4.132a6.308,6.308,0,0,1-1.15.17,0.932,0.932,0,0,1-1.108-1.022V170.9h2.812v-4.26ZM378.9,183.3c4.537,0,7.455-2.173,8.009-5.581h-5.368a2.5,2.5,0,0,1-2.513,1.449,2.583,2.583,0,0,1-2.77-2.727v-0.255h10.651V174.82c0-5.208-3.195-8.392-8.137-8.392-5.07,0-8.307,3.365-8.307,8.435C370.468,180.156,373.663,183.3,378.9,183.3Zm-2.642-10.352a2.492,2.492,0,0,1,2.642-2.386,2.448,2.448,0,0,1,2.6,2.386h-5.241ZM388.553,183h5.879v-8.521a2.936,2.936,0,0,1,3.025-3.109,7.888,7.888,0,0,1,2.172.3v-5.017a5.33,5.33,0,0,0-1.491-.223c-1.747,0-3.11,1.022-3.706,3.323h-0.171v-3.11h-5.708V183Zm18.126-9.2a2.322,2.322,0,0,1,2.386-2.6,2.272,2.272,0,0,1,2.343,2.6V183h5.879V172.562c0.011-3.557-2.237-6.134-5.709-6.134a5.048,5.048,0,0,0-5.027,3.323h-0.17v-3.11H400.8V183h5.879v-9.2Zm27.713-1.832c-0.149-3.462-3.024-5.538-7.753-5.538-4.676,0-7.562,1.917-7.541,5.325-0.021,2.577,1.651,4.228,4.985,4.814l2.9,0.511c1.278,0.235,1.853.575,1.874,1.193-0.021.682-.8,1.065-1.874,1.065-1.332,0-2.269-.575-2.429-1.619h-5.836c0.319,3.355,3.216,5.581,8.222,5.581,4.527,0,7.86-2.2,7.882-5.709-0.022-2.417-1.641-3.823-4.985-4.43l-3.323-.6c-1.246-.223-1.6-0.671-1.576-1.15-0.022-.682.82-1.065,1.832-1.065a2,2,0,0,1,2.215,1.619h5.41Z" transform="translate(-312.625 -162.719)"></path></svg></a></div><div class="css-1ar8ask"><style data-emotion="css 1504nod">.css-1504nod{font-size:0.875rem;line-height:1.25rem;}</style><ul class="css-1504nod"><style data-emotion="css 1gok8e8">.css-1gok8e8{margin-bottom:0.5rem;}</style><li class="css-1gok8e8"><style data-emotion="css 1rwi6jz">.css-1rwi6jz{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms;--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity));font-size:1.125rem;line-height:1.75rem;}.css-1rwi6jz:visited{color:#4b5563;}.css-1rwi6jz:hover{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity));text-decoration-line:none;}</style><a class="css-1rwi6jz" href="/">Patterns</a></li><li class="css-1gok8e8"><a class="css-1rwi6jz" href="/about">About</a></li><li class="css-1gok8e8"><a href="https://forms.gle/TKPSJJJ8sHxwZVUu5" target="_blank" rel="noreferrer" class="css-1rwi6jz">Submit Feedback</a></li></ul></div></div><style data-emotion="css 12af1gj">.css-12af1gj{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity));border-top-width:1px;padding-top:1rem;padding-bottom:1rem;}@media (min-width: 768px){.css-12af1gj{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;padding-top:2rem;padding-bottom:2rem;}}</style><div class="css-12af1gj"><style data-emotion="css 3qynwe">.css-3qynwe{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity));margin-right:1rem;font-size:0.875rem;line-height:1.25rem;}</style><div class="css-3qynwe">© 2020-2022 Patterns.dev. All rights reserved.</div></div></div></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ"></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer && window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3XKKTEVFKQ', {"send_page_view":false});
+      }
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app/";window.___webpackCompilationHash="a1f82c6479da7782abc5";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-d6ab648fc8b5e258ba4f.js"],"app":["/app-44eef4be26f6b77569ef.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-b3438f06208cfd69d463.js"],"component---src-pages-about-tsx":["/component---src-pages-about-tsx-8674b48374c1510f14ca.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-0b7a810e90f04508d4a4.js"],"component---src-templates-pattern-tsx":["/component---src-templates-pattern-tsx-97c9421d206a03545b08.js"]};/*]]>*/</script><script src="/polyfill-d6ab648fc8b5e258ba4f.js" nomodule=""></script><script src="/app-44eef4be26f6b77569ef.js" async=""></script><script src="/framework-9a18326230ca387b7d97.js" async=""></script><script src="/webpack-runtime-5f053aad751fe3e4e4b3.js" async=""></script></body></html>
