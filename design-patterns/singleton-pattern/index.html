@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.12.2" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/design-patterns/singleton-pattern/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="Singleton 패턴"><meta property="og:type" content="article"><meta property="og:image" content="./singleton.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/design-patterns/singleton-pattern/"><meta property="og:image:url" content="./singleton.jpg"><meta property="og:image:alt" content="Singleton 패턴"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"><link crossorigin as="font" as="style" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="preload"><link crossorigin as="font" href="/fonts/PretendardVariable.woff2" rel="preload" type="font/woff2"><link href="/favicon.png" rel="icon" sizes="any"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CLRDYtwQ.css">
+<link rel="stylesheet" href="/_astro/_slug_.BvLW8n3A.css"><script type="module" src="/_astro/hoisted.BpSiyIXZ.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative">  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li class="active" data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-64" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>Singleton 패턴</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=design-patterns/singleton-pattern" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/singleton-pattern/" target="_blank">patterns.dev - singleton pattern</a></aside>
+<p>Singleton은 1회에 한하여 인스턴스화가 가능하며 전역에서 접근 가능한 클래스를 지칭한다. 만들어진 <em>Singleton 인스턴스</em>는 앱 전역에서 공유되기 때문에 앱의 전역 상태를 관리하기에 적합하다.</p>
+<p>먼저 ES2015의 클래스로 작성된 Singleton을 보자. 이 예제에서는 아래 메서드를 가진 <code>Counter</code> 클래스를 만든다</p>
+<ul>
+<li><code>getInstance</code> 메서드는 인스턴스 자체를 반환한다</li>
+<li><code>getCount</code> 메서드는 <code>counter</code> 변수를 반환한다</li>
+<li><code>increment</code> 메서드는 <code>counter</code> 변수를 1 증가한다</li>
+<li><code>decrement</code> 메서드는 <code>counter</code> 변수를 1 감소한다</li>
+</ul>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#CBA6F7">let</span><span style="color:#CDD6F4"> counter </span><span style="color:#94E2D5">=</span><span style="color:#FAB387"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">class</span><span style="color:#F9E2AF;font-style:italic"> Counter</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  getInstance</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#F38BA8"> this</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  getCount</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#CDD6F4"> counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  increment</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> ++</span><span style="color:#CDD6F4">counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  decrement</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> --</span><span style="color:#CDD6F4">counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>하지만 위의 코드는 Singleton 패턴의 조건을 만족하지 않는다. Singleton은 인스턴스를 단 한 번만 만들 수 있어야 한다. 현재 위의 코드에서 Counter 인스턴스를 여러 번 만들 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#CBA6F7">let</span><span style="color:#CDD6F4"> counter </span><span style="color:#94E2D5">=</span><span style="color:#FAB387"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">class</span><span style="color:#F9E2AF;font-style:italic"> Counter</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  getInstance</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#F38BA8"> this</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  getCount</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#CDD6F4"> counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  increment</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> ++</span><span style="color:#CDD6F4">counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  decrement</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> --</span><span style="color:#CDD6F4">counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> counter1 </span><span style="color:#94E2D5">=</span><span style="color:#CBA6F7;font-weight:bold"> new</span><span style="color:#89B4FA;font-style:italic"> Counter</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> counter2 </span><span style="color:#94E2D5">=</span><span style="color:#CBA6F7;font-weight:bold"> new</span><span style="color:#89B4FA;font-style:italic"> Counter</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CDD6F4">console</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">log</span><span style="color:#CDD6F4">(counter1</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">getInstance</span><span style="color:#CDD6F4">() </span><span style="color:#94E2D5">===</span><span style="color:#CDD6F4"> counter2</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">getInstance</span><span style="color:#CDD6F4">()) </span><span style="color:#6C7086;font-style:italic">// false</span></span>
+<span class="line"></span></code></pre>
+<p><code>new</code> 메서드를 두번 호출하여 <code>counter1</code> 과 <code>counter2</code> 를 각각 별개의 인스턴스를 가르키도록 했다. 각 인스턴스의 <code>getInstance</code> 메서드를 호출해 반환되는 레퍼러스는 같지 않다 (동일한 인스턴스가 아니다)</p>
+<video width="100%" src="/design-singleton01.mp4" autoplay controls playsinline loop>
+</video>
+<p><code>Counter</code> 클래스가 한 번만 만들어질 수 있도록 코드를 수정해 보자.</p>
+<p>이 인스턴스를 한 번만 만들 수 있는 방법 중에 하나는 <code>instance</code> 라는 변수를 만드는 것이다. <code>Counter</code> 클래스의 생성자에서 <code>instance</code> 변수가 새로 생성된 인스턴스를 가리키도록 한다. 이제 <code>instance</code> 라는 변수가 값이 있음을 검사하는것으로 새로운 인스턴스의 생성을 막을 수 있다. 예제의 경우 인스턴스가 이미 존재할 경우 에러를 발생시켜 개발자에게 인지시켜 주고 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#CBA6F7">let</span><span style="color:#CDD6F4"> instance</span></span>
+<span class="line"><span style="color:#CBA6F7">let</span><span style="color:#CDD6F4"> counter </span><span style="color:#94E2D5">=</span><span style="color:#FAB387"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">class</span><span style="color:#F9E2AF;font-style:italic"> Counter</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  constructor</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    if</span><span style="color:#CDD6F4"> (instance) </span><span style="color:#9399B2">{</span></span>
+<span class="line"><span style="color:#CBA6F7">      throw</span><span style="color:#CBA6F7;font-weight:bold"> new</span><span style="color:#89B4FA;font-style:italic"> Error</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'You can only create one instance!'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#9399B2">    }</span></span>
+<span class="line"><span style="color:#CDD6F4">    instance </span><span style="color:#94E2D5">=</span><span style="color:#F38BA8"> this</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  getInstance</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#F38BA8"> this</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  getCount</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#CDD6F4"> counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  increment</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> ++</span><span style="color:#CDD6F4">counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  decrement</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> --</span><span style="color:#CDD6F4">counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> counter1 </span><span style="color:#94E2D5">=</span><span style="color:#CBA6F7;font-weight:bold"> new</span><span style="color:#89B4FA;font-style:italic"> Counter</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> counter2 </span><span style="color:#94E2D5">=</span><span style="color:#CBA6F7;font-weight:bold"> new</span><span style="color:#89B4FA;font-style:italic"> Counter</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// Error: You can only create one instance!</span></span>
+<span class="line"></span></code></pre>
+<p>이제 인스턴스를 여러 번 만들려 하면 예외가 발행하여 더 이상 진행할 수 없게 된다.</p>
+<p>이렇게 만들어진 <code>Counter</code> 인스턴스를 export하기 전에 인스턴스를 <code>freeze</code> 하도록 하자. <code>Object.freeze</code> 메서드는 객체를 사용하는 쪽에서 직접 객체를 수정할 수 없도록 해 준다. <code>freeze</code> 처리 된 인스턴스는 프로퍼티의 추가 및 수정이 불가하므로 Singleton 인스턴스의 프로퍼티를 덮어쓰는 실수를 예방할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#CBA6F7">let</span><span style="color:#CDD6F4"> instance</span></span>
+<span class="line"><span style="color:#CBA6F7">let</span><span style="color:#CDD6F4"> counter </span><span style="color:#94E2D5">=</span><span style="color:#FAB387"> 0</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">class</span><span style="color:#F9E2AF;font-style:italic"> Counter</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  constructor</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    if</span><span style="color:#CDD6F4"> (instance) </span><span style="color:#9399B2">{</span></span>
+<span class="line"><span style="color:#CBA6F7">      throw</span><span style="color:#CBA6F7;font-weight:bold"> new</span><span style="color:#89B4FA;font-style:italic"> Error</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'You can only create one instance!'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#9399B2">    }</span></span>
+<span class="line"><span style="color:#CDD6F4">    instance </span><span style="color:#94E2D5">=</span><span style="color:#F38BA8"> this</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  getInstance</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#F38BA8"> this</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  getCount</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#CDD6F4"> counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  increment</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> ++</span><span style="color:#CDD6F4">counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  decrement</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> --</span><span style="color:#CDD6F4">counter</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> singletonCounter </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> Object</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">freeze</span><span style="color:#CDD6F4">(</span><span style="color:#CBA6F7;font-weight:bold">new</span><span style="color:#89B4FA;font-style:italic"> Counter</span><span style="color:#CDD6F4">())</span></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#EBA0AC"> singletonCounter</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<p>위의 <code>Counter</code> 를 구현한 프로젝트는 아래의 파일 구조를 가지게 된다.</p>
+<ul>
+<li><code>counter.js</code> : <code>Counter</code> 클래스가 구현되어 있고. <code>Counter</code> 의 Singleton 인스턴스를 default export 한디</li>
+<li><code>index.js</code> : <code>redButton.js</code> 와 <code>blueButton.js</code> 모듈을 로드한다</li>
+<li><code>redButton.js</code> : <code>Counter</code> Singleton 인스턴스를 import하고. 붉은 버튼의 클릭 이벤트 리스너에서 <code>Counter</code> 의 <code>increment</code> 메서드를 실행하고 <code>getCount</code> 를 호출하여 현재 <code>counter</code> 의 값을 콘솔에 출력한다.</li>
+<li><code>blueButton.js</code> : <code>Counter</code> Singleton 인스턴스를 import하고. 파란 버튼의 클릭 이벤트 리스너에서 <code>Counter</code> 의 <code>decrement</code> 메서드를 실행하고 <code>getCount</code> 를 호출하여 현재 <code>counter</code> 의 값을 콘솔에 출력한다.</li>
+</ul>
+<p><code>blueButton.js</code> 와 <code>redButton.js</code> 둘 다 <code>counter.js</code> 에서 동일한 Singleton 인스턴스를 import한다.</p>
+<video width="100%" src="/design-singleton02.mp4" autoplay controls playsinline loop>
+</video>
+<p><code>increment</code> 메서드가 <code>redButton.js</code> 혹은 <code>blueButton.js</code> 어느쪽에서 실행되더라도. <code>Counter</code> Singleton 인스턴스의 <code>counter</code> 값은 양쪽 파일에서 모두 공유한다. 어떤 버튼을 클릭하더라도 모든 곳에서 동일한 값이 공유된다. 이게 다른 파일들에서 메서드를 실행하더라도 카운터가 초기화되지 않고 계속 증가할 수 있는 이유다.</p>
+<h2 id="단점과-장점">단점과 장점</h2>
+<p>인스턴스를 하나만 만들도록 강제하면 꽤 많은 메모리 공간을 절약할 수 있다. 매번 새로운 인스턴스를 만들어 메모리 공간을 차지하도록 하는 대신에. 우리는 예제에서 앱 전체에서 사용 가능한 하나의 인스턴스를 저장하기 위한 메모리를 사용했다. 하지만 Singleton은 안티패턴 혹은 자바스크립트에서는 하지 말아야 할 것으로 언급되곤 한다.</p>
+<p>Java와 C++ 같은 다양한 언어들은 JavaScript 처럼 객체를 직접적으로 만들어낼 수 없다. 이런 객체지향 프로그래밍 언어에서는 객체를 만들기 위한 클래스를 꼭 작성해야 한다. 이렇게 만든 객체는 위의 <code>instance</code> 변수와 같이 클래스의 인스턴스가 된다.</p>
+<p>JavaScript에서는 클래스를 작성하지 않아도 객체를 만들 수 있기 때문에 위의 예제는 약간 오버 엔지니어링이라 볼 수 있다. 객체 리터럴을 사용해서도 동일한 구현을 할 수 있다. 이어서 Singleton패턴을 사용할 때의 단점을 확인해 보자.</p>
+<h2 id="객체-리터럴-사용하기">객체 리터럴 사용하기</h2>
+<p>이전에 구현했던 예제를 이번에는 단순히 객체 리터럴을 사용하여 구현해 보자. <code>counter</code> 객체는 아래 프로퍼티들을 가지고 있다.</p>
+<ul>
+<li><code>count</code> 프로퍼티</li>
+<li><code>increment</code> 메서드. 호출되면 <code>count</code> 값을 1 증가한다</li>
+<li><code>decrement</code> 메서드. 호출되면 <code>count</code> 값을 1 감소시킨다</li>
+</ul>
+<iframe src="https://codesandbox.io/embed/singleton-2-rvzrr?fontsize=14&#x26;hidenavigation=1&#x26;module=%2Fsrc%2Fcounter.js&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="singleton-2" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>객체의 레퍼런스가 넘어갔기 때문에 <code>redButton.js</code> 와 <code>blueButton.js</code> 는 동일한 <code>counter</code> 객체를 참조할 수 있다. <code>count</code> 프로퍼티를 수정하면 두 파일 모두에서 값이 변경된다.</p>
+<h2 id="테스팅">테스팅</h2>
+<p>Singleton패턴으로 구현된 코드를 테스트하는것은 조금 까다롭다. 인스턴스를 매번 생성할 수 없기 때문에 모든 테스트들은 이전 테스트에서 만들어진 전역 인스턴스를 수정할 수 밖에 없다. 테스트들이 실행에 순서가 생기게 되면 작은 수정사항이 전체 테스트의 실패로 이어질 수 있다. 하나의 테스트가 끝나면 인스턴스의 변경사항들을 초기화 해 주어야 한다.</p>
+<iframe src="https://codesandbox.io/embed/singleton-3-n55vi?fontsize=14&#x26;hidenavigation=1&#x26;module=%2F__tests__%2Ftest.js&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="singleton-3" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<h2 id="명확하지-않은-의존">명확하지 않은 의존</h2>
+<p>아래 <code>superCouter.js</code> 처럼 다른 모듈로부터 import될 때 Singleton인지 아닌지 분명하지 않다. 예제 코드의 <code>index.js</code> 에서 하는것 처럼 <code>SuperCounter</code> 를 import 하여 인스턴스를 만들고 메서드를 호출했지만 싱글톤 객체의 값을 수정하게 되었다. 여러 Singleton 인스턴스들이 앱에서 공유될 때 이처럼 직접 수정하게 될 수 있고 예외로 이어질 수 있다.</p>
+<iframe src="https://codesandbox.io/embed/singleton-3-n55vi?fontsize=14&#x26;hidenavigation=1&#x26;module=%2Fsrc%2FsuperCounter.js&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="singleton-3" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<h2 id="전역-동작">전역 동작</h2>
+<p>Singleton 인스턴스는 앱의 전체에서 참조할 수 있어야 한다. 전역 스코프에서 전역 변수를 접근할 수 있는 한. 해당 변수는 앱 전체에서 접근할 수 있기 때문에. 전역 변수는 반드시 같은 동작을 구현하는 데 사용해야 한다.</p>
+<p>만약 전역 변수가 잘못된 판단으로 올바르지 않게 만들어진 경우. 잘못된 값으로 덮어쓰여질 수 있으며. 이 변수를 참조하는 구현들이 모두 예외를 발생시킬 수 있다.</p>
+<p>ES2015에선 전역변수를 생성하는게 일반적이지 않은 것이. 새로 만들어진 <code>let</code>, <code>const</code> 키워드들은 변수를 블록 스코프 내에 선언하게 하여. 실수로 전역에 변수를 선언하는것을 예방해 주기 때문이다. 또 새로운 <code>module</code> 시스템은 <code>export</code> 구문과 <code>import</code> 구분으로 전역 객체를 수정하지 않고 모듈 내에서 전역으로 쓸 수 있는 변수를 만들게 해 준다.</p>
+<p>그러나 Singleton 패턴은 일반적으로 앱에 전역 상태를 위해 사용한다. 코드의 여러 부분에서 수정가능한 하나의 객체를 직접 접근하도록 설계하면 예외가 발생하기 쉬워진다.</p>
+<p>보통 어떤 코드들은 데이터를 읽어들이는 부분을 위해 전역 상태를 수정하기도 한다. 이 경우 실행 순서가 중요해진다. 데이터가 만들어지지 않았는데 사용할 수는 없기 때문이다.</p>
+<p>앱의 규모가 커지고 전역 상태를 참조하는 컴포넌트가 많아지며 서로를 참조하는 상황에서는 데이터의 흐름을 파악하기 어려워진다.</p>
+<h2 id="react-의-상태-관리">React 의 상태 관리</h2>
+<p>React에선 전역 상태 관리를 위해 Singleton 객체를 만드는 것 대신 <strong>Redux</strong>나 <strong>React Context</strong>를 자주 사용한다. Singleton과 유사해 보이지만 Singleton은 인스턴스의 값을 직접 수정할 수 있는 반면에, 언급한 도구들은 <strong>읽기 전용 상태</strong>를 제공한다. Redux를 사용할 땐 오직 컴포넌트에서 디스패쳐를 통해 넘긴 액션에 대해 실행된 순수함수 리듀서를 통해서만 상태를 업데이트할 수 있다.</p>
+<p>위에서 언급한 전역 상태에 대한 단점이 모두 사라지는 것은 아니지만. 컴포넌트가 직접 상태를 업데이트하게 두는 것은 아니고 개발자가 의도한대로만 수정되도록 하고 있는 것이다.</p>
+<hr>
+<h2 id="참조">참조</h2>
+<ul>
+<li><strong><a href="https://medium.com/javascript-scene/do-react-hooks-replace-redux-210bab340672">Do React Hooks replace Redux - Eric Elliott</a></strong></li>
+<li><strong><a href="https://alligator.io/js/js-singletons/">Working with Singletons in JavaScript - Vijay Prasanna</a></strong></li>
+<li><strong><a href="https://www.sitepoint.com/javascript-design-patterns-singleton/">JavaScript Design Patterns: The Singleton - Samier Saeed</a></strong></li>
+<li><strong><a href="https://refactoring.guru/design-patterns/singleton">Singleton - Refactoring Guru</a></strong></li>
+</ul> </div> </div>  </div> </div> </div>  </main> </body></html> 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://patterns-dev-kr.github.io/sitemap-index.xml
+Host: patterns-dev-kr.github.io

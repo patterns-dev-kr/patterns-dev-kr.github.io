@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.12.2" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/design-patterns/module-pattern/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="Module 패턴"><meta property="og:type" content="article"><meta property="og:image" content="./module-pattern.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/design-patterns/module-pattern/"><meta property="og:image:url" content="./module-pattern.jpg"><meta property="og:image:alt" content="Module 패턴"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"><link crossorigin as="font" as="style" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="preload"><link crossorigin as="font" href="/fonts/PretendardVariable.woff2" rel="preload" type="font/woff2"><link href="/favicon.png" rel="icon" sizes="any"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CLRDYtwQ.css">
+<link rel="stylesheet" href="/_astro/_slug_.BvLW8n3A.css"><script type="module" src="/_astro/hoisted.BpSiyIXZ.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative">  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li class="active" data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-64" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>Module 패턴</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=design-patterns/module-pattern" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/module-pattern/" target="_blank">patterns.dev - module pattern</a></aside>
+<p>코드베이스가 커져갈 수록 코드들을 유지보수하기 좋게 쪼개는 것이 중요해진다. 모듈 패턴이 이 때 코드들을 재사용 가능하면서도 작게 나눌 수 있게 해 준다.</p>
+<p>또 모듈을 코드를 나누는 과정에 특정 변수들을 파일 내에 private 하게 할 수 있는데. 모듈 스코프 내에 변수를 선언하고 명시적으로 외부에 export 하지 않으면 바깥에서 해당 변수에 접근할 수 없다. 이를 통해 전역 스코프의 변수들과 이름이 충돌하는 문제를 줄일 수 있다.</p>
+<hr>
+<h2 id="es2015-모듈">ES2015 모듈</h2>
+<p>ES2015에는 자바스크립트의 빌트인 모듈 기능이 추가되었다. 모듈은 자바스크립트 코드를 포함한 파일이며 일반적인 스크립트와 동작이 약간 다르다.</p>
+<p>아래 예제를 확인해 보자. <code>math.js</code> 모듈은 몇가지 계산 함수를 가지고 있다.</p>
+<iframe src="https://codesandbox.io/embed/module-pattern-1-44n1k?fontsize=14&#x26;hidenavigation=1&#x26;module=%2Fsrc%2Fmath.js&#x26;theme=dark&#x26;view=editor" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="module-pattern-1" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>전달된 인자를 더하고, 곱하고, 빼고, 제곱하는 함수를 구현한 <code>math.js</code> 가 있다.</p>
+<p>이 함수들을 <code>math.js</code> 에서 사용하지 않고 <code>index.js</code> 에서 사용하고 싶다. 함수들을 <code>index.js</code> 에서 직접 사용하려고 하면 당연하게도 함수가 존재하지 않는다는 예외가 발생한다.</p>
+<p>함수들을 <code>math.js</code> 외에 다른 파일에서도 사용할 수 있게 하려면 먼저 각 함수들을 <em>export</em> 해야 한다. 그러기 위해서 <code>export</code> 키워드를 사용한다. 이는 <code>named export</code> 라 하며 파일 외부에서 사용하기 원하는 것 앞에 <code>export</code> 키워드를 붙이면 된다. 예제에서는 각 계산 함수의 앞에 붙여준다. <code>index.js</code> 는 이제 이 함수들을 사용할 수 있게 되었다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> add</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> y</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> x </span><span style="color:#94E2D5">+</span><span style="color:#CDD6F4"> y</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> multiply</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> x </span><span style="color:#94E2D5">*</span><span style="color:#FAB387"> 2</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> subtract</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> y</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> x </span><span style="color:#94E2D5">-</span><span style="color:#CDD6F4"> y</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> square</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> x </span><span style="color:#94E2D5">*</span><span style="color:#CDD6F4"> x</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>이렇게 <code>add</code>, <code>multiply</code>, <code>subtract</code>, <code>square</code> 함수를 export할 수 있게 만들었다. 하지만 외부에서 사용할 수 있도록 export 하는 것 만으로 문제가 해결되지는 않는다. export된 값들을 사용하기 위해서는 쓰는 쪽에서 명시적으로 import해 주어야 한다.</p>
+<p><code>index.js</code> 파일의 맨 위에서 <code>import</code> 구문을 사용하여 함수들을 import해야 한다. 어떤 모듈로부터 기능들을 import하는지 알리기 위해 <code>from</code> 키워드 뒤에 해당 모듈의 상대 경로를 입력한다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> add</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> multiply</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> subtract</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> square </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> './math.js'</span></span>
+<span class="line"></span></code></pre>
+<p>이렇게 <code>index.js</code> 에서 <code>math.js</code> 모듈의 함수들을 import하여 사용할 수 있게 되었다. 아래 예제를 통해 동작을 확인해 보자.</p>
+<iframe src="https://codesandbox.io/embed/module-pattern-2-7t2cp?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark&#x26;view=editor" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="module-pattern-2" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>이전에 발생했던 참조 예외는 더 이상 발생하지 않고. export된 값들을 사용할 수 있게 되었다.</p>
+<p>모듈의 장점은 명시적으로 export한 값들만 외부에 노출된다는 것이다. 명시적으로 export하지 않으면 모듈 내에서만 사용할 수 있다.</p>
+<p>아래는 <code>math.js</code> 모듈 내에서만 사용할 수 있는 변수 <code>privateValue</code> 를 사용하는 예제이다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> privateValue </span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1"> 'This is a value private to the module!'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> add</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> y</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> x </span><span style="color:#94E2D5">+</span><span style="color:#CDD6F4"> y</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> multiply</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> x </span><span style="color:#94E2D5">*</span><span style="color:#FAB387"> 2</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> subtract</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> y</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> x </span><span style="color:#94E2D5">-</span><span style="color:#CDD6F4"> y</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> square</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> x </span><span style="color:#94E2D5">*</span><span style="color:#CDD6F4"> x</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>코드에서 보이는 것 처럼 <code>privateValue</code>에는 export키워드를 사용하지 않았다. 따라서 <code>math.js</code> 외부에서는 해당 변수에 접근할 수 없다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> add</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> multiply</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> subtract</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> square </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> './math.js'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CDD6F4">console</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">log</span><span style="color:#CDD6F4">(privateValue)</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">/* Error: privateValue is not defined */</span></span>
+<span class="line"></span></code></pre>
+<p>모듈 내에 private 변수를 둚으로써 전역 스코프에 의도치 않게 변수를 추가하는 불상사가 줄어든다. 개발자는 전역 변수를 덮어쓰게 되거나 하는 등의 걱정 없이 코드를 작성할 수 있다. 또 변수명이 충돌되는 것도 막을 수 있다.</p>
+<hr>
+<p>가끔 export된 변수의 이름이 모듈 내 로컬 변수와 이름이 겹칠 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> add</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> multiply</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> subtract</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> square </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> './math.js'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> add</span><span style="color:#9399B2">(</span><span style="color:#94E2D5">...</span><span style="color:#EBA0AC;font-style:italic">args</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> args</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">reduce</span><span style="color:#CDD6F4">(</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">acc</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> cur</span><span style="color:#9399B2">)</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> cur </span><span style="color:#94E2D5">+</span><span style="color:#CDD6F4"> acc)</span></span>
+<span class="line"><span style="color:#9399B2">}</span><span style="color:#6C7086;font-style:italic"> /* Error: add has  already been declared */</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> multiply</span><span style="color:#9399B2">(</span><span style="color:#94E2D5">...</span><span style="color:#EBA0AC;font-style:italic">args</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> args</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">reduce</span><span style="color:#CDD6F4">(</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">acc</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> cur</span><span style="color:#9399B2">)</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> cur </span><span style="color:#94E2D5">*</span><span style="color:#CDD6F4"> acc)</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">/* Error: multiply has already been declared */</span></span>
+<span class="line"></span></code></pre>
+<p>위의 경우 모듈 스코프에 <code>add</code>, <code>multiply</code> 함수가 존재하고 있는데. 동일한 이름의 값을 import하려 할 때 동일한 이름이 이미 존재한다는 에러가 발생한다. 이 경우 <code>as</code> 키워드를 통해 import한 값의 이름을 변경할 수 있다.</p>
+<p>아래 예제에서는 <code>add</code>, <code>multiply</code> 를 각각 <code>addValues</code>, <code>multiplyValues</code>로 변경하여 import하고 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">  add </span><span style="color:#CBA6F7">as</span><span style="color:#CDD6F4"> addValues</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">  multiply </span><span style="color:#CBA6F7">as</span><span style="color:#CDD6F4"> multiplyValues</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">  subtract</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">  square</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> './math.js'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> add</span><span style="color:#9399B2">(</span><span style="color:#94E2D5">...</span><span style="color:#EBA0AC;font-style:italic">args</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> args</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">reduce</span><span style="color:#CDD6F4">(</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">acc</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> cur</span><span style="color:#9399B2">)</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> cur </span><span style="color:#94E2D5">+</span><span style="color:#CDD6F4"> acc)</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> multiply</span><span style="color:#9399B2">(</span><span style="color:#94E2D5">...</span><span style="color:#EBA0AC;font-style:italic">args</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> args</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">reduce</span><span style="color:#CDD6F4">(</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">acc</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> cur</span><span style="color:#9399B2">)</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> cur </span><span style="color:#94E2D5">*</span><span style="color:#CDD6F4"> acc)</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">/* From math.js module */</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">addValues</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">7</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 8</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">multiplyValues</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">8</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 9</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">subtract</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">10</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 3</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">square</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">3</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">/* From index.js file */</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">add</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">8</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 9</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 2</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 10</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">multiply</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">8</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 9</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 2</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 10</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span></code></pre>
+<p>또 <code>export</code> 키워드를 사용한 선언들 중에 하나를 <em>default export</em> 할 수 있다.</p>
+<p>아래는<code>add</code>함수를 default export하는 예제이다. default export를 원하는 값 앞에 <code>export default</code> 키워드를 사용하면 된다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> add</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> y</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#EBA0AC"> x</span><span style="color:#94E2D5"> +</span><span style="color:#EBA0AC"> y</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> multiply</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> x </span><span style="color:#94E2D5">*</span><span style="color:#FAB387"> 2</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> subtract</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> y</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> x </span><span style="color:#94E2D5">-</span><span style="color:#CDD6F4"> y</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> square</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">x</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> x </span><span style="color:#94E2D5">*</span><span style="color:#CDD6F4"> x</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>일반 export와 default export의 차이점은 값을 가져다 쓰는 방법에 있다.</p>
+<p>이전에 named export를 사용할 땐 대괄호를 사용하였지만 <code>import { module } from 'module'</code> . 반대로 default export된 값을 import할 땐 대괄호 없이 import하면 된다. <code>import module from 'module'</code></p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> add</span><span style="color:#9399B2">,</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> multiply</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> subtract</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> square </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> './math.js'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">add</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">7</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 8</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">multiply</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">8</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 9</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">subtract</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">10</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 3</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">square</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">3</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span></code></pre>
+<p>값이 대괄호 없이 import되었다면 해당 값은 default export된 것이다.</p>
+<p>default export된 값을 사용할 때에는 이름을 자유롭게 변경할 수 있다. 위의 예제는 add 함수를 가져오기 위해 add 란 이름을 쓰고 있는데 아래처럼 이름을 바꿀 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> addValues</span><span style="color:#9399B2">,</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> multiply</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> subtract</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> square </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> './math.js'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">addValues</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">7</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 8</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">multiply</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">8</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 9</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">subtract</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">10</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 3</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">square</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">3</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span></code></pre>
+<p>default export 된 함수의 이름은 add로 명시되어 있지만 자바스크립트가 이를 처리해주기 때문에 이렇게 import하여 호출할 수 있다.</p>
+<p>또 <code>*</code> 와 이름을 사용하는 하는것으로 모듈 내 default export롤 포함하여 export하는 모든 것들을 한번에 import할 수 있다. export된 모든 것을 포함하는 객체 형태로 사용할 수 있다. 아래는 <code>math.js</code> 의 모든 export들을 <code>math</code> 라는 이름으로 가져오는 예제이다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#F38BA8"> *</span><span style="color:#CBA6F7"> as</span><span style="color:#CDD6F4"> math </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> './math.js'</span></span>
+<span class="line"></span></code></pre>
+<p><code>math</code> 객체에 <code>math.js</code> 모듈이 export하는 것들이 객체 형태로 담겨 있다,</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#F38BA8"> *</span><span style="color:#CBA6F7"> as</span><span style="color:#CDD6F4"> math </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> './math.js'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CDD6F4">math</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">default</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">7</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 8</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#CDD6F4">math</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">multiply</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">8</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 9</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#CDD6F4">math</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">subtract</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">10</span><span style="color:#9399B2">,</span><span style="color:#FAB387"> 3</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#CDD6F4">math</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">square</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">3</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span></code></pre>
+<p>이 경우 해당 모듈이 export하는 모든 것을 가져오기 때문에 불필요한 것들이 딸려오지 않도록 주의가 필요하다.</p>
+<p><code>*</code> 을 사용하여 import하여도 모듈 내 private 변수들은 명시적으로 export하지 않는 한 가져올 수 없다.</p>
+<hr>
+<h2 id="react">React</h2>
+<p>React앱을 개발할 때 앱의 규모가 커 지면 많은 컴포넌트를 다루게 된다. 컴포넌트들을 한 파일에 모두 선언하지 않고 각 모듈에 하나의 컴포넌트를 선언하게 된다.</p>
+<p>아래는 목록 컴포넌트 <code>list</code> <code>listItem</code>, 그리고 할 일 입력을 위한 <code>input field</code>를 가진 예제이다.</p>
+<iframe src="https://codesandbox.io/embed/module-pattern-3-ipcyb?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="module-pattern-3" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>예제에서 컴포넌트들은 각각의 파일로 분리되어 있다.</p>
+<ul>
+<li><code>TodoList.js</code> 에는 <code>List</code> 컴포넌트가 있다</li>
+<li><code>Button.js</code> 에는 커스텀 된 <code>Button</code> 컴포넌트가 있다</li>
+<li><code>Input.js</code> 에는 커스텀 된 <code>Input</code> 컴포넌트가 위치한다</li>
+</ul>
+<p>앱 전체에서 <code>material-ui</code>가 제공하는 <code>Button</code>과 <code>Input</code>을 직접 사용하지 않고 각각 파일에서 커스텀하여 사용하고 있다. 각 파일 안에는 style객체를 이용해 버튼과 텍스트박스의 스타일을 정의하고 있다. 사용하는 쪽에서는 이 모듈만 사용하면 직접 처리할 필요 없이 디자인된 컴포넌트를 사용할 수 있는 것이다.</p>
+<iframe src="https://codesandbox.io/embed/module-pattern-3-ipcyb?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="module-pattern-3" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>각 파일에는 스타일 지정을 위해 모듈 스코프 변수를 선언하고 있지만 모듈 구문으로 인해 이름 충돌은 일어나지 않으므로 <code>style</code> 이라는 일반적인 이름을 사용하고 있다.</p>
+<hr>
+<h2 id="dynamic-import">Dynamic import</h2>
+<p>파일의 맨 위에서 모듈들을 import하면 파일 내 다른 코드들이 실행되기 전에 해당 모듈이 로드된다. 어떤 상황에서는 특정 조건에서만 특정 모듈을 로드해야 할 때가 있는데. <em>Dynmic import</em>를 사용하면 필요할 때만 로드할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#94E2D5">import</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'module'</span><span style="color:#CDD6F4">)</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">then</span><span style="color:#CDD6F4">(</span><span style="color:#EBA0AC;font-style:italic">module</span><span style="color:#CBA6F7"> =></span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7;font-style:italic">  module</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">default</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"><span style="color:#CBA6F7;font-style:italic">  module</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">namedExport</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"><span style="color:#9399B2">}</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// Or with async/await</span></span>
+<span class="line"><span style="color:#9399B2">;</span><span style="color:#CDD6F4">(</span><span style="color:#CBA6F7">async</span><span style="color:#9399B2"> ()</span><span style="color:#CBA6F7"> =></span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> module </span><span style="color:#94E2D5">=</span><span style="color:#CBA6F7"> await</span><span style="color:#94E2D5"> import</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'module'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#CBA6F7;font-style:italic">  module</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">default</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"><span style="color:#CBA6F7;font-style:italic">  module</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">namedExport</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"><span style="color:#9399B2">}</span><span style="color:#CDD6F4">)()</span></span>
+<span class="line"></span></code></pre>
+<p>아래 예제에서 사용자가 버튼을 클릭했을 때 모듈을 불러와 기능을 사용하고 있다.</p>
+<iframe src="https://codesandbox.io/embed/module-pattern-4-j60fl?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="module-pattern-4" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>모듈을 동적으로 로딩하여 페이지 로딩 타임을 줄일 수 있다. 기능이 필요할 때에만 로드하고 파싱하고 컴파일하여 코드를 사용하게 되는것이다.</p>
+<p>또 필요할 때 모듈을 로딩하는것 외에도 <code>import()</code> 함수는 인자로 표현식을 받는다. 템플릿 리터럴도 사용 가능하기 때문에 필요에 따라 변수로 필요 모듈을 받아오도록 할 수도 있다.</p>
+<p>위의 예제에서 <code>date.js</code> 모듈은 사용자가 버튼을 클릭할 때 동적으로 <code>moment</code> 모듈을 불러온다. 사용자가 날짜를 확인하지 않아도 되면 서드파티 모듈 자체를 다운로드하지 않도록 할 수 있는 것이다.</p>
+<p>목록의 각 버튼을 클릭했을 때 로컬에 있는 png파일을 동적으로 불러오려면 아래처럼 순서를 템플릿 스트링으로 넘기는것도 가능하다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> res </span><span style="color:#94E2D5">=</span><span style="color:#CBA6F7"> await</span><span style="color:#94E2D5"> import</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">`../assets/dog</span><span style="color:#9399B2">${</span><span style="color:#CDD6F4">num</span><span style="color:#9399B2">}</span><span style="color:#A6E3A1">.png`</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span></code></pre>
+<p>사용자의 입력이나 어떤 데이터의 결과에 따라 유연하게 모듈을 로드하여 사용할 수 있다.</p>
+<hr>
+<p>모듈 패턴을 사용하면 코드의 일부분을 캡슐화 할 수 있다. 이는 의도치 않은 전역 변수 할당을 예방할 수 있어 여러 의존 모듈을 사용하거나 네임스페이스를 사용할 때 안전하다. 모든 자바스크립트 런타임에서 ES2015의 모듈을 사용하려면 바벨과 같은 트랜스파일러가 필요하다.</p> </div> </div>  </div> </div> </div>  </main> </body></html> 

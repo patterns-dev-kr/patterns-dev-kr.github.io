@@ -1,0 +1,160 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.12.2" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/rendering-patterns/selective-hydration/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="Selective Hydration"><meta property="og:type" content="article"><meta property="og:image" content="./selective-hydration.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/rendering-patterns/selective-hydration/"><meta property="og:image:url" content="./selective-hydration.jpg"><meta property="og:image:alt" content="Selective Hydration"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"><link crossorigin as="font" as="style" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="preload"><link crossorigin as="font" href="/fonts/PretendardVariable.woff2" rel="preload" type="font/woff2"><link href="/favicon.png" rel="icon" sizes="any"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CLRDYtwQ.css">
+<link rel="stylesheet" href="/_astro/_slug_.BvLW8n3A.css"><script type="module" src="/_astro/hoisted.BpSiyIXZ.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative">  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li class="active" data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-64" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>Selective Hydration</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=rendering-patterns/selective-hydration" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/react-selective-hydration/" target="_blank">patterns.dev - selective hydration</a></aside>
+<p><a href="https://www.patterns.dev/posts/ssr/">이전 글</a>에서 SSR이 어떻게 사용자 경험을 향상시킬 수 있는지에 대해 알아보았다. React는 <code>react-dom/server</code>의 <code>renderToString</code>메서드를 통해 컴포넌트 트리를 빠르게 만들어낼 수 있고 만들어진 트리는 클라이언트에 전송된다. 이 때 렌더링된 HTML은 자바스크립트 번들이 다운로드되어 실행되기 전 까지는 아직 인터렉션이 불가능하다. React가 트리를 확인하고 hydrate하여 핸들러를 바인딩 한다.</p>
+<p>그러나 이런 방법은 구현 방식의 제약 사항으로 인해 성능 이슈를 만들 수 있다.</p>
+<p>서버가 렌더링 한 HTML트리가 클라이언트에게 전송되려면 모든 컴포넌트는 그럴 준비가 되어 있어야 한다. 만약 컴포넌트가 외부 API호출이나 기타 다른 처리로 인해 기다려야 하면 그로 인해 빠르게 렌더링하는것을 막게 된다.</p>
+<p>이렇게 트리가 늦게 생성되는것 외에도. 다른 문제는 React가 트리를 한 번만 hydrate한다는 점이다. 따라서 React가 hydrate하기 전에 모든 컴포넌트에 대한 자바스크립트를 다운로드 받아야 한다. 이는 작은 코드를 가진 작은 컴포넌트도 큰 컴포넌트의 코드가 다운로드되고 hydrate될 때까지 기다려야 하게 된다. 이 시간 동안 웹사이트는 인터렉션이 불가한 채로 보여지게 된다.</p>
+<p><video width="100%" src="/rendering-selective-hydration01.mov" autoplay controls playsinline loop></video></p>
+<p>React 18에서는 서버 사이드 렌더링 스트리밍과 새로운 hydration 방법을 조합하여 해결할 수 있다. 그것이 바로 선택적 Hydration이다.</p>
+<hr>
+<p>이전에 다루었던 <code>renderToString</code>을 사용하는 대신, 서버에서 <code>pipeToNodeStream</code>을 사용하여 HTML렌더링을 스트림 할 수 있다.</p>
+<p>이 메서드를 <code>createRoot</code>과 <code>Suspense</code>와 같이 사용하면 큰 컴포넌트가 준비되기까지 기다리지 않고도 HTML을 스트리밍 처리할 수 있다. 따라서 SSR을 사용할때에도 컴포넌트들을 지연로딩 할 수 있게 되었다. 이전에는 불가능했던 것이다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6C7086;font-style:italic">// server.js</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> pipeToNodeStream </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> 'react-dom/server'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> render</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">res</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> data </span><span style="color:#94E2D5">=</span><span style="color:#89B4FA;font-style:italic"> createServerData</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> startWriting</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> abort </span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> pipeToNodeWritable</span><span style="color:#CDD6F4">(</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#F5C2E7">DataProvider</span><span style="color:#F9E2AF"> data</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">App</span><span style="color:#F9E2AF"> assets</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">assets</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#F5C2E7">DataProvider</span><span style="color:#94E2D5">></span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    res</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">    {</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">      onReadyToStream</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">        res</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">setHeader</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'Content-type'</span><span style="color:#9399B2">,</span><span style="color:#A6E3A1"> 'text/html'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#CDD6F4">        res</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">write</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'&#x3C;!DOCTYPE html>'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">        startWriting</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"><span style="color:#9399B2">      },</span></span>
+<span class="line"><span style="color:#9399B2">    }</span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6C7086;font-style:italic">// app.js</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> Suspense</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> lazy </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> 'react'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> Loader </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> './Loader'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> Comments </span><span style="color:#94E2D5">=</span><span style="color:#89B4FA;font-style:italic"> lazy</span><span style="color:#CDD6F4">(</span><span style="color:#9399B2">()</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> import</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'./Comments'</span><span style="color:#CDD6F4">))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">main</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">Header</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">Suspense</span><span style="color:#F9E2AF"> fallback</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#94E2D5">&#x3C;</span><span style="color:#F5C2E7">Loader</span><span style="color:#94E2D5"> /></span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">Comments</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#F5C2E7">Suspense</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">Footer</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">main</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6C7086;font-style:italic">// index.js</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> hydrateRoot </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> 'react-dom'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> App </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> './App'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">hydrateRoot</span><span style="color:#CDD6F4">(document</span><span style="color:#9399B2">,</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">App</span><span style="color:#94E2D5"> /></span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span></code></pre>
+<p>트리 생성이 느렸고 TTI도 좋지 않았던 <code>Comments</code> 컴포넌트는 이제 <code>Suspense</code> 컴포넌트로 래핑되었다. 이제 React에게 이 컴포넌트가 트리 생성 시간을 지연시키지 않게 하고 최초 렌더링 시 폴백 컴포넌트를 렌더링하게 하여 나머지 부분을 빨리 렌더링해 클라이언트에게 전송하도록 하였다.</p>
+<p><video width="100%" src="/rendering-selective-hydration02.mov" autoplay controls playsinline loop></video></p>
+<p>그러는 동안 서버는 <code>Comments</code> 컴포넌트에 대한 데이터를 외부로부터 받아오고 있다.</p>
+<p>선택적 hydration을 사용하면 <code>Commments</code> 컴포넌트가 아직 클라이언트에 전송되지 않은 시점에도 미리 전송한 클라이언트 컴포넌트들을 hydrate할 수 있다.</p>
+<p><video width="100%" src="/rendering-selective-hydration03.mov" autoplay controls playsinline loop></video></p>
+<p><code>Comments</code>컴포넌트의 데이터 로드가 끝나면 React는 해당 컴포넌트를 클라이언트에 추가적으로 스트리밍한다. 작은 <code>&#x3C;script></code>태그가 이전에 미리 렌더링했던 폴백 로더를 교체한다.</p>
+<p>이어서 React는 스트리밍되어 클라이언트 페이지에 삽입된 <code>Comments</code> 컴포넌트를 hydrate한다.</p>
+<p><video width="100%" src="/rendering-selective-hydration04.mov" autoplay controls playsinline loop></video></p>
+<hr>
+<p>React 18 에서는 React와 SSR을 함께 사용할 때 자주 겪을 수 있는 문제들을 수정했다.</p>
+<p>스트리밍 렌더링은 컴포넌트들이 준비될 때 클라이언트측에 스트리밍으로 전달할 수 있게 해 준다. 서버 렌더링하는데 오래 걸려 FCP와 TTI를 느리게 만드는 문제를 회피할 수 있다.</p>
+<p>클라이언트에 스트리밍 된 컴포넌트는 곧 hydrate된다. 더 이상 모든 컴포넌트의 hydrate를 위해 모든 javascript가 로드되기를 기다릴 필요가 없고. 그 전에 앱과 상호작용도 가능하게 된다.</p>
+<h2 id="참조">참조</h2>
+<ul>
+<li><strong><a href="https://github.com/reactwg/react-18/discussions/37">New Suspense SSR Architecture in React 18</a></strong></li>
+</ul> </div> </div>  </div> </div> </div>  </main> </body></html> 

@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.12.2" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/rendering-patterns/static-rendering/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="정적 렌더링"><meta property="og:type" content="article"><meta property="og:image" content="./static-rendering.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/rendering-patterns/static-rendering/"><meta property="og:image:url" content="./static-rendering.jpg"><meta property="og:image:alt" content="정적 렌더링"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"><link crossorigin as="font" as="style" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="preload"><link crossorigin as="font" href="/fonts/PretendardVariable.woff2" rel="preload" type="font/woff2"><link href="/favicon.png" rel="icon" sizes="any"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CLRDYtwQ.css">
+<link rel="stylesheet" href="/_astro/_slug_.BvLW8n3A.css"><script type="module" src="/_astro/hoisted.BpSiyIXZ.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative">  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li class="active" data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-64" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>정적 렌더링</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=rendering-patterns/static-rendering" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/static-rendering/" target="_blank">patterns.dev - static rendering</a></aside>
+<h2 id="static-rendering">Static Rendering</h2>
+<p>이전 섹션에서 서버사이드 렌더링에 대해서 알아보았을 때 서버 처리 시간이 늘어나는 만큼 TTFB 에 부정적인 영향을 주는 것을 알 수 있었다. 또 클라이언트 사이드 렌더링에서는 자바크스립트 번들 크기가 증가하면 스크립트를 다운로드 받아 처리하는 시간이 증가하게 되어 FCP, LCP, TTI 에 안 좋은 영향을 주었다.</p>
+<p>Static Rendering(이하 SSG)는 사이트를 빌드할 때 미리 렌더링해 둔 HTML자체를 서빙하여 이런 문제를 해결한다.</p>
+<p>사용자가 접속할 수 있는 각 라우팅 경로에 대응하는 HTML파일들이 미리 생성된다. 이런 HTML파일들은 클라이언트 측 요청에 대해 서버나 CDN에서 서빙될 수 있다.</p>
+<p><video width="100%" src="/rendering-static-rendering01.mov" autoplay controls playsinline loop></video></p>
+<p>이렇게 생성된 정적 HTML파일들은 캐시가 가능하므로 유연성을 제공한다. HTML파일들을 미리 만들어두고 사용하기 때문에 서버가 요청을 받았을 때의 처리 시간은 거의 무시할 수 있는 수준이며 결과적으로 빠른 TTFB와 좋은 성능을 보인다. 이상적으로는 클라이언트 측 자바스크립트가 최소화 되고 페이지를 다운로드 받자 마자 인터렉티브가 가능하게 된다. 따라서 SSG는 빠른 FCP/TTI를 달성할 수 있다.</p>
+<img  src="/_astro/static-rendering01.DAfpD5nh_1eII4E.webp" alt="" width="2880" height="1602" loading="lazy" decoding="async">
+<h2 id="ssg---기본-구조">SSG - 기본 구조</h2>
+<p>패턴의 이름과 같이 정적 렌더링은 로그인 된 사용자를 위한 UI변경 같은 것이 없는 정적 컨텐츠에 적합하다. 따라서 ‘소개’, ‘연락처’, 블로그 페이지 들이나 온라인 커머스 앱의 상품 페이지들은 정적 페이지가 될 수 있다. Next.js, Gatsby.js, VuePress와 같은 프레임웍들이 정적 컨텐츠 기능을 지원한다. Next.js를 사용하여 <a href="https://vercel.com/blog/nextjs-server-side-rendering-vs-static-generation#about-us-page-static-generation-without-data">데이터가 필요하지 않은 페이지에 대해 정적 컨텐츠를 만드는 예제</a>를 살펴보자.</p>
+<p>Next.js:</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6C7086;font-style:italic">// pages/about.js</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> About</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">About Us</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">      {</span><span style="color:#6C7086;font-style:italic">/* ... */</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>사이트가 <code>next build</code> 명령을 통해 빌드될 때 이 페이지는 <code>about.html</code> 파일로 프리렌더 되어 <code>/about</code> 경로에 서빙된다.</p>
+<h2 id="데이터를-포함한-ssg">데이터를 포함한 SSG</h2>
+<p>‘소개’ 페이지나 ‘연락처’ 페이지들은 데이터 스토어로부터 데이터를 불러올 필요가 없다. 하지만 각각의 블로그 포스트나 상품 페이지들은 빌드 시점에 데이터 스토어로부터 불러온 데이터와 HTML로 렌더링 될 템플릿들과 병합 되어야 한다.</p>
+<p>만들어야 하는 HTML파일의 갯수는 작성한 블로그 포스트의 갯수나 상품의 갯수에 따라 다르다. 이런 페이지들이 얼마나 있는지 알기 위해 HTML로 만들어진 페이지에 해당하는 리스트 데이터가 필요하다. 이런 상황 역시 Next.js 로 처리가 가능하다. 이런 데이터를 토대로 페이지의 리스트나 개별 페이지를 만들수도 있다 아래 예시를 보자.</p>
+<h3 id="리스트-페이지">리스트 페이지</h3>
+<p>페이지 리스트를 만들기 위해 필요한 데이터가 서버의 외부에 있는 경우. 이 데이터들은 페이지를 생성하기 전에 미리 받아두어야 한다. Next.js 에서 이것은 페이지 컴포넌트에서 <code>getStaticProps()</code> 함수를 export하는것으로 구현할 수 있다. 이 함수는 서버에서 페이지를 만들기 전에 호출된다. 불러온 데이터는 pre-render될 페이지 컴포넌트의 <code>props</code> 로 제공된다. <a href="https://vercel.com/blog/nextjs-server-side-rendering-vs-static-generation#all-products-page-static-generation-with-data">아래 예제</a>는 해당 기능을 구현하고 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6C7086;font-style:italic">// This function runs at build time on the build server</span></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> async</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> getStaticProps</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">    props</span><span style="color:#94E2D5">:</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">      products</span><span style="color:#94E2D5">:</span><span style="color:#CBA6F7"> await</span><span style="color:#89B4FA;font-style:italic"> getProductsFromDatabase</span><span style="color:#CDD6F4">()</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">    },</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// The page component receives products prop from getStaticProps at build time</span></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> Products</span><span style="color:#9399B2">({</span><span style="color:#EBA0AC;font-style:italic"> products</span><span style="color:#9399B2"> })</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Products</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">ul</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">        {</span><span style="color:#CDD6F4">products</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">map</span><span style="color:#CDD6F4">(</span><span style="color:#EBA0AC;font-style:italic">product</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;</span><span style="color:#89B4FA">li</span><span style="color:#F9E2AF"> key</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">product</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">id</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">product</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">name</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">li</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">        ))</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#89B4FA">ul</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>이 함수는 클라이언트 측 자바스크립트 번들을 포함하지 않고 있고. 그렇기 때문에 데이터베이스로부터 데이터를 직접 조회해 오는 데 사용할 수 있다.</p>
+<h3 id="개별-상세-페이지">개별 상세 페이지</h3>
+<p>위의 예시에서 나열된 각 페이지들에 대해 상세 페이지를 만들어야 한다. 이런 상세 페이지들은 리스트에서 각각 대응하는 항목의 링크를 클릭하여 라우팅하게 된다.</p>
+<p>상품번호 101, 102, 103에 해당하는 상품이 있다고 가정해 보자. 각각의 상품 상세는 <code>/products/101</code>, <code>/products/102</code>, <code>/products/103</code> 으로 접근할 수 있다. 이를 위해 Next.js의 <code>getStaticPath()</code> 를 동적 라우팅과 조합하여 사용할 수 있다.</p>
+<p>이를 위해 <code>products/[id].js</code> 페이지 컴포넌트를 만들고 <code>getStaticPaths()</code> 함수를 export 하도록 구현해야 한다. 이 함수는 빌드 타임에 각각의 상품 페이지를 pre-render할 때 필요한 상품번호 배열을 반환한다. 아래 예제는 이를 러프하게 구현한 코드로 완성된 예제는 <a href="https://vercel.com/blog/nextjs-server-side-rendering-vs-static-generation#individual-product-page-static-generation-with-data">여기</a>에서 볼 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6C7086;font-style:italic">// pages/products/[id].js</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// In getStaticPaths(), you need to return the list of</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// ids of product pages (/products/[id]) that you’d</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// like to pre-render at build time. To do so,</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// you can fetch all products from a database.</span></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> async</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> getStaticPaths</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> products </span><span style="color:#94E2D5">=</span><span style="color:#CBA6F7"> await</span><span style="color:#89B4FA;font-style:italic"> getProductsFromDatabase</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> paths </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> products</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">map</span><span style="color:#CDD6F4">(</span><span style="color:#EBA0AC;font-style:italic">product</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> (</span><span style="color:#9399B2">{</span></span>
+<span class="line"><span style="color:#CDD6F4">    params</span><span style="color:#94E2D5">:</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> id</span><span style="color:#94E2D5">:</span><span style="color:#CDD6F4"> product</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">id </span><span style="color:#9399B2">},</span></span>
+<span class="line"><span style="color:#9399B2">  }</span><span style="color:#CDD6F4">))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">  // fallback: false means pages that don’t have the correct id will 404.</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> paths</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> fallback</span><span style="color:#94E2D5">:</span><span style="color:#FAB387"> false</span><span style="color:#9399B2"> }</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// params will contain the id for each generated page.</span></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> async</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> getStaticProps</span><span style="color:#9399B2">({</span><span style="color:#EBA0AC;font-style:italic"> params</span><span style="color:#9399B2"> })</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">    props</span><span style="color:#94E2D5">:</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">      product</span><span style="color:#94E2D5">:</span><span style="color:#CBA6F7"> await</span><span style="color:#89B4FA;font-style:italic"> getProductFromDatabase</span><span style="color:#CDD6F4">(params</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">id)</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">    },</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> Product</span><span style="color:#9399B2">({</span><span style="color:#EBA0AC;font-style:italic"> product</span><span style="color:#9399B2"> })</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">  // Render product</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>각 상품 상세 페이지에 필요한 데이터는 상품 번호를 인자로 전달한 <code>getStaticProps</code> 함수에 의해 빌드 타임에 만들어진다. <code>getStaticPaths()</code> 의 인자로 <code>fallback: false</code>를 전달한것을 볼 수 있는데. 이는 경로 파라미터로 받은 상품번호에 해당하는 페이지가 없다면 404 에러 페이지를 보여주라는 뜻이다.</p>
+<p>이렇게 SSG는 다양한 종류의 페이지를 pre-render할 수 있다.</p>
+<h2 id="ssg---주요-고려사항">SSG - 주요 고려사항</h2>
+<p>위에 언급한 것 처럼 SSG를 사용하면 클라이언트와 서버 양쪽의 처리량을 줄여주어 좋은 성능을 확보할 수 있다. 또 이렇게 만들어진 사이트는 따로 처리해주지 않아도 검색엔진에 최적화되어 있다. 검색 엔진 최적화와 좋은 성능 때문에 SSG는 꽤 괜찮은 렌더링 패턴이지만 SSG를 적용하기 전에 아래 사항들을 한번 확인해볼 필요가 있다.</p>
+<ol>
+<li><strong>HTML파일이 아주 많은 경우:</strong> 개별 HTML파일들은 사용자가 요청하기 전에 미리 만들어져 있어야 한다. 블로그를 예로 든다면 모든 포스트에 대한 HTML파일이 데이터 스토어로부터 생성될 것이다. 최초 생성 이후 포스트가 수정되면 해당 포스트와 관련있는 파일들은 모두 다시 빌드되어야 한다. 대량의 HTML파일을 관리하는 게 까다로울 수 있다.</li>
+<li><strong>호스팅 의존성:</strong> SSG 사이트의 응답 속도를 위해 호스팅 플랫폼을 사용하는 것도 좋은 방법이다. 여러 CDN에서 컨텐츠가 서빙되도록 세팅하면 최고의 성능을 이끌어 낼 수 있다.</li>
+<li><strong>동적 컨텐츠:</strong> SSG 사이트는 컨텐츠가 변경될 때 마다 매번 새로 빌드해야 한다. 컨텐츠 변경 이후 배포하지 않으면 이전 컨텐츠가 계속 보여질 수 있다. 따라서 자주 변경되어야 하는 컨텐츠에 대해 SSG를 적용하는것은 적합하지 않다.</li>
+</ol> </div> </div>  </div> </div> </div>  </main> </body></html> 

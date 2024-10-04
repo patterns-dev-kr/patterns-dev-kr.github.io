@@ -1,0 +1,270 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.12.2" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/design-patterns/render-props-pattern/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="Render Props 패턴"><meta property="og:type" content="article"><meta property="og:image" content="./render-props-pattern.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/design-patterns/render-props-pattern/"><meta property="og:image:url" content="./render-props-pattern.jpg"><meta property="og:image:alt" content="Render Props 패턴"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"><link crossorigin as="font" as="style" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="preload"><link crossorigin as="font" href="/fonts/PretendardVariable.woff2" rel="preload" type="font/woff2"><link href="/favicon.png" rel="icon" sizes="any"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CLRDYtwQ.css">
+<link rel="stylesheet" href="/_astro/_slug_.BvLW8n3A.css"><script type="module" src="/_astro/hoisted.BpSiyIXZ.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative">  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li class="active" data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-64" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>Render Props 패턴</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=design-patterns/render-props-pattern" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/render-props-pattern/" target="_blank">patterns.dev - render props pattern</a></aside>
+<p>고차 컴포넌트 섹션에서 여러 컴포넌트가 동일한 데이터나 동일한 로직을 포함해야 할 때 컴포넌트의 로직을 재사용할 수 있게 되면 편해질 수 있다는 것을 알았다.</p>
+<p>컴포넌트를 재사용 가능하게 할 수 있는 또 다른 방법으로, render prop 패턴을 사용하는 방법이 있다.</p>
+<p>render prop은 컴포넌트의 prop으로 함수이며 JSX 엘리먼트를 리턴한다. 컴포넌트 자체는 아무런 것도 렌더링하지 않지만 render prop함수를 호출한다.</p>
+<p>Title컴포넌트가 있다고 생각해 보자. Title컴포넌트는 prop으로 넘어온 함수를 호출하여 반환하는 것 외에는 아무런 동작을 하지 않는다. Title컴포넌트에 render prop을 아래와 같이 넣어 보자</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#F5C2E7">Title</span><span style="color:#F9E2AF"> render</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{()</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">I am a render prop!</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"></span></code></pre>
+<p>Title컴포넌트 내에서는 단순히 prop의 render함수를 호출하여 반환한다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> Title</span><span style="color:#94E2D5"> =</span><span style="color:#EBA0AC;font-style:italic"> props</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> props</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">render</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"></span></code></pre>
+<p>컴포넌트 엘리먼트에 React엘리먼트를 반환하는 <code>render</code>라는 이름의 prop을 넘긴다.</p>
+<iframe src="https://codesandbox.io/embed/renderprops-1-y6wst?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="renderprops-1" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>render prop패턴의 장점은 prop을 받는 컴포넌트가 재사용성이 좋다는 점이다. Title컴포넌트는 이제 <code>render</code> prop만 바꿔가며 여러번 사용할 수 있다.</p>
+<iframe src="https://codesandbox.io/embed/renderprops-2-hou0c?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="renderprops-2" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>이 패턴의 이름이 render prop이지만 넘기는 prop의 이름을 꼭 render로 할 필요는 없다. JSX를 렌더하는 어떤 prop이던 render prop으로 볼 수 있다. 아래 예제에서는 이름을 변경하여 사용하고 있다.</p>
+<iframe src="https://codesandbox.io/embed/renderprops-3-u0sfh?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="renderprops-3" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>위의 예제에서 render prop패턴을 사용하여 컴포넌트를 재사용 가능하게 만들었다. 하지만 이 패턴은 이보다 더 유용하게 쓰일 수 있다.</p>
+<p>render prop을 받는 컴포넌트는 단순히 함수를 호출해 JSX엘리먼트를 렌더링하는 것 외에도 많은 동작을 할 수 있다. 단지 함수를 호출하는 것 대신에. render prop 함수를 호출할 때 인자를 전달할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Component</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">props</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> data </span><span style="color:#94E2D5">=</span><span style="color:#9399B2"> {</span><span style="color:#94E2D5"> ...</span><span style="color:#9399B2"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> props</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">render</span><span style="color:#CDD6F4">(data)</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>위처럼 인자를 넘기게 구현하면 render prop은 이제 아래 코드와 같이 데이터를 인자로 받을 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#F5C2E7">Component</span><span style="color:#F9E2AF"> render</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC;font-style:italic">data</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">ChildComponent</span><span style="color:#F9E2AF"> data</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"></span></code></pre>
+<hr>
+<p>아래 예제는 텍스트박스에 섭씨 온도를 받아서 켈빈과 화씨 온도로 표현해주는 단순한 앱이다.</p>
+<iframe src="https://codesandbox.io/embed/renderprops-4-wk0uy?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="renderprops-4" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>위의 예제를 보면 <code>Input</code> 컴포넌트는 값 입력을 받기 위해 state를 갖고 있는데. <code>Fahrenheit</code>컴포넌트와 <code>Kelvin</code> 컴포넌트는 이 state를 전달 받을 방법이 없다.</p>
+<hr>
+<h2 id="상태를-부모-컴포넌트로-올리기">상태를 부모 컴포넌트로 올리기</h2>
+<p><code>Fahrenheit</code>컴포넌트와 <code>Kelvin</code> 컴포넌트가 사용자가 입력한 값을 전달받기 위한 방법 중 하나는 상태를 부모 컴포넌트로 올려보내는 방법이 있다.</p>
+<p>아래 예제에서 상태를 가지고 있는 <code>Input</code> 컴포넌트가 있지만 형제 컴포넌트인 <code>Fahrenheit</code>, <code>Kelvin</code> 컴포넌트도 이 값에 접근할 수 있어야 변환된 값을 보여줄 수 있다. 이 때 Input 자체가 상태를 갖는 것 대신 세 컴포넌트의 부모 컴포넌트로 상태를 올려보내는 것이다. 아래 예제에서는 <code>App</code> 컴포넌트가 될 것이다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Input</span><span style="color:#9399B2">({</span><span style="color:#EBA0AC;font-style:italic"> value</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> handleChange</span><span style="color:#9399B2"> })</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">input</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">value</span><span style="color:#9399B2">}</span><span style="color:#F9E2AF"> onChange</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC;font-style:italic">e</span><span style="color:#CBA6F7"> =></span><span style="color:#89B4FA;font-style:italic"> handleChange</span><span style="color:#CDD6F4">(e</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">target</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">value)</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">value</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setValue</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">''</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"App"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">☃️ Temperature Converter 🌞</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">Input</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">value</span><span style="color:#9399B2">}</span><span style="color:#F9E2AF"> handleChange</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">setValue</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">Kelvin</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">value</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">Fahrenheit</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">value</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>이 방법도 유효하긴 하지만 규모가 큰 앱에서 컴포넌트가 여러 자식 컴포넌트를 가지고 있는 경우 이 작업을 하기란 까다로운 일이다. 상태의 변경은 모든 자식 컴포넌트의 리렌더링을 유발할 수 있고 이런 상황이 쌓이면 앱의 전체적인 성능을 떨어트릴 수 있다.</p>
+<hr>
+<h2 id="render-props">Render props</h2>
+<p>그 대신에 render props 패턴을 활용할 수 있다. <code>Input</code> 컴포넌트가 render prop을 받도록 리펙토링 해 보자.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Input</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">props</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">value</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setValue</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">''</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">input</span></span>
+<span class="line"><span style="color:#F9E2AF">        type</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"text"</span></span>
+<span class="line"><span style="color:#F9E2AF">        value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">value</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        onChange</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC;font-style:italic">e</span><span style="color:#CBA6F7"> =></span><span style="color:#89B4FA;font-style:italic"> setValue</span><span style="color:#CDD6F4">(e</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">target</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">value)</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        placeholder</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Temp in °C"</span></span>
+<span class="line"><span style="color:#94E2D5">      /></span></span>
+<span class="line"><span style="color:#9399B2">      {</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">render</span><span style="color:#CDD6F4">(value)</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"App"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">☃️ Temperature Converter 🌞</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">Input</span></span>
+<span class="line"><span style="color:#F9E2AF">        render</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC;font-style:italic">value</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;></span></span>
+<span class="line"><span style="color:#94E2D5">            &#x3C;</span><span style="color:#F5C2E7">Kelvin</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">value</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">            &#x3C;</span><span style="color:#F5C2E7">Fahrenheit</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">value</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;/></span></span>
+<span class="line"><span style="color:#CDD6F4">        )</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">      /></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>이로써 <code>Kelvin</code>과 <code>Fahrenheight</code> 컴포넌트는 사용자의 입력 값을 받을 수 있게 되었다.</p>
+<hr>
+<h2 id="자식-컴포넌트를-함수로-받아보자">자식 컴포넌트를 함수로 받아보자</h2>
+<p>일반적인 JSX컴포넌트에 자식 엘리먼트로 React 엘리먼트를 반환하는 함수를 전달할 수 있다. 해당 컴포넌트에서 이 함수는 <code>children</code> prop으로 사용 가능하며 이것도 역시 render prop에 해당한다.</p>
+<p><code>Input</code> 컴포넌트에 명시적으로 render prop을 넘기는 대신 자식 컴포넌트를 함수로 넘기도록 수정해 보자.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"App"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">☃️ Temperature Converter 🌞</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">Input</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">        {</span><span style="color:#EBA0AC;font-style:italic">value</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;></span></span>
+<span class="line"><span style="color:#94E2D5">            &#x3C;</span><span style="color:#F5C2E7">Kelvin</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">value</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">            &#x3C;</span><span style="color:#F5C2E7">Fahrenheit</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">value</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;/></span></span>
+<span class="line"><span style="color:#CDD6F4">        )</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#F5C2E7">Input</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p><code>Input</code>컴포넌트는 <code>props.children</code>을 통해 이 함수에 접글할 수 있다. <code>props.render</code>를 쓰는 대신에 <code>props.children</code>함수를 호출하며 인자를 넘기도록 수정한다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Input</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">props</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">value</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setValue</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">''</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">input</span></span>
+<span class="line"><span style="color:#F9E2AF">        type</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"text"</span></span>
+<span class="line"><span style="color:#F9E2AF">        value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">value</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        onChange</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC;font-style:italic">e</span><span style="color:#CBA6F7"> =></span><span style="color:#89B4FA;font-style:italic"> setValue</span><span style="color:#CDD6F4">(e</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">target</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">value)</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        placeholder</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Temp in °C"</span></span>
+<span class="line"><span style="color:#94E2D5">      /></span></span>
+<span class="line"><span style="color:#9399B2">      {</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">children</span><span style="color:#CDD6F4">(value)</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>이렇게 하여 render prop의 이름을 어떻게 지을까 고민하지 않고 <code>Kelvin</code>과 <code>Fahrenheit</code> 둘 다 사용자의 입력 값에 접근할 수 있다</p>
+<hr>
+<h2 id="hooks">Hooks</h2>
+<p>몇몇 상황에 render props 패턴은 hooks로 대체될 수 있다. <a href="https://www.apollographql.com/docs/react/">Apollo Client</a>가 좋은 예시이다.</p>
+<blockquote>
+<p>아래 예제 코드를 이해하는데 Apollo Client에 대한 지식은 필요하지 않다.</p>
+</blockquote>
+<p>Apollo Client를 사용하는 방법 중 하나는 <code>Mutation</code>과 <code>Query</code> 컴포넌트를 사용하는 것이다. 아래 예시는 <a href="/design-patterns/hoc-pattern/">HOC Pattern</a> 의 <code>Input</code>컴포넌트 예시와 동일한데 <code>graphql()</code> HOC를 사용하는 대신 <code>Mutation</code> 컴포넌트가 render prop을 받는것을 알 수 있다.</p>
+<iframe src="https://codesandbox.io/embed/renderprops-7-jfdxg?fontsize=14&#x26;hidenavigation=1&#x26;module=%2Fsrc%2FInputRenderProp.js&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="renderprops-7" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p><code>Mutation</code>컴포넌트가 자식 엘리먼트에게 데이터를 전달할 수 있도록 하기 위해 컴포넌트를 렌더하는 함수를 자식 요소로 제공했다. 이 함수에서 인자로 데이터를 받을 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#F5C2E7">Mutation</span><span style="color:#F9E2AF"> mutation</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#94E2D5">...</span><span style="color:#9399B2">}</span><span style="color:#F9E2AF"> variables</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#94E2D5">...</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">  {</span><span style="color:#EBA0AC;font-style:italic">addMessage</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"input-row"</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">...</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">&#x3C;/</span><span style="color:#F5C2E7">Mutation</span><span style="color:#94E2D5">></span></span>
+<span class="line"></span></code></pre>
+<p>render prop 형태는 HOC에 비교하여 조금 더 선호되긴 하지만 단점이 존재한다.</p>
+<p>첫번째 단점은 트리가 깊어진다는 것이다. 컴포넌트가 여러 개의 mutation을 사용해야 하는 경우 <code>Mutation</code> 컴포넌트나 <code>Query</code> 컴포넌트를 중첩해 사용해야 한다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#F5C2E7">Mutation</span><span style="color:#F9E2AF"> mutation</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">FIRST_MUTATION</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">  {</span><span style="color:#EBA0AC;font-style:italic">firstMutation</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#F5C2E7">Mutation</span><span style="color:#F9E2AF"> mutation</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">SECOND_MUTATION</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">      {</span><span style="color:#EBA0AC;font-style:italic">secondMutation</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">Mutation</span><span style="color:#F9E2AF"> mutation</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">THIRD_MUTATION</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">          {</span><span style="color:#EBA0AC;font-style:italic">thirdMutation</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">            &#x3C;</span><span style="color:#F5C2E7">Element</span></span>
+<span class="line"><span style="color:#F9E2AF">              firstMutation</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">firstMutation</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">              secondMutation</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">secondMutation</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">              thirdMutation</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">thirdMutation</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">            /></span></span>
+<span class="line"><span style="color:#CDD6F4">          )</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;/</span><span style="color:#F5C2E7">Mutation</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">      )</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#F5C2E7">Mutation</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">&#x3C;/</span><span style="color:#F5C2E7">Mutation</span><span style="color:#94E2D5">></span></span>
+<span class="line"></span></code></pre>
+<p>React에 훅이 추가되고 나서 Apollo에도 훅을 지원하기 시작했다. <code>Mutation</code> 혹은 <code>Query</code> 컴포넌트를 사용하는 대신 개발자는 훅을 사용하여 직접 필요한 값을 참조할 수 있게 되었다.</p>
+<p>아래 예시에서는 <code>Query</code> 컴포넌트를 render prop과 함께 사용하는 대신 <code>useQuery</code>훅을 사용하고 있다.</p>
+<iframe src="https://codesandbox.io/embed/apollo-hoc-hooks-n3td8?fontsize=14&#x26;hidenavigation=1&#x26;module=%2Fsrc%2FInputHooks.js&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="apollo-hoc-hooks" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p><code>useQuery</code>훅을 사용하여 꽤 많은 양의 코드를 줄이면서 필요한 데이터를 사용할 수 있게 되었다.</p>
+<hr>
+<h2 id="장점">장점</h2>
+<p>render prop을 사용하여 몇몇 컴포넌트간 데이터를 공유하는것은 간단하다. <code>children</code> prop을 활용하는 것으로 해당 컴포넌트를 재사용할 수 있게 된다. HOC패턴도 마찬가지로 재사용성과 데이터의 공유 부분에서 같은 이슈를 해결할 수 있다. render prop은 HOC를 사용할 때 마주칠 수 있는 몇 가지 이슈들을 해결할 수 있다.</p>
+<p>props를 자동으로 머지하도록 구현하지 않기 때문에 HOC패턴을 사용할 때 prop이 어디서 만들어져 어디서 오는지 구별하기 힘들었던 이슈가 없다. 부모 컴포넌트로부터 받은 prop을 명시적으로 받아 처리하기 때문이다.</p>
+<p>함수의 인자에서 명시적으로 prop이 전달되기 때문에 HOC를 사용할 때 prop이 모호한 문제가 해결된다. 이 때문에 prop이 어디로부터 오는지 확실히 알 수 있다.</p>
+<p>render props를 활용하여 렌더링 컴포넌트와 앱의 로직을 분리할 수 있다. 상태를 가진 컴포넌트는 render prop을 받고. 상태가 없는 컴포넌트를 렌더할 수 있다.</p>
+<hr>
+<h2 id="단점">단점</h2>
+<p>위에서 render props로 해결하려 한 문제는 React hooks로 대체되었다. Hooks는 컴포넌트에 재사용성과 데이터 공유를 위한 방법 자체를 바꿔놓았다. 대부분의 render props는 Hooks로 대체 가능하다.</p>
+<p>render prop 내에서는 생명 주기 함수를 사용할 수 없기 때문에. render prop 패턴은 받은 데이터를 수정할 필요가 없는 컴포넌트들에 대하여 사용할 수 있다.</p>
+<h3 id="참조">참조</h3>
+<ul>
+<li><strong><a href="https://reactjs.org/docs/render-props.html">Render Props - React</a></strong></li>
+<li><strong><a href="https://cdb.reacttraining.com/react-inline-functions-and-performance-bdff784f5578">React, Inline Functions, and Performance - Ryan Florence</a></strong></li>
+<li><strong><a href="https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce">Use a Render Prop! - Michael Jackson</a></strong></li>
+</ul> </div> </div>  </div> </div> </div>  </main> </body></html> 

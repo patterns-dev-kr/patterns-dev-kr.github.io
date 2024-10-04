@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.12.2" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/rendering-patterns/streaming-server-side-rendering/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="Streaming Server Side Rendering"><meta property="og:type" content="article"><meta property="og:image" content="./streaming-server-side-rendering.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/rendering-patterns/streaming-server-side-rendering/"><meta property="og:image:url" content="./streaming-server-side-rendering.jpg"><meta property="og:image:alt" content="Streaming Server Side Rendering"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"><link crossorigin as="font" as="style" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="preload"><link crossorigin as="font" href="/fonts/PretendardVariable.woff2" rel="preload" type="font/woff2"><link href="/favicon.png" rel="icon" sizes="any"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CLRDYtwQ.css">
+<link rel="stylesheet" href="/_astro/_slug_.BvLW8n3A.css"><script type="module" src="/_astro/hoisted.BpSiyIXZ.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative">  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li class="active" data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-64" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>Streaming Server Side Rendering</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=rendering-patterns/streaming-server-side-rendering" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/ssr/" target="_blank">patterns.dev - streaming server side rendering</a></aside>
+<p>서버 렌더링을 할 때 현재 탐색된 웹페이지를 위한 전체 HTML을 만들어내지 않고 서버에서 앱의 컨텐츠를 스트리밍 처리하도록 하여 여러 조각을 나눌 수 있다. Node의 Stream 모듈은 응답에 데이터 스트림을 포함시킬 수 있다. 이는 클라이언트에게 지속적인 데이터를 전달할 수 있다는 이야기다. 클라이언트가 나눠진 코드들을 받으면 렌더링을 시작한다.</p>
+<p>React의 <code>renderToNodeStream</code>을 사용하면 앱을 여러 부분으로 나누어 전송할 수 있게 된다. 클라이언트는 데이터를 수신하면서도 UI를 그려낼 수 있기 때문에 좋은 성능을 이끌어낼 수 있다. 서버로부터 받은 DOM노드들에 대해 <code>hydrate</code>를 호출하여 각각에 대응하는 이벤트 핸들러를 바인딩해 인터렉트 가능하도록 만들 수 있다.</p>
+<p><video width="100%" src="/rendering-streaming-server-side-rendering01.mp4" autoplay controls playsinline loop></video></p>
+<p>아래 예제는 고양이에 대한 사실 1000개를 사용자에게 보여주는 앱이다.</p>
+<iframe src="https://codesandbox.io/embed/serverstream-fc8op?fontsize=14&#x26;hidenavigation=1&#x26;module=%2Fsrc%2Fserver.js&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="serverstream" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p><code>App</code> 컴포넌트는 <code>renderToNodeStream</code> 메서드를 통해 스트림 데이터를 렌더링하고 있다. 초기에 렌더링 될 HTML은 App 컴포넌트의 코드와 함께 응답 객체로 전송된다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#CBA6F7">&#x3C;!DOCTYPE</span><span style="color:#F9E2AF"> html</span><span style="color:#CBA6F7">></span></span>
+<span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#89B4FA">html</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;</span><span style="color:#89B4FA">head</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">title</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Cat Facts</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">title</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">link</span><span style="color:#F9E2AF"> rel</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"stylesheet"</span><span style="color:#F9E2AF"> href</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"/style.css"</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">script</span><span style="color:#F9E2AF"> type</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"module"</span><span style="color:#F9E2AF"> defer</span><span style="color:#F9E2AF"> src</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"/build/client.js"</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">&#x3C;</span><span style="color:#94E2D5">/</span><span style="color:#89B4FA">script</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;/</span><span style="color:#89B4FA">head</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;</span><span style="color:#89B4FA">body</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Stream Rendered Cat Facts!</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> id</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"approot"</span><span style="color:#94E2D5">>&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;/</span><span style="color:#89B4FA">body</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">html</span><span style="color:#94E2D5">></span></span>
+<span class="line"></span></code></pre>
+<p>이 응답 객체에는 앱 내의 컨텐츠에 필요한 제목이나 스타일시트를 포함하고 있다. 만약 서버에서 <code>App</code> 컴포넌트를 렌더링하기 위해 <code>renderToString</code>을 사용한다면 사용자는 앱이 데이터를 로드하고 메타데이터를 처리하기 전에 모든 데이터를 받을때까지 기다려야 한다. 이를 빠르게 처리하기 위해 <code>renderToNodeStream</code> 을 사용하면 App 컴포넌트의 분리된 코드를 받자마자 곧바로 데이터 로드 및 처리를 시작할 수 있다.</p>
+<blockquote>
+<p>점진적 hydration과 서버 렌더링에 대한 추가 예제를 보려면 <a href="https://github.com/GoogleChromeLabs/progressive-rendering-frameworks-samples">이 깃헙 리포지토리</a>를 확인바란다.</p>
+</blockquote>
+<blockquote>
+<p><a href="https://medium.com/styled-components/v3-1-0-such-perf-wow-many-streams-c45c434dbd03">Styled-componets가 stylesheet 전달 최적화를 위해 어떻게 스트림 렌더되는지 확인해 보자.</a></p>
+</blockquote>
+<h2 id="컨셉">컨셉</h2>
+<p>점진적 hydration과 같이 스트리밍도 별개의 렌더링 메커니즘으로 SSR성능 향상을 위해 사용할 수 있다. 이름 그대로 스트리밍은 노드 서버에서 HTML을 여러 조각으로 나누어 생성되는대로 클라이언트에 전달한다. 페이지의 마크업 사이즈가 크더라도 HTML의 일부를 미리 받아 그릴 수 있어 TTFB 시간이 상대적으로 감소한다. 메이저 브라우저들은 스트림 된 컨텐츠나 부분적인 응답을 파싱하고 점진적으로 렌더링하여 FP와 FCP까지의 시간을 감소시킨다.</p>
+<p>스트리밍은 네트워크 상태에 따라 유연하게 동작한다. 네트워크가 막혀 더 이상 추가적인 바이트를 전송할 수 없게 되면 렌더러는 신호를 받아 상태가 정리될 때까지 스트리밍을 멈춘다. 따라서 서버는 적은 메모리를 사용하며 I/O 컨디션에 따라 유동적으로 동작한다. 이로 인해 Node.js 서버는 여러 요청을 동시에 처리할 수 있고. 무거운 요청이 가벼운 요청의 응답을 방해하는 것을 막을 수 있다. 그 결과 사이트는 비교적 좋지 않은 상황에서도 좋은 응답성을 유지할 수 있다.</p>
+<h2 id="react에서-스트리밍-하기">React에서 스트리밍 하기</h2>
+<p>React는 2016에 배포한 16버전에서 스트리밍을 지원하기 시작했다. 아래 API들은 스트리밍 지원을 위해 <code>ReactDOMServer</code> 에 포함되어 있다.</p>
+<ol>
+<li>
+<p>ReactDOMServer.<a href="https://reactjs.org/docs/react-dom-server.html#rendertonodestream">renderToNodeStream</a>(element): 리턴되는 HTML 자체는 ReactDOMServer.renderToString(element) 과 같지만 문자열 대신 Node.js의 <a href="https://reactjs.org/docs/react-dom-server.html#rendertonodestream">readablestream</a> 객체가 반환된다. 이 메서드는 스트림에 HTML을 렌더하기 때문에 서버에서만 실행 가능하다. 클라이언트는 스트림 데이터를 받은 후 <a href="https://reactjs.org/docs/react-dom.html#hydrate">ReactDOM.hydrate()</a> 를 호출하여 인터렉트 가능하도록 할 수 있다.</p>
+<aside>
+💡 [renderToNodeStream은 deprecated](https://react.dev/reference/react-dom/server/renderToNodeStream) 되었으므로 [renderToPipeableStream](https://react.dev/reference/react-dom/server/renderToPipeableStream#rendertopipeablestream)을 대신 사용할 수 있다.
+</aside>
+</li>
+<li>
+<p>ReactDOMServer.<a href="https://reactjs.org/docs/react-dom-server.html#rendertostaticnodestream">renderToStaticNodeStream</a>(element): 이는 <code>[ReactDOMServer.renderToStaticMarkup(element)](https://reactjs.org/docs/react-dom-server.html#rendertostaticmarkup)</code>에 대응된다. HTML출력은 동일하나 스트림으로 리턴된다. 이는 정적이고 인터렉션이 없는 페이지들에 대해 스트리밍 처리할 수 있다.</p>
+</li>
+</ol>
+<p>두 함수 모두 읽을 수 있는 스트림을 반환하고 클라이언트 측에서 읽기 시작하면 바이트들이 emit되기 시작한다. 이는 읽기 스트림을 응답 객체와 같은 쓰기 스트림에 연결하는 것으로 가능해진다. 응답 객체는 분리된 데이터들을 클라이언트에게 전송하며 그와 동시에 클라이언트에 도착한 부분들은 렌더링된다.</p>
+<p>아래는 이를 구현한 예제이며. <a href="https://mxstbr.com/thoughts/streaming-ssr/">스트리밍 서버 사이드 렌더링에 관련된 글</a>을 읽어보아도 좋다.</p>
+<iframe src="https://codesandbox.io/embed/serverstream-fc8op?fontsize=14&#x26;hidenavigation=1&#x26;module=%2Fsrc%2Fserver.js&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="serverstream" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>일반적인 SSR과 스트리밍에 대해 TTFB와 FMP의 차이는 다음의 이미지에서 볼 수 있다.</p>
+<figure><img  src="/_astro/rendering-streaming-server-side-rendering01.D6aT8zOB_Z215Sk3.webp" alt="출처: https://mxstbr.com/thoughts/streaming-ssr/" width="1600" height="1077" loading="lazy" decoding="async"><figcaption>출처: https://mxstbr.com/thoughts/streaming-ssr/</figcaption></figure>
+<h2 id="스트리밍-ssr---장단점">스트리밍 SSR - 장단점</h2>
+<p>스트리밍은 SSR과 React의 속도를 증가시키고, 아래의 장점들을 제공한다.</p>
+<ol>
+<li>성능 향상: 서버 렌더링 시작 직후 클라이언트에 즉시 부분적인 데이터가 전송되기 때문에 TTFB가 SSR보다 좋다. 이는 페이지 크기와 상관 없이 일관적으로 유지된다. 클라이언트는 HTML을 즉기 파싱할 수 있기 때문에 FP와 FCP역시 빨리진다.</li>
+<li>네트워크 상태에 영향을 덜 받는다: 스트리밍은 네트워크 상태가 좋지 않거나 정체되는 경우에도 잘 동작한다. 이런 상황에서도 응답성을 유지할 수 있게 된다.</li>
+<li>SEO지원: 스트리밍되어 렌더링 된 컨텐츠는 크롤러에서 읽어들일 수 있기 때문에 SEO에도 좋다.</li>
+</ol>
+<p>중요한 점은 기존에 <code>renderToString()</code>으로 구현된 부분들을 <code>renderToNodeStream()</code>으로 교체하기가 생각보다 간단하지 않다는 점이다. SSR과 스트리밍이 함께 잘 동작하지 않는 상황들이 있다. 아래는 마이그레이션이 어려운 상황들이다.</p>
+<ol>
+<li>SSR처리된 분할 코드들을 받기 전에 여타 다른 이유로 인해 문서에 서버에서 만든 마크업을 미리 추가해야하는 프레임웍을 사용하는 경우다. 예를 들어 특정 프레임워크가 어떤 CSS를 사용해야 하는지 동적으로 결정하여 페이지에 우선적으로 <style> 태그를 넣는다던가 혹은 렌더링 중에 <head> 에 특정 요소를 추가하는 경우이다. 관련된 내용</style>을 확인해 보자.</li>
+<li><code>renderToStaticMarkup</code>은 페이지 템플릿을 만들어내고, <code>renderToString</code>은 데이터가 포함된 동적 컨텐츠를 생성한다. 이 경우 <code>renderToStaticMarkup</code>의 인자에서는 문자열이 올 것으로 기대하기 때문에. <code>renderToString</code>의 컴포넌트를 사용하면 동작하지 않는다. <a href="https://hackernoon.com/whats-new-with-server-side-rendering-in-react-16-9b0d78585d67">관련된 내용</a>을 확인해보자.</li>
+</ol>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CDD6F4">res</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">write</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">"&#x3C;!DOCTYPE html>"</span><span style="color:#CDD6F4">)</span><span style="color:#9399B2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CDD6F4">res</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">write</span><span style="color:#CDD6F4">(</span><span style="color:#89B4FA;font-style:italic">renderToStaticMarkup</span><span style="color:#CDD6F4">(</span></span>
+<span class="line"><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">html</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">   &#x3C;</span><span style="color:#89B4FA">head</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">     &#x3C;</span><span style="color:#89B4FA">title</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">My Page</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">title</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">   &#x3C;/</span><span style="color:#89B4FA">head</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">   &#x3C;</span><span style="color:#89B4FA">body</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">     &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> id</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"content"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">       {</span><span style="color:#89B4FA;font-style:italic"> renderToString</span><span style="color:#CDD6F4">(</span><span style="color:#94E2D5">&#x3C;</span><span style="color:#F5C2E7">MyPage</span><span style="color:#94E2D5">/></span><span style="color:#CDD6F4">) </span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">     &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">   &#x3C;/</span><span style="color:#89B4FA">body</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5"> &#x3C;/</span><span style="color:#89B4FA">html</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">);</span></span>
+<span class="line"></span></code></pre>
+<p>스트리밍이나 점진적 hydration이나 모두 SSR과 CSR에서 줄 수 있는 사용자 경험의 차이를 줄여준다. 다음 섹션에서는 이제까지 알아보았던 모든 패턴을 비교하여 각기 다른 상황에 대한 적합성에 대해 확인해 보자.</p> </div> </div>  </div> </div> </div>  </main> </body></html> 

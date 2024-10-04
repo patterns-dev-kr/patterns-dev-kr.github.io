@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.12.2" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/rendering-patterns/react-server-components/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="React Server Components"><meta property="og:type" content="article"><meta property="og:image" content="./react-server-components.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/rendering-patterns/react-server-components/"><meta property="og:image:url" content="./react-server-components.jpg"><meta property="og:image:alt" content="React Server Components"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet"><link crossorigin as="font" as="style" href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="preload"><link crossorigin as="font" href="/fonts/PretendardVariable.woff2" rel="preload" type="font/woff2"><link href="/favicon.png" rel="icon" sizes="any"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CLRDYtwQ.css">
+<link rel="stylesheet" href="/_astro/_slug_.BvLW8n3A.css"><script type="module" src="/_astro/hoisted.BpSiyIXZ.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative">  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li class="active" data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-64" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>React Server Components</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=rendering-patterns/react-server-components" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/react-server-components/" target="_blank">patterns.dev - react server components</a></aside>
+<aside>💡역자 주: 본문이 내용으로 이해가 되지 않으신다면 <a href="https://www.youtube.com/watch?v=TQQPAU21ZUw" target="_blank" rel="noreferrer">React Server Components 소개 영상</a>이 도움이 될 수 있습니다. 시연 내용의 일부 중에는 컴포넌트 파일을 *.server.js로 변경하여. <strong>해당 모듈 내의 코드와 import된 의존 모듈들을 번들에서 제거하고 서버에서만 사용하도록</strong> 하고 있는데, 이 것이 꽤 자연스럽게 진행되는 부분이 인상적입니다.</aside>
+<p><a href="https://reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html">zero-bundle-size React Server Components</a> 서버 드리븐 멘탈 모델을 통한 모던 UX를 구현하는데 초점이 맞추져 있으며 현재 React개발팀에서 개발이 진행 중이다. 이는 컴포넌트의 SSR과는 다르며 클라이언트 측 번들 사이즈를 꽤 작게 만들 수 있다.</p>
+<p>이 업데이트는 아직 실무에서 사용이 어렵지만 매우 흥미로운 내용이라 계속 팔로잉해 보는것이 좋겠다. 아래는 관련된 내용들이다.</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=TQQPAU21ZUw&#x26;feature=emb_title">댄과 로렌의 React Server Components 소개 영상</a>은 꼭 보도록 하자 (<a href="https://github.com/reactjs/rfcs/blob/bf51f8755ddb38d92e23ad415fc4e3c02b95b331/text/0000-server-components.mdhttps://github.com/reactjs/rfcs/blob/bf51f8755ddb38d92e23ad415fc4e3c02b95b331/text/0000-server-components.md">RFC: React Server Components</a>).</li>
+<li><a href="https://nextjs.org/docs/advanced-features/react-18">Next.js 를 위한 React 18 진행사항</a>과 <a href="https://github.com/vercel/next.js/discussions/31263">Next.js를 위한 Server Components 로드맵</a></li>
+<li><a href="https://twitter.com/reactjs/status/1460380211262930948">React 18 베타버전 진행사항</a></li>
+<li><a href="https://shopify.dev/custom-storefronts/hydrogen/framework/react-server-components">Shopify의 Hydrogen과 Server Components</a></li>
+</ul>
+<h2 id="서버사이드-렌더링의-제약사항">서버사이드 렌더링의 제약사항</h2>
+<p>오늘날 클라이언트측 자바스크립트의 서버측 렌더링은 차선책이다. 컴포넌트의 자바스크립트는 서버에서 HTML문자열로 렌더링 된다. HTML은 브라우저에게 전달되고 나타나며 빠른 FCP혹은 LCP를 가지게 된다.</p>
+<p>하지만 hydration 단계를 통해 인터렉션이 가능해진 요소를 위해서는 여전히 자바스크립트가 필요하다. 서버사이드 렌더링은 일반적으로 최초 페이지 로드를 위해 사용되기 때문에 hydration이후에는 추가적으로 쓰이지 않는다.</p>
+<p>클라이언트에서의 hydration을 전혀 하지 않고 React 와 SSR만 가지고 앱을 만들수도 있긴 하지만 앱의 모델에 인터렉션을 많이 해야 하는 경우에는 어쩔 수 없이 클라이언트 측으로 코드를 보내야 한다. 서버 컴포넌트의 하이브리드 모델은 이 선택을 컴포넌트 기준으로 가능하도록 해 준다.</p>
+<p>React의 서버 컴포넌트를 활용하면 컴포넌트들을 정기적으로 다시 받아올 수 있다. 새로운 데이터가 있을 때 서버에서 앱의 컴포넌트들을 리-렌더할 수 있으므로 클라이언트 측에 전송해야 하는 코드량을 제한할 수 있다.</p>
+<blockquote>
+<p>[RFC문서에서]: 개발자는 서드파티 패키지의 사용 여부를 지속적으로 검토해야 한다. 마크다운을 렌더링하거나, 날짜를 포멧하는 패키지를 사용하면 개발자는 편해질지 몰라도, 증가한 코드 사이즈로 인해 사용자는 성능에 손해를 볼 수 있다.</p>
+</blockquote>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6C7086;font-style:italic">// *Before* Server Components</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> marked </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> "marked"</span><span style="color:#9399B2">;</span><span style="color:#6C7086;font-style:italic"> // 35.9K (11.2K gzipped)</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> sanitizeHtml </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> "sanitize-html"</span><span style="color:#9399B2">;</span><span style="color:#6C7086;font-style:italic"> // 206K (63.3K gzipped)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> NoteWithMarkdown</span><span style="color:#9399B2">({</span><span style="color:#EBA0AC;font-style:italic">text</span><span style="color:#9399B2">})</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> html </span><span style="color:#94E2D5">=</span><span style="color:#89B4FA;font-style:italic"> sanitizeHtml</span><span style="color:#CDD6F4">(</span><span style="color:#89B4FA;font-style:italic">marked</span><span style="color:#CDD6F4">(text))</span><span style="color:#9399B2">;</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span><span style="color:#6C7086;font-style:italic">/* render */</span><span style="color:#CDD6F4">)</span><span style="color:#9399B2">;</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="서버-컴포넌트">서버 컴포넌트</h2>
+<p>React의 서버 컴포넌트는 중간에 추상화된 포멧에 렌더링 데이터를 포함하여 내려받는 방법으로 자바스크립트를 추가로 받지 않아도 되도록 서버 사이드 렌더링을 보완한다. 클라이언트에 렌더링 된 트리의 상태를 잃어버리지 않고 서버에서 렌더링된 트리를 병합할 수 있어 더 다양한 컴포넌트로 확장할 수 있다.</p>
+<p>서버 컴포넌트가 SSR을 대체하지는 않는다. 두 기능이 함께 사용되면 중간 포멧을 활용한 빠른 렌더링을 지원하게 되고. 서버 사이드 렌더링 인프라가 이를 HTML로 렌더링하여 초기 페인트 속도는 여전히 빠르게 진행되도록 한다. SSR에서 외부 데이터를 조회하는 것 처럼. 서버 컴포넌트는 클라이언트 컴포넌트를 서버측에서 렌더링 한다.</p>
+<p>하지만 이 때에는 자바스크립트 번들이 매우 작아진다. 페이지를 처음 탐색할의 번들 크기가 상당히 작아졌음 (-18~29%) 알 수 있었지만 React개발팀의 작업이 완료되면 이보다 더 번들 사이즈를 줄일 수 있게 될 것이다.</p>
+<blockquote>
+<p>[RFC문서에서]: 위의 예제를 서버 컴포넌트로 마이그레이션할 경우 코드 자체는 이전과 동일하나 클라이언트에 코드를 전송하지 않게 된다. 예제에서는 압축하지 않았을 때 240K정도를 절약하고 있다.</p>
+</blockquote>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> marked </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> 'marked'</span><span style="color:#6C7086;font-style:italic"> // zero bundle size</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> sanitizeHtml </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> 'sanitize-html'</span><span style="color:#6C7086;font-style:italic"> // zero bundle size</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> NoteWithMarkdown</span><span style="color:#9399B2">({</span><span style="color:#EBA0AC;font-style:italic"> text</span><span style="color:#9399B2"> })</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">  // same as before</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="자동-코드-스플리팅">자동 코드 스플리팅</h2>
+<p>코드 스플리팅을 통하여 사용자가 필요로하는 코드만 서빙하는것은 베스트 프렉티스로 고려된다. 이는 앱을 여러 작은 번들로 쪼개 클라이언트에 보내야 하는 코드를 최소화할 수 있게 된다. 서버 컴포넌트 전에는 <code>React.lazy()</code>를 코드 상에서 사용하여 코드를 나눠야 할 곳을 직접 표기했다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#6C7086;font-style:italic">// *Before* Server Components</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> React </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> 'react'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// one of these will start loading *when rendered on the client*:</span></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> OldPhotoRenderer </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> React</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">lazy</span><span style="color:#CDD6F4">(</span><span style="color:#9399B2">()</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> import</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'./OldPhotoRenderer.js'</span><span style="color:#CDD6F4">))</span></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> NewPhotoRenderer </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> React</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">lazy</span><span style="color:#CDD6F4">(</span><span style="color:#9399B2">()</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> import</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'./NewPhotoRenderer.js'</span><span style="color:#CDD6F4">))</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Photo</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">props</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">  // Switch on feature flags, logged in/out, type of content, etc:</span></span>
+<span class="line"><span style="color:#CBA6F7">  if</span><span style="color:#CDD6F4"> (FeatureFlags</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">useNewPhotoRenderer) </span><span style="color:#9399B2">{</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">NewPhotoRenderer</span><span style="color:#9399B2"> {</span><span style="color:#94E2D5">...</span><span style="color:#CDD6F4">props</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#9399B2">  }</span><span style="color:#CBA6F7"> else</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">PhotoRenderer</span><span style="color:#9399B2"> {</span><span style="color:#94E2D5">...</span><span style="color:#CDD6F4">props</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>위와 같은 코드 스플리팅이 겪게 되는 이슈로는:</p>
+<ul>
+<li>Next.js와 같은 외부 메타 프레임웍이 인지할 수 있도록 수동으로 지연 로딩 처리를 하려면 코드를 import문을 사용하는 동적 import로 변경해야 한다.</li>
+<li>앱이 컴포넌트를 로드하는것이 지연될 수 있어 UX에 영향을 끼친다.</li>
+</ul>
+<p>서버 컴포넌트는 자동 코드 스플리팅을 도입하였는데. 이는 클라이언트 컴포넌트를 import하는 부분을 코드를 나눠야 할 수 있는 부분으로 인식한다. 또한 개발자들이 서버측 코드에서 어떤 컴포넌트를 더 일찍 받아야 하는지 지정할 수 있게 하여 클라이언트 측에서 조금 더 일찍 렌더링 프로세스를 시작할 수 있게 한다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> React </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> 'react'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// one of these will start loading *once rendered and streamed to the client*:</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> OldPhotoRenderer </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> './OldPhotoRenderer.client.js'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> NewPhotoRenderer </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> './NewPhotoRenderer.client.js'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Photo</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">props</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">  // Switch on feature flags, logged in/out, type of content, etc:</span></span>
+<span class="line"><span style="color:#CBA6F7">  if</span><span style="color:#CDD6F4"> (FeatureFlags</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">useNewPhotoRenderer) </span><span style="color:#9399B2">{</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">NewPhotoRenderer</span><span style="color:#9399B2"> {</span><span style="color:#94E2D5">...</span><span style="color:#CDD6F4">props</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#9399B2">  }</span><span style="color:#CBA6F7"> else</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">PhotoRenderer</span><span style="color:#9399B2"> {</span><span style="color:#94E2D5">...</span><span style="color:#CDD6F4">props</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<h2 id="서버-컴포넌트가-nextjs의-ssr을-대체할-수-있을까">서버 컴포넌트가 Next.js의 SSR을 대체할 수 있을까?</h2>
+<p>대체할 수 없다. 서버 컴포넌트와 SSR은 꽤 다르다. 서버 컴포넌트는 Next.js와 같은 메타-프레임웍에서 연구 및 실험이 진행중이며 실제로 실험적으로 도입될 것이다.</p>
+<p><a href="https://news.ycombinator.com/item?id=25499171">Next.js와 SSR의 차이점에 대해 댄이 언급한 내용</a>을 정리해 보면:</p>
+<ul>
+<li>서버 컴포넌트의 코드는 클라이언트에 전송되지 않는다. 대부분 React SSR구현들은 컴포넌트 코드가 자바스크립트 번들에 포함되 클라이언트에 전송된다. 이는 인터렉션을 지연시킨다.</li>
+<li>서버 컴포넌트는 컴포넌트 트리 내 아무 곳이라도 백엔드에 접근할 수 있다. Next.js를 사용할때는 <code>getServerProps()</code>를 통하여 백엔드에 접근했지만 이 것은 페이지 단위로만 제한되어 있었다. npm에 올라간 모든 컴포넌트는 이렇게 할 수 없다.</li>
+<li>서버 컴포넌트는 클라이언트 컴포넌트 트리의 상태를 유지한채로 서버로부터 다시 받아올 수 있다. 이는 주요 전송 메커니즘이 HTML보다 더 다양한 케이스르 커버할 수 있기 때문이다. 따라서 검색 결과 텍스트, 포커스, 텍스트 선택 등의 클라이언트 상태를 날리지 않은 상태로 검색 결과 목록과 같은 서버렌더링 영역이 리패칭될 수 있다.</li>
+</ul>
+<p>서버 컴포넌트의 초기 구현 중 일부는 다음과 같은 웹팩 플러그인을 통해 동작될 것이다.</p>
+<ul>
+<li>모든 클라이언트 측 컴포넌트를 찾아낸다</li>
+<li>각각의 ID와 분리된 코드의 ID를 매핑한다</li>
+<li>Node.js의 로더는 클라이언트 컴포넌트의 import들을 위에서 만든 맵과 연관짓는다.</li>
+<li>작업 중 일부 (라우팅 같은 작업)은 React단독으로는 어렵기 때문에 Next.js와 같은 프레임웍과 함게 작동될 것이다.</li>
+</ul>
+<p>댄이 위의 글에서 언급한 것 처럼 이 작업의 목표는 메타 프레임웍들이 훨씬 더 좋아지도록 하는 것이라 한다.</p>
+<h2 id="더-알아보거나-react-팀과-피드백-주고받기">더 알아보거나 React 팀과 피드백 주고받기</h2>
+<p>이 내용에 대해서 더 알아보고 싶다면 댄과 로렌의 유툽 영상을 꼭 시청하기 바란다, RFC문서도 읽고 서버 컴포넌트의 데모도 돌려 보고 말이다. 고맙게도 Sebastian Markbåge, Lauren Tan, Joseph Savona, Dan Abramov가 서버 컴포넌트를 작업하고 있다.</p>
+<p><strong>흥미로운 관련 쓰레드 읽기:</strong></p>
+<ul>
+<li><strong><a href="https://twitter.com/sugarpirate_/status/1341141198258524163">Lauren Tan on Server Components</a></strong></li>
+<li><strong><a href="https://twitter.com/sophiebits/status/1341098388062756867">Sophie Alpert explaining them</a></strong></li>
+<li><strong><a href="https://twitter.com/sebmarkbage/status/1341102430147276803">Sebastian Markbåge with a discussion on hydration</a></strong></li>
+<li><strong><a href="https://news.ycombinator.com/item?id=25497065">HN discussion thread</a></strong></li>
+</ul> </div> </div>  </div> </div> </div>  </main> </body></html> 
