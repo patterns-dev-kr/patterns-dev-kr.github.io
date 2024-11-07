@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="ko" data-astro-cid-sckkx6r4> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.16.6" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/design-patterns/provider-pattern/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="Provider 패턴"><meta property="og:type" content="article"><meta property="og:image" content="./provider-pattern.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/design-patterns/provider-pattern/"><meta property="og:image:url" content="./provider-pattern.jpg"><meta property="og:image:alt" content="Provider 패턴"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="/favicon.png" rel="icon" sizes="any" type="image/png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CnWBadwT.css">
+<link rel="stylesheet" href="/_astro/_slug_.OicVUOHF.css"><script type="module" src="/_astro/hoisted.4sIGGDry.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body data-astro-cid-sckkx6r4> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" title="Change color theme" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative" data-astro-cid-sckkx6r4>  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li class="active" data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-72" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>Provider 패턴</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=design-patterns/provider-pattern" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/provider-pattern/" target="_blank">patterns.dev - provider pattern</a></aside>
+<p>앱 내의 여러 컴포넌트들이 데이터를 사용 할 수 있게 해야 하는 상황이 있다. <code>props</code> 를 통해서 데이터를 전달하는 방식이 있지만 앱 내의 모든 컴포넌트들이 데이터에 접근해야 하는 경우 이 작업을 하기 매우 번거롭다.</p>
+<p>그리고 종종 <em>prop drilling</em>이라 불리는 안티패턴을 사용하게 되는데. 아주 멀리있는 컴포넌트 트리까지 props를 내려주게 되면 prop에 의존되는 컴포넌트들을 나중에 리펙토링하기란 거의 불가능해지며. 어떤 데이터가 어디로부터 전해져 오는지조차 알기 어렵게 된다.</p>
+<p><code>App</code> 컴포넌트가 있고. 특정 데이터를 가지고 있다고 가정해 보자. 컴포넌트 트리의 마지막 노드에는 <code>ListItem</code>, <code>Header</code>, <code>Text</code> 컴포넌트가 있고 <code>App</code> 이 가진 데이터를 필요로 한다. 이 컴포넌트들에게 데이터를 주려면 여러 중간 컴포넌트들에게 데이터를 내려주어야 한다.</p>
+<p><video width="100%" src="/design-provider01.mp4" autoplay controls playsinline loop></video></p>
+<p>코드베이스는 아래와 같이 작성될 것이다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> data </span><span style="color:#94E2D5">=</span><span style="color:#9399B2"> {</span><span style="color:#94E2D5"> ...</span><span style="color:#9399B2"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">SideBar</span><span style="color:#F9E2AF"> data</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">Content</span><span style="color:#F9E2AF"> data</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> SideBar</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ({</span><span style="color:#EBA0AC;font-style:italic"> data</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">List</span><span style="color:#F9E2AF"> data</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> List</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ({</span><span style="color:#EBA0AC;font-style:italic"> data</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">ListItem</span><span style="color:#F9E2AF"> data</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> ListItem</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ({</span><span style="color:#EBA0AC;font-style:italic"> data</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">span</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">listItem</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">span</span><span style="color:#94E2D5">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> Content</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ({</span><span style="color:#EBA0AC;font-style:italic"> data</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#F5C2E7">Header</span><span style="color:#F9E2AF"> data</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#F5C2E7">Block</span><span style="color:#F9E2AF"> data</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> Header</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ({</span><span style="color:#EBA0AC;font-style:italic"> data</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">title</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> Block</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ({</span><span style="color:#EBA0AC;font-style:italic"> data</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">Text</span><span style="color:#F9E2AF"> data</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> Text</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ({</span><span style="color:#EBA0AC;font-style:italic"> data</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">text</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span></span>
+<span class="line"></span></code></pre>
+<p>이런 방식으로 props를 내리는 것은 꽤 지저분하다. 만약 <code>data</code> 라는 프로퍼티의 이름을 변경해야 하는 경우. 모든 컴포넌트를 수정해야 한다. 앱의 규모가 클 수록 점점 더 어려워지는 것이다.</p>
+<p>데이터가 필요하지 않는 컴포넌트는 props를 받지 않도록 수정하는것이 바람직하다. 그러기 위해선 prop drilling에 의존하지 않고 컴포넌트가 직접 데이터에 접근할 수 있는 방법이 필요하다.</p>
+<p>Provider 패턴은 이런 경우에 매우 유용하다. Provider 패턴을 이용하면 각 레이어에 직접 데이터를 주지 않고도 여러 컴포넌트들에게 데이터에 접근할 수 있게 구현할 수 있다.</p>
+<p>먼저 모든 컴포넌트를 <code>Provider</code> 로 감싼다. Provider 는 HOC로 <code>Context</code> 객체를 제공한다. React가 제공하는 <code>createContext</code> 메서드를 활용하여 Context 객체를 만들어낼 수 있다.</p>
+<p>Provider 컴포넌트는 <code>value</code> 라는 prop으로 하위 컴포넌트들에 내려줄 데이터를 받는다. 이 컴포넌트의 모든 자식 컴포넌트들은 해당 provider 를 통해 value prop에 접근할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> DataContext </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> React</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">createContext</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> data </span><span style="color:#94E2D5">=</span><span style="color:#9399B2"> {</span><span style="color:#94E2D5"> ...</span><span style="color:#9399B2"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">DataContext.Provider</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">SideBar</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">Content</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#F5C2E7">DataContext.Provider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>이제 각 컴포넌트에게 직접 <code>data</code> prop을 일일히 넘기지 않아도 된다. 그럼 <code>ListItem</code>, <code>Header</code>, <code>Text</code> 컴포넌트는 <code>data</code>에 어떻게 접근할까?</p>
+<p>각 컴포넌트는 <code>useContext</code> 훅을 활용하여 <code>data</code> 에 접근할 수 있다. 아래 예제에서 이 훅은 <code>data</code> 와 연관된 <code>DataContext</code> 를 받아 <code>data</code> 를 읽고 쓸 수 있는 컨텍스트 객체를 제공한다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> DataContext </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> React</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">createContext</span><span style="color:#CDD6F4">()</span><span style="color:#9399B2">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> data </span><span style="color:#94E2D5">=</span><span style="color:#9399B2"> {</span><span style="color:#94E2D5"> ...</span><span style="color:#9399B2"> }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">SideBar</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">Content</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> SideBar</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ()</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">List</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> List</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ()</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">ListItem</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> Content</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ()</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">>&#x3C;</span><span style="color:#F5C2E7">Header</span><span style="color:#94E2D5"> />&#x3C;</span><span style="color:#F5C2E7">Block</span><span style="color:#94E2D5"> />&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> ListItem</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> data </span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> =</span><span style="color:#CDD6F4"> React</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">useContext</span><span style="color:#CDD6F4">(DataContext)</span><span style="color:#9399B2">;</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">span</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">listItem</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">span</span><span style="color:#94E2D5">></span><span style="color:#9399B2">;</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Text</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> data </span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> =</span><span style="color:#CDD6F4"> React</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">useContext</span><span style="color:#CDD6F4">(DataContext)</span><span style="color:#9399B2">;</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">text</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#9399B2">;</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Header</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> data </span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> =</span><span style="color:#CDD6F4"> React</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">useContext</span><span style="color:#CDD6F4">(DataContext)</span><span style="color:#9399B2">;</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">data</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">title</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span><span style="color:#9399B2">;</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>이로써 <code>data</code> 를 필요로 하지 않는 컴포넌트들은 <code>data</code> 를 prop으로 받지 않게 되었다. prop drilling도 필요 없어졌으며 전보다 훨씬 리펙토링하기도 수월해졌다.</p>
+<p><video width="100%" src="/design-provider02.mp4" autoplay controls playsinline loop></video></p>
+<hr>
+<p>Provider 패턴은 전역 데이터를 공유하기에 딱 좋다. 보통 UI테마를 여러 컴포넌트들이 공유해 사용하기 위해 쓴다.</p>
+<p>아래의 간단한 예제를 살펴보자</p>
+<iframe src="https://codesandbox.io/embed/provider-1-ifz3w?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="provider-1" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<p>사용자가 스위치를 토글하여 라이트모드와 다크모드를 전환할 수 있도록 구현하려고 한다. 사용자가 스위치를 클릭하여 다크모드 또는 라이트모드 전환을 할 때. 배경과 텍스트의 색상이 변경되어야 한다. 현재 테마의 값을 직접 내리는 대신. 컴포넌트들을 <code>ThemeProvider</code> 로 감싸고 테마 컬러값을 provider에 전달한다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> const</span><span style="color:#CDD6F4"> ThemeContext </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> React</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">createContext</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> themes </span><span style="color:#94E2D5">=</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">  light</span><span style="color:#94E2D5">:</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">    background</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#fff'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    color</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#000'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  },</span></span>
+<span class="line"><span style="color:#CDD6F4">  dark</span><span style="color:#94E2D5">:</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">    background</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#171717'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    color</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#fff'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  },</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">theme</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setTheme</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'dark'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  function</span><span style="color:#89B4FA;font-style:italic"> toggleTheme</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">    setTheme</span><span style="color:#CDD6F4">(</span><span style="color:#EBA0AC">theme</span><span style="color:#94E2D5"> ===</span><span style="color:#A6E3A1"> 'light'</span><span style="color:#94E2D5"> ?</span><span style="color:#A6E3A1"> 'dark'</span><span style="color:#94E2D5"> :</span><span style="color:#A6E3A1"> 'light'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> providerValue </span><span style="color:#94E2D5">=</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">    theme</span><span style="color:#94E2D5">:</span><span style="color:#EBA0AC"> themes</span><span style="color:#CDD6F4">[</span><span style="color:#EBA0AC">theme</span><span style="color:#CDD6F4">]</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#EBA0AC">    toggleTheme</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#A6E3A1">`App theme-</span><span style="color:#9399B2">${</span><span style="color:#EBA0AC">theme</span><span style="color:#9399B2">}</span><span style="color:#A6E3A1">`</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">ThemeContext.Provider</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">providerValue</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">Toggle</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">List</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#F5C2E7">ThemeContext.Provider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p><code>Toggle</code> 과 <code>List</code> 컴포넌트가 <code>ThemeContext</code> Provider의 자식 컴포넌트로 존재하는 동안 <code>value</code> 로 넘겼던 <code>theme</code> 과 <code>toggleTheme</code> 값에 접근할 수 있다.</p>
+<p><code>Toggle</code> 컴포넌트 내에서는 테마 업데이트를 위해 <code>toggleTheme</code> 함수를 직접 호출할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> React</span><span style="color:#9399B2">,</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> useContext </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> 'react'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> ThemeContext </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> './App'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> Toggle</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> theme </span><span style="color:#94E2D5">=</span><span style="color:#89B4FA;font-style:italic"> useContext</span><span style="color:#CDD6F4">(</span><span style="color:#EBA0AC">ThemeContext</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">label</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"switch"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">input</span><span style="color:#F9E2AF"> type</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"checkbox"</span><span style="color:#F9E2AF"> onClick</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">theme</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">toggleTheme</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">span</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"slider round"</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">label</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p><code>List</code> 컴포넌트는 현재 테마의 값을 사용하지 않지만, <code>ListItem</code> 은 theme 컨텍스트를 직접 사용할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> React</span><span style="color:#9399B2">,</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> useContext </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> 'react'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> ThemeContext </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> './App'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> TextBox</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> theme </span><span style="color:#94E2D5">=</span><span style="color:#89B4FA;font-style:italic"> useContext</span><span style="color:#CDD6F4">(</span><span style="color:#EBA0AC">ThemeContext</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">li</span><span style="color:#F9E2AF"> style</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">theme</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">theme</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">...</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">li</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>이것으로 테마를 쓰지 않는 컴포넌트가 불필요하게 데이터를 받지 않도록 구현했다.</p>
+<iframe src="https://codesandbox.io/embed/provider-2-9djpl?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="provider-2" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> React</span><span style="color:#9399B2">,</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> useState </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> 'react'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#A6E3A1"> './styles.css'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> List </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> './List'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> Toggle </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> './Toggle'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> const</span><span style="color:#CDD6F4"> themes </span><span style="color:#94E2D5">=</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">  light</span><span style="color:#94E2D5">:</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">    background</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#fff'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    color</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#000'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  },</span></span>
+<span class="line"><span style="color:#CDD6F4">  dark</span><span style="color:#94E2D5">:</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">    background</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#171717'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    color</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#fff'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  },</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> const</span><span style="color:#CDD6F4"> ThemeContext </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> React</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">createContext</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">theme</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setTheme</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'dark'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  function</span><span style="color:#89B4FA;font-style:italic"> toggleTheme</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">    setTheme</span><span style="color:#CDD6F4">(</span><span style="color:#EBA0AC">theme</span><span style="color:#94E2D5"> ===</span><span style="color:#A6E3A1"> 'light'</span><span style="color:#94E2D5"> ?</span><span style="color:#A6E3A1"> 'dark'</span><span style="color:#94E2D5"> :</span><span style="color:#A6E3A1"> 'light'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#A6E3A1">`App theme-</span><span style="color:#9399B2">${</span><span style="color:#EBA0AC">theme</span><span style="color:#9399B2">}</span><span style="color:#A6E3A1">`</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">ThemeContext.Provider</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{{</span><span style="color:#CDD6F4"> theme</span><span style="color:#94E2D5">:</span><span style="color:#EBA0AC"> themes</span><span style="color:#CDD6F4">[</span><span style="color:#EBA0AC">theme</span><span style="color:#CDD6F4">]</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC"> toggleTheme</span><span style="color:#9399B2"> }}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;></span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;</span><span style="color:#F5C2E7">Toggle</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;</span><span style="color:#F5C2E7">List</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;/></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#F5C2E7">ThemeContext.Provider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<h2 id="hooks">Hooks</h2>
+<p>각 컴포넌트에서 <code>useContext</code> 를 직접 import하는 대신 필요로 하는 컨텍스트를 직접 반환하는 훅을 구현할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> useThemeContext</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> theme </span><span style="color:#94E2D5">=</span><span style="color:#89B4FA;font-style:italic"> useContext</span><span style="color:#CDD6F4">(ThemeContext)</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> theme</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>훅이 유효하게 사용되는지 검증하기 위해 컨텍스트가 falsy value일 때 예외를 발생시키도록 구현한다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> useThemeContext</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> theme </span><span style="color:#94E2D5">=</span><span style="color:#89B4FA;font-style:italic"> useContext</span><span style="color:#CDD6F4">(ThemeContext)</span></span>
+<span class="line"><span style="color:#CBA6F7">  if</span><span style="color:#CDD6F4"> (</span><span style="color:#94E2D5">!</span><span style="color:#CDD6F4">theme) </span><span style="color:#9399B2">{</span></span>
+<span class="line"><span style="color:#CBA6F7">    throw</span><span style="color:#CBA6F7;font-weight:bold"> new</span><span style="color:#89B4FA;font-style:italic"> Error</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'useThemeContext must be used within ThemeProvider'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> theme</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>컴포넌트들을 <code>ThemeContext.Provider</code> 로 직접 래핑하게 하는 것 대신. HOC를 만들어 간단하게 쓸 수 있도록 할 수 있다. 이렇게 하면 컨텍스트 로직과 렌더링 로직을 분리하여 재 사용성을 증가시킬 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> ThemeProvider</span><span style="color:#9399B2">({</span><span style="color:#EBA0AC;font-style:italic"> children</span><span style="color:#9399B2"> })</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">theme</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setTheme</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'dark'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  function</span><span style="color:#89B4FA;font-style:italic"> toggleTheme</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">    setTheme</span><span style="color:#CDD6F4">(theme </span><span style="color:#94E2D5">===</span><span style="color:#A6E3A1"> 'light'</span><span style="color:#94E2D5"> ?</span><span style="color:#A6E3A1"> 'dark'</span><span style="color:#94E2D5"> :</span><span style="color:#A6E3A1"> 'light'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> providerValue </span><span style="color:#94E2D5">=</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">    theme</span><span style="color:#94E2D5">:</span><span style="color:#CDD6F4"> themes[theme]</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    toggleTheme</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#F5C2E7">ThemeContext.Provider</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">providerValue</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">      {</span><span style="color:#CDD6F4">children</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#F5C2E7">ThemeContext.Provider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#A6E3A1">`App theme-</span><span style="color:#9399B2">${</span><span style="color:#EBA0AC">theme</span><span style="color:#9399B2">}</span><span style="color:#A6E3A1">`</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">ThemeProvider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">Toggle</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">List</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#F5C2E7">ThemeProvider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>하위 컴포넌트들은 이제 <code>ThemeContext</code> 의 컨텍스트에 접근하기 위해 <code>useThemeContext</code> 훅을 사용하면 된다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> TextBox</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> theme </span><span style="color:#94E2D5">=</span><span style="color:#89B4FA;font-style:italic"> useThemeContext</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">li</span><span style="color:#F9E2AF"> style</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">theme</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">theme</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">...</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">li</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>각기 다른 컨텍스트를 위한 훅을 만드는 것으로 쉽게 컴포넌트의 렌더 로직과 Provider의 로직을 분리할 수 있다.</p>
+<hr>
+<h2 id="사례-분석">사례 분석</h2>
+<p>어떤 라이브러리는 자식 컴포넌트들이 값을 쉽게 사용할 수 있도록 자체적으로 Provider를 제공한다. <a href="https://styled-components.com/docs/advanced">styled-components</a> 가 좋은 예시이다.</p>
+<blockquote>
+<p>아래 예제를 이해하는데 styled-components에 대한 경험은 필요 없습니다.</p>
+</blockquote>
+<p>styled-components는 <code>ThemeProvider</code> 를 제공하므로 직접 구현할 필요가 없다. 각 styled component는 해당 Provider의 값에 접근할 수 있다.</p>
+<p>위에 구현했던 예제와 같은 예시를 styled-components를 활용하여 구현하였다. <code>ThemeProvider</code> 를 styled-componets 로 부터 import하는것을 볼 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> ThemeProvider </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> 'styled-components'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">theme</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setTheme</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'dark'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  function</span><span style="color:#89B4FA;font-style:italic"> toggleTheme</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">    setTheme</span><span style="color:#CDD6F4">(</span><span style="color:#EBA0AC">theme</span><span style="color:#94E2D5"> ===</span><span style="color:#A6E3A1"> 'light'</span><span style="color:#94E2D5"> ?</span><span style="color:#A6E3A1"> 'dark'</span><span style="color:#94E2D5"> :</span><span style="color:#A6E3A1"> 'light'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#A6E3A1">`App theme-</span><span style="color:#9399B2">${</span><span style="color:#EBA0AC">theme</span><span style="color:#9399B2">}</span><span style="color:#A6E3A1">`</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">ThemeProvider</span><span style="color:#F9E2AF"> theme</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">themes</span><span style="color:#CDD6F4">[</span><span style="color:#EBA0AC">theme</span><span style="color:#CDD6F4">]</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;></span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;</span><span style="color:#F5C2E7">Toggle</span><span style="color:#F9E2AF"> toggleTheme</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">toggleTheme</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;</span><span style="color:#F5C2E7">List</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;/></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#F5C2E7">ThemeProvider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p><code>ListItem</code> 컴포넌트에 inline style prop을 넣어 주는 대신 <code>[styled.li](http://styled.li)</code> 컴포넌트를 만들었다. 해당 컴포넌트 역시 styled-component 이므로 theme 의 값에 접근할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> styled </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> 'styled-components'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> ListItem</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#F5C2E7">Li</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod</span></span>
+<span class="line"><span style="color:#CDD6F4">      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim</span></span>
+<span class="line"><span style="color:#CDD6F4">      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</span></span>
+<span class="line"><span style="color:#CDD6F4">      commodo consequat.</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#F5C2E7">Li</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> Li </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> styled</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">li</span><span style="color:#A6E3A1">`</span></span>
+<span class="line"><span style="color:#9399B2">  ${</span><span style="color:#9399B2">({</span><span style="color:#EBA0AC;font-style:italic"> theme</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#A6E3A1"> `</span></span>
+<span class="line"><span style="color:#A6E3A1">     background-color: </span><span style="color:#9399B2">${</span><span style="color:#CDD6F4">theme</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">backgroundColor</span><span style="color:#9399B2">}</span><span style="color:#A6E3A1">;</span></span>
+<span class="line"><span style="color:#A6E3A1">     color: </span><span style="color:#9399B2">${</span><span style="color:#CDD6F4">theme</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">color</span><span style="color:#9399B2">}</span><span style="color:#A6E3A1">;</span></span>
+<span class="line"><span style="color:#A6E3A1">  `</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#A6E3A1">`</span></span>
+<span class="line"></span></code></pre>
+<p>이렇게 ThemeProvider 의 값을 모든 styled-components 가 쉽게 활용할 수 있다.</p>
+<iframe src="https://codesandbox.io/embed/provider-3-gbuls?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="provider-3" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> React</span><span style="color:#9399B2">,</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> useState </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> 'react'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> ThemeProvider </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> 'styled-components'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#A6E3A1"> './styles.css'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> List </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> './List'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> Toggle </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> './Toggle'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> const</span><span style="color:#CDD6F4"> themes </span><span style="color:#94E2D5">=</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">  light</span><span style="color:#94E2D5">:</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">    background</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#fff'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    color</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#000'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  },</span></span>
+<span class="line"><span style="color:#CDD6F4">  dark</span><span style="color:#94E2D5">:</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">    background</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#171717'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    color</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '#fff'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  },</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">export</span><span style="color:#CBA6F7"> default</span><span style="color:#CBA6F7"> function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">theme</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setTheme</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'dark'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  function</span><span style="color:#89B4FA;font-style:italic"> toggleTheme</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">    setTheme</span><span style="color:#CDD6F4">(</span><span style="color:#EBA0AC">theme</span><span style="color:#94E2D5"> ===</span><span style="color:#A6E3A1"> 'light'</span><span style="color:#94E2D5"> ?</span><span style="color:#A6E3A1"> 'dark'</span><span style="color:#94E2D5"> :</span><span style="color:#A6E3A1"> 'light'</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#A6E3A1">`App theme-</span><span style="color:#9399B2">${</span><span style="color:#EBA0AC">theme</span><span style="color:#9399B2">}</span><span style="color:#A6E3A1">`</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">ThemeProvider</span><span style="color:#F9E2AF"> theme</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">themes</span><span style="color:#CDD6F4">[</span><span style="color:#EBA0AC">theme</span><span style="color:#CDD6F4">]</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;></span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;</span><span style="color:#F5C2E7">Toggle</span><span style="color:#F9E2AF"> toggleTheme</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#EBA0AC">toggleTheme</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;</span><span style="color:#F5C2E7">List</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;/></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#F5C2E7">ThemeProvider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<hr>
+<h2 id="장점">장점</h2>
+<p>컴포넌트 트리의 각 노드에 데이터를 전달하지 않아도 다수의 컴포넌트에 데이터를 전달할 수 있다.</p>
+<p>리펙토링 과정에 개발자가 실수할 확률을 줄여준다. 이전에는 prop의 이름을 변경하기 위해서 모든 컴포넌트를 찾아다니며 코드를 수정해야 했다.</p>
+<p>prop-drilling을 하지 않아도 된다. 이전에는 앱의 데이터 흐름을 알기 매우 어려웠다. 어떤 prop이 어디서 생겨나고 어디서 사용되는지 파악이 어려웠다. Provider 패턴을 이용하면 데이터가 필요없는 컴포넌트에 불필요하게 prop을 받을 필요가 없어진다.</p>
+<p>컴포넌트들이 전역 상태에 접근할 수 있도록 Provider 패턴을 활용하여 전역 상태를 유지하자.</p>
+<hr>
+<h2 id="단점">단점</h2>
+<p>Provider 패턴을 과하게 사용할 경우 특정 상황에서 성능 이슈가 발생할 수 있다. 컨텍스트를 참조하는 모든 컴포넌트는 컨텍스트 변경시마다 모두 리렌더링된다.</p>
+<p>아래 예제는 단순한 카운터로 <code>Increment</code> 버튼은 <code>Button</code> 컴포넌트 안에 있고. <code>Reset</code> 버튼은 <code>Reset</code> 컴포넌트 안에 있다. reset을 누르면 카운트가 0으로 초기화된다.</p>
+<p><code>Increment</code> 버튼을 누르면 카운트만 증가되는것이 아니라 예상과 달리 Reset 컴포넌트 내의 date도 리렌더링되는것을 볼 수 있다.</p>
+<iframe src="https://codesandbox.io/embed/provider-4-4ke0w?fontsize=14&#x26;hidenavigation=1&#x26;theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="provider-4" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#CDD6F4"> CountContext </span><span style="color:#94E2D5">=</span><span style="color:#89B4FA;font-style:italic"> createContext</span><span style="color:#CDD6F4">(</span><span style="color:#CBA6F7">null</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Reset</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> setCount </span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useCountContext</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"app-col"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">button</span><span style="color:#F9E2AF"> onClick</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{()</span><span style="color:#CBA6F7"> =></span><span style="color:#89B4FA;font-style:italic"> setCount</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">0</span><span style="color:#CDD6F4">)</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Reset count</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">button</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Last reset: </span><span style="color:#9399B2">{</span><span style="color:#89B4FA;font-style:italic">moment</span><span style="color:#CDD6F4">()</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">format</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'h:mm:ss a'</span><span style="color:#CDD6F4">)</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Button</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> count</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setCount </span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useCountContext</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"app-col"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">button</span><span style="color:#F9E2AF"> onClick</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{()</span><span style="color:#CBA6F7"> =></span><span style="color:#89B4FA;font-style:italic"> setCount</span><span style="color:#CDD6F4">(count </span><span style="color:#94E2D5">+</span><span style="color:#FAB387"> 1</span><span style="color:#CDD6F4">)</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Increment</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">button</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Current count: </span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">count</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> useCountContext</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> context </span><span style="color:#94E2D5">=</span><span style="color:#89B4FA;font-style:italic"> useContext</span><span style="color:#CDD6F4">(CountContext)</span></span>
+<span class="line"><span style="color:#CBA6F7">  if</span><span style="color:#CDD6F4"> (</span><span style="color:#94E2D5">!</span><span style="color:#CDD6F4">context)</span></span>
+<span class="line"><span style="color:#CBA6F7">    throw</span><span style="color:#CBA6F7;font-weight:bold"> new</span><span style="color:#89B4FA;font-style:italic"> Error</span><span style="color:#CDD6F4">(</span></span>
+<span class="line"><span style="color:#A6E3A1">      'useCountContext has to be used within CountContextProvider'</span></span>
+<span class="line"><span style="color:#CDD6F4">    )</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> context</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> CountContextProvider</span><span style="color:#9399B2">({</span><span style="color:#EBA0AC;font-style:italic"> children</span><span style="color:#9399B2"> })</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">count</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setCount</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">0</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#F5C2E7">CountContext.Provider</span><span style="color:#F9E2AF"> value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{{</span><span style="color:#CDD6F4"> count</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setCount </span><span style="color:#9399B2">}}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">      {</span><span style="color:#CDD6F4">children</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#F5C2E7">CountContext.Provider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> App</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"App"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">CountContextProvider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">Button</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">Reset</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#F5C2E7">CountContextProvider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CDD6F4">ReactDOM</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">render</span><span style="color:#CDD6F4">(</span><span style="color:#94E2D5">&#x3C;</span><span style="color:#F5C2E7">App</span><span style="color:#94E2D5"> /></span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> document</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">getElementById</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'root'</span><span style="color:#CDD6F4">))</span></span>
+<span class="line"></span></code></pre>
+<p><code>Reset</code> 컴포넌트는 <code>useCountContext</code> 를 사용하고 있기 때문에 리렌더링된다. 비슷한 소규모 앱에서는 이것이 큰 문제가 되지는 않지만, 큰 규모의 앱에서는 여러 앱 끼리 자주 업데이트 된 값을 넘길 경우 성능에 악영향을 끼칠 수 있다.</p>
+<p>컴포넌트 쓰지 않는 값의 업데이트로 인해 불필요하게 렌더링되는것을 막기 위해서는 여러 Provider로 쪼갤 필요가 있다.</p>
+<h3 id="참조">참조</h3>
+<ul>
+<li><strong><a href="https://reactjs.org/docs/context.html">Context - React</a></strong></li>
+<li><strong><a href="https://kentcdodds.com/blog/how-to-use-react-context-effectively">How To Use React Context Effectively - Kent C. Dodds</a></strong></li>
+</ul> </div> </div>  </div> </div> </div>  </main> </body></html> 

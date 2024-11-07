@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="ko" data-astro-cid-sckkx6r4> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.16.6" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/performance-patterns/prpl-pattern/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="PRPL Pattern"><meta property="og:type" content="article"><meta property="og:image" content="./prpl-pattern.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/performance-patterns/prpl-pattern/"><meta property="og:image:url" content="./prpl-pattern.jpg"><meta property="og:image:alt" content="PRPL Pattern"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="/favicon.png" rel="icon" sizes="any" type="image/png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CnWBadwT.css">
+<link rel="stylesheet" href="/_astro/_slug_.OicVUOHF.css"><script type="module" src="/_astro/hoisted.4sIGGDry.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body data-astro-cid-sckkx6r4> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" title="Change color theme" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative" data-astro-cid-sckkx6r4>  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li class="active" data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-72" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>PRPL Pattern</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=performance-patterns/prpl-pattern" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/prpl/" target="_blank">patterns.dev - PRPL Pattern</a></aside>
+<aside>
+  💡 역자 주: PRPL은 아래 항목의 첫 글자를 딴 약자이다. 아래 최적화 항목들을 종합적으로 적용한다는 관점에서 글을 보면 이해가 빠를 것이다.
+  <ul style="margin-top:1rem;margin-bottom:0">
+    <li><strong>Push</strong> (or preload) the most important resources (첫 페이지에 중요한 리소스는 push 혹은 preload 한다)</li>
+    <li><strong>Render</strong> the initial route as soon as possible (첫 페이지를 빠르게 렌더한다)</li>
+    <li><strong>Pre-cache</strong> remaining routes (첫 페이지 외의 라우팅을 프리 캐시한다)</li>
+    <li><strong>Lazy-load</strong> other routes and non-critical assets (다른 중요하지 않는 리소스는 지연로딩한다)</li>
+  </ul>
+</aside>
+<p>우리가 만든 앱을 전 세계에 서빙하는것은 꽤나 도전적인 일이다. 이를 위해서는 성능이 좋지 않은 단말 혹은 네트워크 환경이 좋지 않은 곳에서도 일정 이상의 성능을 보장해야 한다. 이런 어려운 환경에서도 앱을 효율적으로 로드할 수 있도록 하기 위해 PRPL 패턴을 사용할 수 있다.</p>
+<p>PRPL패턴은 성능과 관련된 아래의 주요 고려 사항들에 초점이 맞춰져 있다.</p>
+<ul>
+<li>서버와의 라운드트립을 줄이고 로딩 타임을 감소시키기 위해. 클라이언트 측에 중요 리소스를 효율적으로 전달한다.</li>
+<li>UX를 위해 초기 탐색 경로에 대한 페이지를 가능한 빨리 렌더링한다.</li>
+<li>백그라운드에서 에셋들을 캐시하여 서버로의 요청을 줄이고 오프라인 상태일때에 더 나은 경험을 제공한다.</li>
+<li>자주 요청되지 않는 에셋들을 지연로딩한다.</li>
+</ul>
+<hr>
+<p>어떤 사이트에 접속하려면 먼저 필요한 리소스들을 다운로드 받기 위한 요청을 해야 한다. 그 다음 서버로부터 앱의 초기 html을 포함하는 엔트리포인트 파일들이 응답된다. 브라우저의 html파서는 서버에서 이런 데이터들을 받는 즉시 처리하기 시작한다. 처리중에 파서가 스타일이나 스크립트와 같은 추가적인 리소스를 받아야 하는것을 알게 되면. 해당되는 리소스를 받기 위한 http요청을 추가적으로 보내게 된다.</p>
+<p><video width="100%" src="/performance-prpl01.mp4" autoplay controls playsinline loop></video></p>
+<p>이렇게 반복적으로 리소스를 요청하면 성능에 악영향을 줄 수 있다. 앞서 언급했던대로 서버와 클라이언트간의 “라운드트립 최소화”를 적용해 보도록 하자.</p>
+<hr>
+<p>우린 오랫동안 서버와 클라이언트 간 통신을 위해 HTTP/1.1 프로토콜을 사용해 왔다. HTTP/1.1은 HTTP/1.0 에 비해 많은 향상이 이루어졌다. 예를 들어 get 요청에 <code>keep-alive</code>헤더를 포함시켜 클라이언트 와 서버간 TCP커넥션을 유지시킬 수 있게 되었지만, 이 기능에는 해결되어야 하는 몇가지 문제들이 있다.</p>
+<p>HTTP/2 는 HTTP/1.1 에 비해 몇몇 중요한 업데이트가 이루어졌는데. 이로 인해 서버와 클라이언트 간의 메시지 교환을 쉽게 최적화할 수 있게 되었다.</p>
+<p>HTTP/1.1이 요청과 응답을 위해 개행으로 구분되는 일반 텍스트 프로토콜을 사용하는 반면, HTTP/2 는 요청과 응답들을 프레임이라 불리는 작은 조각들로 나눈다. 하나의 HTTP요청은 헤더와 본문을 포함하고 있으며 최소 2개의 프레임을 포함한다. 바로 헤더 프레임과 데이터 프레임이다.</p>
+<p>HTTP/1.1은 클라이언트와 서버 간 TCP커넥션을 최대 6개까지만 만들 수 있다. 새로운 요청이 동일한 TCP커넥션을 통해 보내지려면. 이전 요청이 완료되어야 한다. 이전 요청이 완료되는데 오래 걸리면 클라이언트로부터 보내어진 다른 요청들은 모두 블록된다. 이 이슈를 head of line blocking이라 하고. 특정 리소스에 대한 로딩 타임을 증가시킬 수 있다.</p>
+<p>HTTP/2는 단일 TCP커넥션 내에서 여러 양방향 스트림을 만들 수 있다. 클라이언트와 서버는 이 여러 스트림들 내에서 여러 요청과 응담 프레임들을 주고받게 된다.</p>
+<p>서버가 특정 요청에 대한 모든 프레임을 받고 나면. 이를 재조립하고 응답 프레임을 생성한다. 이 응답 프레임은 클라이언트에 보내지며 똑같이 재조립된다. 이 스트림은 양방향으로 데이터 전달이 가능하기 때문에 하나의 스트림에서 요청, 응답 프레임 모두 전달이 가능하다.</p>
+<p><video width="100%" src="/performance-prpl02.mp4" autoplay controls playsinline loop></video></p>
+<p>HTTP/2는 단일 TCP커넥션에 여러 요청을 보낼 수 있어 위에 언급한 head of line blocking이슈가 발생하지 않는다.</p>
+<hr>
+<p>HTTP/2 는 server push라는 최적화된 데이터 요청 기능이 제공된다. 리소스를 받기 위해 각각의 HTTP요청을 명시적으로 보내는 대신, 서버는 추가적인 리소스들을 의도적으로 “push”할 수 있다.</p>
+<p><video width="100%" src="/performance-prpl03.mp4" autoplay controls playsinline loop></video></p>
+<p>이렇게 서버로부터 “push” 된 리소스들은 클라이언트 도착과 동시에 브라우저 캐시에 저장된다. 엔트리 파일(eg. index.html)이 파싱되다가 추가 리소스가 발견되었을 때 이전처럼 별도의 HTTP요청을 보내는 대신 리소스를 캐시로부터 꺼내어 사용하게 된다.</p>
+<p>리소스 push가 추가적인 리소스를 받는데 소요되는 시간을 줄여주긴 하지만, 해당 리소스들은 HTTP캐시 처리되지는 않는다. push된 리소스들은 다음 번 사이트 방문에는 사용할 수 없기 때문에 다시 요청을 하게 될 것이다. 이런 문제를 해결하기 위해 PRPL패턴에서는 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">서비스 워커</a>를 사용하여 초기 로드 후의 리소스들을 캐싱하고 클라이언트가 불필요한 요청을 하지 않도록 한다.</p>
+<hr>
+<p>브라우저가 어느정도 추측하기는 하지만 사이트의 개발자는 일반적으로 어떤 리소스가 먼저 받아져야 하는 중요 리소스인지 알고 있다. 이를 <code>preload</code>리소스 힌트를 사용하여 브라우저에게 중요 리소스를 직접 알려줄 수 있다.</p>
+<p>특정 리소스에 힌트를 사용하여 알려줌으로 인해 브라우저가 따로 찾지 않아도 해당 리소스를 빠르게 로드할 수 있게 되는 것이다. preload는 현재 탐색 경로에 있어 중요한 리소스를 로드하는 데 걸리는 시간을 최적화하기 위한 좋은 방법이다.</p>
+<p>preloading이 로딩 타임과 라운드트립을 줄이는 좋은 방법이긴 하지만, 너무 많은 파일을 이렇게 처리하면 문제가 될 수 있다. 브라우저 캐시에는 제한이 있고. 클라이언트가 실제로 사용하지 않는 리소스들에도 네트워크 대역폭을 낭비하게 된다.</p>
+<hr>
+<p>PRPL패턴은 초기 로딩 속도를 최적화하는 데 초점이 맞춰져 있다. 처음 탐색된 페이지의 렌더링이 완료될 때 까지 다른 리소스들은 로드되지 않는다.</p>
+<p>같은 목적을 달성하기 위해 코드 스플리팅을 적용하여 코드들을 작고 효율적으로 나눌 수 있다. 이렇게 나눠지는 번들은 클라이언트에서 필요로 할 때만 로드되며 캐시하기 용이해지도록 만드는 것이다.</p>
+<p>그러나 크기가 큰 번들을 캐시하게 되면 문제가 발생할 수 있다. 그 문제는 여러 번들들이 같은 리소스를 공유할때 발생한다.</p>
+<p><video width="100%" src="/performance-prpl04.mp4" autoplay controls playsinline loop></video></p>
+<p>브라우저는 어떤 번들이 여러 라우팅 경로에서 공유되어 사용될 지 알 수 없기 때문에 이런 리소스들을 캐시할 수 없다. 하지만 리소스 캐싱은 라운드트립 최소화 뿐만 아니라 앱의 오프라인 처리 관련해서도 꼭 해결되어야 하는 문제이다.</p>
+<p>PRPL패턴을 적용할 때는 요청되는 번들이 필요한 최소한의 리소스를 포함하며, 브라우저 캐시가 가능한지를 확인해야 한다. 달리 생각하면 결국 번들이 없는 것이 효율적이라는 이야기가 되며, 번들되지 않은 모듈로 조금더 심플하게 앱을 구성할 수 있다.</p>
+<p>앱을 번들하여 동적으로 최소한의 리소스를 받아오게 하면 서버와 브라우저에 HTTP/2 를 적용하거나 리소스 캐시를 효과적으로 적용하는데 도움이 된다. 브라우저가 HTTP/2 push를 지원하지 않는 경우 별도의 빌드를 제공하여 라운드트립의 수를 줄일수도 있다. 클라이언트는 어떤 것이 받아지는지 알 필요 없이 서버가 브라우저에 맞춰 응답하는 것이다.</p>
+<hr>
+<p>메인 엔트리 포인트에 앱 쉘을 사용하는 방법을 PRPL 패턴에서 종종 사용한다. 앱 쉘은 모든 라우팅 경로에서 사용하는 앱의 최소한의 로직들이다. 앱 쉘은 앱의 라우터를 포함하므로 동적으로 필요 리소스를 요청할수도 있다.</p>
+<p><video width="100%" src="/performance-prpl05.mp4" autoplay controls playsinline loop></video></p>
+<p>PRPL 패턴에서는 첫 탐색 페이지가 사용자의 단말에 보여지기 전 까지 다른 리소스를 추가적으로 받지 않는다. 초기 라우팅이 완료되면 서비스워커가 설치되어 백그라운드에서 자주 방문하는 경로의 리소스를 다운로드하게 된다.</p>
+<p><video width="100%" src="/performance-prpl06.mp4" autoplay controls playsinline loop></video></p>
+<p>데이터를 백그라운드에서 받기 때문에 사용자는 무언가 지연시간을 느끼지 않는다. 사용자가 서비스워커가 캐싱한 자주 방문했던 페이지로 이동하면. 서비스워커가 즉시 캐시된 컨텐츠를 받아 화면에 보여준다.</p>
+<p>그 외에 자주 방문하지 않는 경로에 대한 리소스는 동적으로 가져오도록 구성하는 것이다.</p> </div> </div>  </div> </div> </div>  </main> </body></html> 
