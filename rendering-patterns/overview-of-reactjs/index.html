@@ -1,0 +1,506 @@
+<!DOCTYPE html><html lang="ko" data-astro-cid-sckkx6r4> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.16.6" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/rendering-patterns/overview-of-reactjs/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="Reactjs의 개요"><meta property="og:type" content="article"><meta property="og:image" content="./overview-of-reactjs.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/rendering-patterns/overview-of-reactjs/"><meta property="og:image:url" content="./overview-of-reactjs.jpg"><meta property="og:image:alt" content="Reactjs의 개요"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="/favicon.png" rel="icon" sizes="any" type="image/png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CnWBadwT.css">
+<link rel="stylesheet" href="/_astro/_slug_.OicVUOHF.css"><script type="module" src="/_astro/hoisted.4sIGGDry.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body data-astro-cid-sckkx6r4> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" title="Change color theme" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative" data-astro-cid-sckkx6r4>  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li class="active" data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-72" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>Reactjs의 개요</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=rendering-patterns/overview-of-reactjs" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/reactjs/" target="_blank">patterns.dev - overview of reactjs</a></aside>
+<img  src="/_astro/react-logo@3x.D0A8BOtd_1XE1b6.svg" alt="" width="800" height="446" loading="lazy" decoding="async">
+<p>지난 몇 년간 JavaScript 를 사용하여 UI를 직접 구성하는것에 대한 수요가 증가했다. 이를 위해 UI를 개발하기 위해 페이스북이 개발한 오픈소스 라이브러리인 React가 사용되기 시작했다.</p>
+<p>React 가 유일한 UI 라이브러리는 아니다. Preact, Vue, Angular, Svelte, Lit 과 같이 훌륭한 도구들이 있지만. React의 인기를 고려할 때 여기서 설명하려는 렌더링 패턴을 언급함에 있어 한번 살펴볼만한 가치가 있다.</p>
+<p>개발자들은 웹 인터페이스를 위한 설계에 관련된 이야기를 많이 한다. 그리고 인터페이스의 주요 구성 요소는 버튼, 리스트, 네비게이션 등과 같은 것들이다. React는 이런 요소들을 조합해 인터페이스를 표현하기 위한 최적화되고 단순한 방법을 제시한다. 또 복잡하거나 구현하기 까다로운 인터페이스를 세 가지 주요 컨셉(Component, Props, State) 을 통해 쉽게 개발할 수 있도록 돕는다.</p>
+<p>React는 컴포넌트에 초점이 맞춰져 있기 때문에 웹의 디자인 시스템의 요소들을 구성하는데 적합하다. 그래서 본질적으로 React기반으로 설계하게 되면 모듈식으로 구성하는것에 대해 시너지가 발생하며, 완성된 페이지나 뷰를 보기 전에 개별 컴포넌트를 디자인하는게 가능해지므로 각 요소의 범위와 목적에 대해 충분히 이해할 수 있다. 이 과정을 컴포넌트화 라고 한다.</p>
+<h2 id="사용하게-될-용어-정리">사용하게 될 용어 정리</h2>
+<ul>
+<li><strong>React / React.js / ReactJS</strong> - 페이스북이 2013년에 개발한 라이브러리</li>
+<li><strong>ReactDOM</strong> - DOM과 서버 렌더링을 위한 패키지</li>
+<li><strong>JSX</strong> - JavaScript를 확장한 구문</li>
+<li><strong>Redux</strong> - 중앙화된 상태 컨테이너</li>
+<li><strong>Hooks</strong> - React에서 클래스 없이 상태 등을 사용할 수 있는 새로운 방법</li>
+<li><strong>ReactNative</strong> - JavaScript를 이용하여 크로스 플랫폼 네이티브 앱을 개발할 수 있는 라이브러리</li>
+<li><strong>Webpack</strong> - JavaScript 모듈 번들러, React 커뮤니티에서 유명함</li>
+<li><strong>CRA (Create React App)</strong> - React 앱을 만들고 프로젝트를 생성할 수 있는 CLI도구</li>
+<li><strong>Next.js</strong> - SSR, 코드 스플리팅, 성능 최적화, 기타 동급 최고의 기능을 포함한 React 프레임워크</li>
+</ul>
+<h2 id="jsx를-사용하여-렌더링하기">JSX를 사용하여 렌더링하기</h2>
+<p>아래 예제에서는 JSX를 사용할 것이다. JSX는 JavaScript를 확장한 구문으로 XML과 유사한 형태의 HTML템플릿을 포함하고 있다. 이는 사용되기 전에 유효한 JavaScript구문으로 변경된다. 다만 변환 결과는 구현에 따라 달라질 수 있다. JSX는 React에서 많은 인기를 얻었지만 이후 다른 구현체도 만들어졌다.</p>
+<img  src="/_astro/overview-of-reactjs01.Bfeh5WMp_ZASjyd.webp" alt="" width="1672" height="632" loading="lazy" decoding="async">
+<h2 id="component-props-state">Component, Props, State</h2>
+<p>실제로 React에서 보거나 수행할 모든 작업은 다음 주요 개념 중 적어도 하나로 분류할 수 있다. 아래에서 이러한 주요 개념을 간략히 살펴보자.</p>
+<h3 id="1-component">1. Component</h3>
+<img  src="/_astro/react-components@1.5x.Do0hTyi9_15GBG3.svg" alt="" width="800" height="446" loading="lazy" decoding="async">
+<p>컴포넌트는 React앱의 기본 빌딩 블록이다. 컴포넌트는 선택적으로 props를 받을 수 있고. 화면에 보여질 React엘리먼트들을 반환한다.</p>
+<p>React앱에서 화면에 보여지는 모든 것들은 컴포넌트이다. React앱은 컴포넌트 안의 컴포넌트 안의 컴포넌트이다. 그래서 개발자는 페이지를 개발하는 것이 아니라 컴포넌트를 개발한다.</p>
+<p>컴포넌트는 UI를 독립적이며 재사용 가능하도록 해 준다. 만약 페이지 위주의 디자인 경험만 있다면 이런 모듈 방식으로 디자인 하는것에 적응이 필요할 수 있다. 그러나 이미 디자인 시스템이나 스타일 가이드를 적용하고 있다면 아마 친숙할 것이다.</p>
+<p>일반적으로 컴포넌트는 함수를 작성하여 만들 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Badge</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">props</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Hello, my name is </span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">name</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>위 함수는 프로퍼티가 담긴 props 객체를 인자로 받고 React엘리먼트를 반환하므로 유효한 React 컴포넌트이다. 이런 형태의 컴포넌트를 함수형 컴포넌트라 한다.</p>
+<img  src="/_astro/overview-of-reactjs02.BCjjdmqV_1ngDsx.webp" alt="" width="1600" height="956" loading="lazy" decoding="async">
+<p>또 다른 형태의 컴포넌트로는 클래스 컴포넌트가 있다. 클래스 컴포넌트는 함수형 컴포넌트와 달리 ES6의 클래스 문법으로 정의할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">class</span><span style="color:#F9E2AF;font-style:italic"> Badge</span><span style="color:#CBA6F7"> extends</span><span style="color:#F9E2AF;font-style:italic"> React</span><span style="color:#94E2D5">.</span><span style="color:#F9E2AF;font-style:italic">Component</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#89B4FA;font-style:italic">  render</span><span style="color:#9399B2">()</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    return</span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Hello, my name is </span><span style="color:#9399B2">{</span><span style="color:#F38BA8">this</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">name</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">h1</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<h4 id="컴포넌트-추출하기">컴포넌트 추출하기</h4>
+<p>컴포넌트를 여러 컴포넌트로 쪼갤 수 있다는 것을 설명하기 위해 아래 <code>Tweet</code> 예제를 준비했다.</p>
+<img  src="/_astro/overview-of-reactjs03.DSlbr-GG_1yu8FK.webp" alt="" width="1600" height="846" loading="lazy" decoding="async">
+<p>위의 <code>Tweet</code> 컴포넌트는 아래와 같이 구현할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Tweet</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">props</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"User"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#89B4FA">img</span></span>
+<span class="line"><span style="color:#F9E2AF">          className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Avatar"</span></span>
+<span class="line"><span style="color:#F9E2AF">          src</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">author</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">avatarUrl</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">          alt</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">author</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">name</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">        /></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"User-name"</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">author</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">name</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet-text"</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">text</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">img</span></span>
+<span class="line"><span style="color:#F9E2AF">        className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet-image"</span></span>
+<span class="line"><span style="color:#F9E2AF">        src</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">image</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">imageUrl</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        alt</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">image</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">description</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">      /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet-date"</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#89B4FA;font-style:italic">formatDate</span><span style="color:#CDD6F4">(props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">date)</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>이 컴포넌트는 너무 큰 덩어리로 이루어져 있어 수정하기가 조금 어렵고 각 부분을 재사용하기 역시 어렵다. 그렇지만 여기서 몇 가지의 컴포넌트를 추출할 수 있다.</p>
+<p>첫번째로 뽑아낼 것은 <code>Avatar</code> 컴포넌트이다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Avatar</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">props</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">img</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Avatar"</span><span style="color:#F9E2AF"> src</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">user</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">avatarUrl</span><span style="color:#9399B2">}</span><span style="color:#F9E2AF"> alt</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">user</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">name</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p><code>Avatar</code> 컼포넌트는 <code>Tweet</code> 컴포넌트가 어떻게 렌더링 되는지에 대해서는 몰라도 된다. 따라서 <code>Tweet</code>의 “작성자” 라는 prop 이름보다 “사용자” 라는 일반적인 prop이름을 사용했다.</p>
+<p>이제 컴포넌트를 조금 단순화 할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Tweet</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">props</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"User"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">Avatar</span><span style="color:#F9E2AF"> user</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">author</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"User-name"</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">author</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">name</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet-text"</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">text</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">img</span></span>
+<span class="line"><span style="color:#F9E2AF">        className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet-image"</span></span>
+<span class="line"><span style="color:#F9E2AF">        src</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">image</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">imageUrl</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        alt</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">image</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">description</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">      /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet-date"</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#89B4FA;font-style:italic">formatDate</span><span style="color:#CDD6F4">(props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">date)</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>다음으로는 <code>Avatar</code> 컴포넌트 옆에 사용자명을 출력하는 <code>User</code>컴포넌트를 만든다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> User</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">props</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"User"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">Avatar</span><span style="color:#F9E2AF"> user</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">user</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"User-name"</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">user</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">name</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>이제 <code>Tweet</code> 컴포넌트를 조금 더 단순화할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">function</span><span style="color:#89B4FA;font-style:italic"> Tweet</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">props</span><span style="color:#9399B2">)</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet"</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">User</span><span style="color:#F9E2AF"> user</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">author</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet-text"</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">text</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">img</span></span>
+<span class="line"><span style="color:#F9E2AF">        className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet-image"</span></span>
+<span class="line"><span style="color:#F9E2AF">        src</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">image</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">imageUrl</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        alt</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">image</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">description</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">      /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Tweet-date"</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#89B4FA;font-style:italic">formatDate</span><span style="color:#CDD6F4">(props</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">date)</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>컴포넌트를 추출하는 작업은 지루할 지 몰라도 이렇게 만들어낸 컴포넌트들은 큰 앱을 만들때 부담을 줄여준다. 컴포넌트를 위와 같이 단순화할 때의 좋은 기준은 다음과 같다: UI가 자주 재사용되거나 (버튼, 패널, 아바타) 캡슐화 할 만큼 복잡한 경우 (앱, 피드 스토리, 코멘트) 별개 컴포넌트로 분리하는것을 고려할 수 있다.</p>
+<h3 id="2-props">2. Props</h3>
+<p>Props는 컴포넌트의 프로퍼티이며, React의 컴포넌트들의 내부 데이터를 가리킨다. Props는 컴포넌트의 호출에서 만들어지고 다른 컴포넌트에게 전달된다. 또 <code>prop="value"</code> 처럼 HTML의 속성 구문과 동일하게 사용 가능하다. Props와 관련해서는 두가지를 기억하면 좋은데, 첫번째는 우린 컴포넌트 자체를 만들기 전에 prop으로 넘어갈 값들을 일종의 설계도 처럼 미리 정해놓을 것이다라는 것과, prop의 값은 변경할 수 없다는 것이다. 한번 컴포넌트에 들어오면 읽기만 가능하다는 것이다.</p>
+<p>함수 컴포넌트는 <code>prop</code>인자를 직접 사용하면 되고 클래스는 <code>this.props</code>의 값을 찹조하는것으로 props를 사용할 수 있다.</p>
+<h3 id="3-state">3. State</h3>
+<p>State는 컴포넌트가 마운트되고 언마운트 되기 전에 변경될 수 있는 값들을 가지고 있는 객체이다. 컴포넌트의 Prop에 저장된 데이터의 현재 스냅샷과 같은 개념으로 볼 수 있다. State는 계속 변화하기 때문에 개발자가 원하는 시점에 원하는 화면을 그려내기 위해서는 변화하는 데이터를 관리할 방법이 필요한데. 이 것을 “상태 관리” 라고 한다.</p>
+<img  src="/_astro/state-props%20(1).CTmDKC24_Z1TJrxD.svg" alt="" width="960" height="540" loading="lazy" decoding="async">
+<p>상태 관리에 대한 이해 없이 React코드를 읽고 이해하기란 불가능에 가깝다. 개발자들은 이 주제에 대하여 설명하는 것을 좋아하지만. 근본적인 부분에서 상태 관리는 보기보다 그렇게 복잡하지는 않다.</p>
+<p>React에서 State는 전역적으로 추적 가능하며 데이터는 필요에 따라 컴포넌트 간에 공유할 수 있다. 이것은 React 앱 내에서 데이터를 로드하는 동작이 다른 기술들과 비교해 리소스 차이가 크지 않다는 것을 의미한다. React앱은 데이터를 로드하고 저장하는 과정에서 스마트하게 동작하며 이는 데이터를 사용하는 인터페이스를 새로 그리는 계기가 된다.</p>
+<p>React의 컴포넌트들을 각각의 데이터와 로직과 뷰를 가진 하나의 작은 앱들이라고 생각해 보자. 각 컴포넌트들은 각자의 목적이 있을것인데. 개발자로써 우리는 각 컴포넌트들이 어떤 데이터를 가지고 어떻게 동작할지를 제어한다고 생각하면 된다. 다른 컴포넌트의 데이터는 크게 고려하지 않아도 된다. 앱을 설계할 때 이 장점을 다양하게 활용할 수 있다. 이로써 UX를 개선하기 위해 추가적인 데이터를 더 보여줄 수도 있고 디자인 내 각 영역들을 보다 상황에 적합하게 개발할 수 있다.</p>
+<h2 id="react에-어떻게-상태를-추가해야-할까">React에 어떻게 상태를 추가해야 할까?</h2>
+<p>컴포넌트들을 설계할 때 상태를 추가하는것은 가급적 가장 마지막에 해야 한다. 최대한 Props와 이벤트만 가지고 개발하는것이 컴포넌트를 유지하기 쉽고, 테스트하기 쉽고, 이해하기 쉽게 만든다. 상태를 추가하는것은 Redux 혹은 Mobx 또는 컨테이너/래퍼 컴포넌트를 사용하는게 좋다. Redux는 반응형 프레임웍을 위한 유명한 상태 관리 시스템이며 액션을 통해 다룰 수 있는 중앙화된 상태 관리 기능을 구현할 수 있다.</p>
+<img  src="/_astro/redux-details%20(1).CMd7ImJt_18Dkqy.svg" alt="" width="960" height="540" loading="lazy" decoding="async">
+<p>아래 예제에서 <code>LoginContainer</code> 컴포넌트에 상태를 추가해야 한다. React의 Hooks를 이용하여 이를 구현해 보자.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> LoginContainer</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ()</span><span style="color:#CBA6F7"> =></span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">username</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setUsername</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">''</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">password</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setPassword</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">''</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#89B4FA;font-style:italic"> login</span><span style="color:#94E2D5"> =</span><span style="color:#CBA6F7"> async</span><span style="color:#9399B2"> (</span><span style="color:#EBA0AC;font-style:italic">event</span><span style="color:#9399B2">)</span><span style="color:#CBA6F7"> =></span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">    event</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">preventDefault</span><span style="color:#CDD6F4">()</span></span>
+<span class="line"><span style="color:#CBA6F7">    const</span><span style="color:#CDD6F4"> response </span><span style="color:#94E2D5">=</span><span style="color:#CBA6F7"> await</span><span style="color:#89B4FA;font-style:italic"> fetch</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">'/api'</span><span style="color:#9399B2">,</span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CDD6F4">      method</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> 'POST'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">      body</span><span style="color:#94E2D5">:</span><span style="color:#FAB387"> JSON</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">stringify</span><span style="color:#CDD6F4">(</span><span style="color:#9399B2">{</span></span>
+<span class="line"><span style="color:#CDD6F4">        username</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">        password</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">      }</span><span style="color:#CDD6F4">)</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">    }</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">    // Here we could check response.status to login or show error</span></span>
+<span class="line"><span style="color:#9399B2">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#F5C2E7">LoginForm</span><span style="color:#F9E2AF"> onSubmit</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">login</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">FormInput</span></span>
+<span class="line"><span style="color:#F9E2AF">        name</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"username"</span></span>
+<span class="line"><span style="color:#F9E2AF">        title</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Username"</span></span>
+<span class="line"><span style="color:#F9E2AF">        onChange</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{(</span><span style="color:#EBA0AC;font-style:italic">event</span><span style="color:#9399B2">)</span><span style="color:#CBA6F7"> =></span><span style="color:#89B4FA;font-style:italic"> setUsername</span><span style="color:#CDD6F4">(event</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">currentTarget</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">value)</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">username</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">      /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">FormPasswordInput</span></span>
+<span class="line"><span style="color:#F9E2AF">        name</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"password"</span></span>
+<span class="line"><span style="color:#F9E2AF">        title</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Password"</span></span>
+<span class="line"><span style="color:#F9E2AF">        onChange</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{(</span><span style="color:#EBA0AC;font-style:italic">event</span><span style="color:#9399B2">)</span><span style="color:#CBA6F7"> =></span><span style="color:#89B4FA;font-style:italic"> setPassword</span><span style="color:#CDD6F4">(event</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">currentTarget</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">value)</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">password</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">      /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">SubmitButton</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Login</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#F5C2E7">SubmitButton</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#F5C2E7">LoginForm</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>위 예제와 관련된 추가 예제는 <a href="https://dev.to/lukeshiru/thinking-in-react-the-2020-version-4c18">Thinking in React 2020</a> 에서 확인할 수 있다.</p>
+<h2 id="props-vs-state">Props vs State</h2>
+<p>아래는 Props와 state의 주요 차이점이다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Props</th><th>State</th></tr></thead><tbody><tr><td>데이터는 컴포넌트 간 변경되지 않는 상태로 유지된다.</td><td>데이터는 컴포넌트의 Props안에 저장된 현재 상태의 스냅샷이어서 컴포넌트의 생명 주기 동안 계속 변경된다.</td></tr><tr><td>데이터는 읽기만 할 수 있다.</td><td>🤔 데이터를 수정할 수 있다.</td></tr><tr><td>props내의 데이터는 수정할 수 없다.</td><td>state내의 데이터는 this.setState를 통해 수정이 가능하다.</td></tr><tr><td>props는 부모 컴포넌트에게 받는다.</td><td>state는 컴포넌트 내에서 관리된다.</td></tr></tbody></table>
+<h2 id="react의-기타-컨셉들">React의 기타 컨셉들</h2>
+<p>컴포넌트, Props, State는 React에서 다루게 될 주요 컨셉이다. 하지만 아래에서는 다른 컨셉들에 대해서도 학습해 보자.</p>
+<h3 id="1-생명-주기">1. 생명 주기</h3>
+<p>모든 컴포넌트는 마운트되고, 렌더링되며 언마운트되는 단계를 거친다. 이 사이에 발생하는 일련의 이벤트들을 컴포넌트의 생명주기라고 이야기한다. 이런 이벤트 자체는 부분적으로 컴포넌트의 내부의 상태와 관련이 있지만 생명주기는 조금 다르다. React는 필요에 따라 컴포넌트를 로드하거나 언로드하는 내부 코드가 있고. 컴포넌트는 각 단계에서 이 내부 코드를 사용한다.</p>
+<p>생명 주기 메서드들 중에 가장 일반적인 것은:</p>
+<p>render() - 이 메서드는 클래스 컴포넌트에서만 필요하며 React 내에서 가장 많이 구현된 메서드이다. 이름 그대로 마운팅되고 렌더링 되는 과정 중에 컴포넌트의 UI 렌더링을 처리한다.</p>
+<p>컴포넌트가 생성되거나 제거될 때:</p>
+<ul>
+<li>componentDidMount() 컴포넌트의 출력 결과가 DOM에 렌더링되었을 때 실행된다.</li>
+<li>componentWillUnmount() 컴포넌트가 언마운트되고 제거될 때 즉시 호출된다.</li>
+</ul>
+<p>Props혹은 State가 업데이트 될 때:</p>
+<ul>
+<li>shouldComponentUpdate() 는 새로운 prop이나 state를 받아 렌더링 되기 직전에 호출된다.</li>
+<li>componentDidUpdate()는 업데이트가 일어난 직후 호출된다. 이 메서드는 최초 렌더링 직후에는 호출되지 않는다,</li>
+</ul>
+<h3 id="2-고차-함수-hoc">2. 고차 함수 (HOC)</h3>
+<p><a href="https://www.patterns.dev/posts/hoc-pattern">고차 함수</a>(HOC) 는 React에서 컴포넌트 재사용을 위한 고급 기술이다. hoc는 기본적으로 컴포넌트를 받아 컴포넌트를 반환하는 함수를 뜻한다. 이 패턴은 React의 구성적 특징에서 나온 패턴이다. 컴포넌트가 props를 UI로 변환할 때 고차함수 컴포넌트는 특정 컴포넌트를 다른 컴포넌트로 변환하고 이는 주로 서드파티 라이브러리에서 우리가 구현한 컴포넌트에 특정 기능을 추가하기 위해 주로 사용한다.</p>
+<h3 id="3-컨텍스트">3. 컨텍스트</h3>
+<p>보통 React에서 데이터는 props로 컴포넌트간에 전달되어 내려가는데. 이는 앱 내 여러 컴포넌트에서 필요로 하는데이터를 다루기에는 성가신 부분이 있다. 컨텍스트는 이런 종류의 데이터를 컴포넌트 계층 간에 명시적으로 넘기기 않더라도 사용할 수 있게 해 준다. 컨텍스트를 사용하면 특정 컴포넌트에게 데이터를 내려주기 위해 중간 컴포넌트에게 불필요한 데이터를 내려줄 필요가 없게 되는 것이다.</p>
+<h2 id="react-hooks">React Hooks</h2>
+<p>훅은 React의 상태나 생명주기 기능 중간에 개입할 수 있는 함수이다. 훅을 사용하면 클래스를 작성하지 않고도 state나 react의 기타 기능들을 활용할 수 있게 해 준다. <a href="/design-patterns/hooks-pattern/">훅 패턴</a>에서 관련된 내용을 학습할 수 있다.</p>
+<img  src="/_astro/overview-of-reactjs04.BoFgF3kM_kDqFQ.webp" alt="" width="1620" height="648" loading="lazy" decoding="async">
+<h2 id="react-로-앱을-구상해-보자">React 로 앱을 구상해 보자</h2>
+<p>React로 앱을 구상하다 보면 생각보다 꽤 괜찮은 라이브러리임을 깨달을 수 있다. 이 섹션에서 상품 목록을 검색하는 앱을 만들면서 구상하는 과정을 경험해 보자.</p>
+<h3 id="첫번째-단계-mock을-준비한다">첫번째 단계: Mock을 준비한다</h3>
+<p>아래 인터페이스를 위한 JSON API와 mock 이 있다고 가정해 보자.</p>
+<img  src="/_astro/overview-of-reactjs05.C0S-rMc3_Z199SrB.webp" alt="" width="2400" height="1434" loading="lazy" decoding="async">
+<p>JSON API는 아래와 같은 데이터를 응답한다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#9399B2">;</span><span style="color:#CDD6F4">[</span></span>
+<span class="line"><span style="color:#9399B2">  {</span></span>
+<span class="line"><span style="color:#CDD6F4">    category</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> 'Entertainment'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    retweets</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '54'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    isLocal</span><span style="color:#94E2D5">:</span><span style="color:#FAB387"> false</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    text</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> 'Omg. A tweet.'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  },</span></span>
+<span class="line"><span style="color:#9399B2">  {</span></span>
+<span class="line"><span style="color:#CDD6F4">    category</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> 'Entertainment'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    retweets</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '100'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    isLocal</span><span style="color:#94E2D5">:</span><span style="color:#FAB387"> false</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    text</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> 'Omg. Another.'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  },</span></span>
+<span class="line"><span style="color:#9399B2">  {</span></span>
+<span class="line"><span style="color:#CDD6F4">    category</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> 'Technology'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    retweets</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '32'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    isLocal</span><span style="color:#94E2D5">:</span><span style="color:#FAB387"> false</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    text</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> 'New ECMAScript features!'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  },</span></span>
+<span class="line"><span style="color:#9399B2">  {</span></span>
+<span class="line"><span style="color:#CDD6F4">    category</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> 'Technology'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    retweets</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> '88'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    isLocal</span><span style="color:#94E2D5">:</span><span style="color:#FAB387"> true</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">    text</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> 'Wow, learning React!'</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">  },</span></span>
+<span class="line"><span style="color:#CDD6F4">]</span></span>
+<span class="line"></span></code></pre>
+<p>위에서 사용한 도구는 <a href="https://excalidraw.com/">Excalidraw</a>이며 UI컴포넌트를 와이어프레이밍 해 볼때 매우 유용하다.</p>
+<h3 id="두번째-단계-ui를-컴포넌트-계층으로-나눈다">두번째 단계: UI를 컴포넌트 계층으로 나눈다</h3>
+<p>mock과 와이어프레임을 준비했다면 다음 할 일은 아래처럼 UI의 각 컴포넌트나 서브 컴포넌트에 박스를 그리고 각각 이름을 짓는 것이다.</p>
+<p>이 때 “단일 책임 원칙을” 상기해 보자: 하나의 컴포넌트는 하나의 기능만을 담당한다. 컴포넌트가 커지면 서브컴포넌트로 나눠야 한다. 함수나 객체를 만들 때에도 같은 기준을 적용하자.</p>
+<img  src="/_astro/overview-of-reactjs06.XyAOGK8p_113juJ.webp" alt="" width="2400" height="1434" loading="lazy" decoding="async">
+<p>위 이미지에서 보는 것 처럼 앱을 구성하기 위해 다섯 컴포넌트를 만들어야 한다. 또 각 컴포넌트를 위한 데이터들도 준비해야 한다.</p>
+<ul>
+<li>TweetSearchResult (오랜지색): 전체 컴포넌트의 컨테이너 역할</li>
+<li>SearchBar (파란색): 검색을 위한 사용자 입력</li>
+<li>TweetList (초록색): 사용자의 검색에 따라 트윗을 보여주고 필터링한다</li>
+<li>TweetCategory (연청색): 각 카테고리의 제목을 나타낸다</li>
+<li>TweetRow (붉은색): 각 트윗의 행을 표현한다</li>
+</ul>
+<p>와이어프레임으로부터 컴포넌트를 분리했으며 다음 할 일은 이를 계층 구조로 나타내 보는것이다. 화면에서 어떤 컴포넌트 내에 표현되는 컴포넌트를 아래와 같이 자식 컴포넌트로 나타낼 수 있다.</p>
+<ul>
+<li>TweetSearchResult
+<ul>
+<li>SearchBar</li>
+<li>TweetList
+<ul>
+<li>TweetCategory</li>
+<li>TweetRow</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="세번째-단계-react-컴포넌트를-구현한다">세번째 단계: React 컴포넌트를 구현한다</h3>
+<p>컴포넌트 계층을 그려본 뒤 할 일은 앱을 구현하는 것이다. 훅이 나오기 전 까진 빠르게 개발하기 위해서 데이터 모델과 UI만 구현하고 인터렉션을 생략했지만. 훅이 나온 후로는 아래와 같이 쉽게 개발할 수 있게 되었다.</p>
+<h4 id="i-필터-가능한-트윗-목록">i. 필터 가능한 트윗 목록</h4>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> TweetSearchResults</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ({</span><span style="color:#EBA0AC;font-style:italic"> tweets</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">filterText</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setFilterText</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">''</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#9399B2"> [</span><span style="color:#CDD6F4">inThisLocation</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> setInThisLocation</span><span style="color:#9399B2">]</span><span style="color:#94E2D5"> =</span><span style="color:#89B4FA;font-style:italic"> useState</span><span style="color:#CDD6F4">(</span><span style="color:#FAB387">false</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">SearchBar</span></span>
+<span class="line"><span style="color:#F9E2AF">        filterText</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">filterText</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        inThisLocation</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">inThisLocation</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        setFilterText</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">setFilterText</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        setInThisLocation</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">setInThisLocation</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">      /></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#F5C2E7">TweetList</span></span>
+<span class="line"><span style="color:#F9E2AF">        tweets</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">tweets</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        filterText</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">filterText</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">        inThisLocation</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">inThisLocation</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">      /></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<h4 id="ii-searchbar">ii. SearchBar</h4>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> SearchBar</span><span style="color:#94E2D5"> =</span><span style="color:#CDD6F4"> (</span><span style="color:#9399B2">{</span></span>
+<span class="line"><span style="color:#CDD6F4">  filterText</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">  inThisLocation</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">  setFilterText</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#CDD6F4">  setInThisLocation</span><span style="color:#9399B2">,</span></span>
+<span class="line"><span style="color:#9399B2">}</span><span style="color:#CDD6F4">) </span><span style="color:#CBA6F7">=></span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;</span><span style="color:#89B4FA">form</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">input</span></span>
+<span class="line"><span style="color:#F9E2AF">      type</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"text"</span></span>
+<span class="line"><span style="color:#F9E2AF">      placeholder</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"Search..."</span></span>
+<span class="line"><span style="color:#F9E2AF">      value</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">filterText</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">      onChange</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{(</span><span style="color:#EBA0AC;font-style:italic">e</span><span style="color:#9399B2">)</span><span style="color:#CBA6F7"> =></span><span style="color:#89B4FA;font-style:italic"> setFilterText</span><span style="color:#CDD6F4">(e</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">target</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">value)</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">    /></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">p</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">label</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#89B4FA">input</span></span>
+<span class="line"><span style="color:#F9E2AF">          type</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"checkbox"</span></span>
+<span class="line"><span style="color:#F9E2AF">          checked</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">inThisLocation</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#F9E2AF">          onChange</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{(</span><span style="color:#EBA0AC;font-style:italic">e</span><span style="color:#9399B2">)</span><span style="color:#CBA6F7"> =></span><span style="color:#89B4FA;font-style:italic"> setInThisLocation</span><span style="color:#CDD6F4">(e</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">target</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">checked)</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">        /></span><span style="color:#9399B2">{</span><span style="color:#A6E3A1">' '</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#CDD6F4">        Only show tweets in your current location</span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#89B4FA">label</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">p</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;/</span><span style="color:#89B4FA">form</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span></code></pre>
+<h4 id="iii-트윗-목록">iii. 트윗 목록</h4>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> TweetList</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ({</span><span style="color:#EBA0AC;font-style:italic"> tweets</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> filterText</span><span style="color:#9399B2">,</span><span style="color:#EBA0AC;font-style:italic"> inThisLocation</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> rows </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> []</span></span>
+<span class="line"><span style="color:#CBA6F7">  let</span><span style="color:#CDD6F4"> lastCategory </span><span style="color:#94E2D5">=</span><span style="color:#CBA6F7"> null</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CDD6F4">  tweets</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">forEach</span><span style="color:#CDD6F4">(</span><span style="color:#9399B2">(</span><span style="color:#EBA0AC;font-style:italic">tweet</span><span style="color:#9399B2">)</span><span style="color:#CBA6F7"> =></span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">    if</span><span style="color:#CDD6F4"> (tweet</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">text</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">toLowerCase</span><span style="color:#CDD6F4">()</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">indexOf</span><span style="color:#CDD6F4">(filterText</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">toLowerCase</span><span style="color:#CDD6F4">()) </span><span style="color:#94E2D5">===</span><span style="color:#94E2D5"> -</span><span style="color:#FAB387">1</span><span style="color:#CDD6F4">) </span><span style="color:#9399B2">{</span></span>
+<span class="line"><span style="color:#CBA6F7">      return</span></span>
+<span class="line"><span style="color:#9399B2">    }</span></span>
+<span class="line"><span style="color:#CBA6F7">    if</span><span style="color:#CDD6F4"> (inThisLocation </span><span style="color:#94E2D5">&#x26;&#x26;</span><span style="color:#94E2D5"> !</span><span style="color:#CDD6F4">tweet</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">isLocal) </span><span style="color:#9399B2">{</span></span>
+<span class="line"><span style="color:#CBA6F7">      return</span></span>
+<span class="line"><span style="color:#9399B2">    }</span></span>
+<span class="line"><span style="color:#CBA6F7">    if</span><span style="color:#CDD6F4"> (tweet</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">category </span><span style="color:#94E2D5">!==</span><span style="color:#CDD6F4"> lastCategory) </span><span style="color:#9399B2">{</span></span>
+<span class="line"><span style="color:#CDD6F4">      rows</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">push</span><span style="color:#CDD6F4">(</span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#F5C2E7">TweetCategory</span><span style="color:#F9E2AF"> category</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">tweet</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">category</span><span style="color:#9399B2">}</span><span style="color:#F9E2AF"> key</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">tweet</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">category</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#CDD6F4">      )</span></span>
+<span class="line"><span style="color:#9399B2">    }</span></span>
+<span class="line"><span style="color:#CDD6F4">    rows</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">push</span><span style="color:#CDD6F4">(</span><span style="color:#94E2D5">&#x3C;</span><span style="color:#F5C2E7">TweetRow</span><span style="color:#F9E2AF"> tweet</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">tweet</span><span style="color:#9399B2">}</span><span style="color:#F9E2AF"> key</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">tweet</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">text</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#CDD6F4">    lastCategory </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> tweet</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">category</span></span>
+<span class="line"><span style="color:#9399B2">  }</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">table</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">thead</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#89B4FA">tr</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;</span><span style="color:#89B4FA">th</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Tweet Text</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">th</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">          &#x3C;</span><span style="color:#89B4FA">th</span><span style="color:#94E2D5">></span><span style="color:#CDD6F4">Retweets</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">th</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;/</span><span style="color:#89B4FA">tr</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#89B4FA">thead</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">tbody</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">rows</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">tbody</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">table</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<h4 id="iv-트윗-카테고리-행">iv. 트윗 카테고리 행</h4>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> TweetCategory</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ({</span><span style="color:#EBA0AC;font-style:italic"> category</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;</span><span style="color:#89B4FA">tr</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">th</span><span style="color:#F9E2AF"> colSpan</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"2"</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">category</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">th</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;/</span><span style="color:#89B4FA">tr</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span></code></pre>
+<h4 id="v-트윗-행">v. 트윗 행</h4>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#CBA6F7">const</span><span style="color:#89B4FA;font-style:italic"> TweetRow</span><span style="color:#94E2D5"> =</span><span style="color:#9399B2"> ({</span><span style="color:#EBA0AC;font-style:italic"> tweet</span><span style="color:#9399B2"> })</span><span style="color:#CBA6F7"> =></span><span style="color:#9399B2"> {</span></span>
+<span class="line"><span style="color:#CBA6F7">  const</span><span style="color:#CDD6F4"> color </span><span style="color:#94E2D5">=</span><span style="color:#CDD6F4"> tweet</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">isLocal </span><span style="color:#94E2D5">?</span><span style="color:#A6E3A1"> 'inherit'</span><span style="color:#94E2D5"> :</span><span style="color:#A6E3A1"> 'red'</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#CBA6F7">  return</span><span style="color:#CDD6F4"> (</span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;</span><span style="color:#89B4FA">tr</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">td</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">        &#x3C;</span><span style="color:#89B4FA">span</span><span style="color:#F9E2AF"> style</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">""</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">tweet</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">text</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">span</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;/</span><span style="color:#89B4FA">td</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">      &#x3C;</span><span style="color:#89B4FA">td</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">tweet</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">retweets</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">td</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">    &#x3C;/</span><span style="color:#89B4FA">tr</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#CDD6F4">  )</span></span>
+<span class="line"><span style="color:#9399B2">}</span></span>
+<span class="line"></span></code></pre>
+<p>최종적으로 구현된 결과는 직전에 설계해보았던 계층 구조와 같다.</p>
+<ul>
+<li><strong>TweetSearchResults</strong>
+<ul>
+<li><strong>SearchBar</strong></li>
+<li><strong>TweetList</strong>
+<ul>
+<li><strong>TweetCategory</strong></li>
+<li><strong>TweetRow</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="react를-사용하는-방법">React를 사용하는 방법</h2>
+<p>React를 사용하는 방법은 아래와 같이 다양한다</p>
+<p>웹 페이지에 직접 로드하는 방법: react를 사용하는 가장 단순한 방법이다. npm 이나 CDN을 통해 JavaScript에 react를 추가한다.</p>
+<p>create-react-app 사용하기: create-react-app은 가장 빨리 react 앱을 만드는데 초점을 두고 있는 프로젝트이며. SPA기능을 개발하다보면 필요한 서드파티 기능들이 필요한데 이것들도 쉽게 세팅해준다. 프로덕션 앱의 경우 코드 스플리팅과 같은 기능이 포함된 Next.js를 사용할 때 이런 도구들을 꼭 고려해보아야 한다.</p>
+<p>Code Sandbox: 설치 없이 create-react-app 의 구조를 세팅할 수 있다. <a href="https://codesandbox.io">https://codesandbox.io</a> 에 접속하여 “React” 를 선택하기만 하면 된다.</p>
+<p>Codepen: React 컴포넌트를 프로토타이핑 할 때 유용하다. <a href="https://codepen.io/topic/react/templates">다양한</a> [기본 구현체](<a href="https://codepen.io/flaviocopes/pen/VqeaxB%EB%93%A4%EC%9D%B4">https://codepen.io/flaviocopes/pen/VqeaxB들이</a> 준비되어 있다.</p>
+<h2 id="결론">결론</h2>
+<p>react.js는 모듈적이며 재사용 가능한 UI컴포넌트를 간단하고 직관적으로 만들 수 있도록 설계되어 있다. 이 가이드 문서를 읽으며 기본적인 개념을 어느정도 이해했기를 바란다.</p>
+<p>react의 기초에 대해 조금 더 알아보려면 아래 링크를 참고 바란다.</p>
+<ul>
+<li><strong><a href="https://reactjs.org/docs/getting-started.html#learn-react">Official docs</a></strong></li>
+<li><strong><a href="https://reactfordesigners.com/">React for designers</a></strong></li>
+</ul>
+<p>이 가이드 문서는 <a href="https://reactjs.org/docs/components-and-props.html">react 컴포넌트와 prop에 대한 공식 문서</a>, <a href="https://davidpfahler.com/thinking-in-react-hooks">React로 생각하기</a>, <a href="https://davidpfahler.com/thinking-in-react-hooks">React 혹으로 생각하기</a>, <a href="https://scriptverse.academy/tutorials/reactjs-pass-props-to-functional-component.html">scriptverse의 문서</a>가 없었다면 작성하기 어려웠을 것이다.</p> </div> </div>  </div> </div> </div>  </main> </body></html> 

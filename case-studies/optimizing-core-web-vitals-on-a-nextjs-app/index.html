@@ -1,0 +1,639 @@
+<!DOCTYPE html><html lang="ko" data-astro-cid-sckkx6r4> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.16.6" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/case-studies/optimizing-core-web-vitals-on-a-nextjs-app/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="Optimizing Core Web Vitals on a Next.js app"><meta property="og:type" content="article"><meta property="og:image" content="./optimizing-core-web-vitals-on-a-nextjs-app.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/case-studies/optimizing-core-web-vitals-on-a-nextjs-app/"><meta property="og:image:url" content="./optimizing-core-web-vitals-on-a-nextjs-app.jpg"><meta property="og:image:alt" content="Optimizing Core Web Vitals on a Next.js app"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="/favicon.png" rel="icon" sizes="any" type="image/png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CnWBadwT.css">
+<link rel="stylesheet" href="/_astro/_slug_.OicVUOHF.css"><script type="module" src="/_astro/hoisted.4sIGGDry.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body data-astro-cid-sckkx6r4> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" title="Change color theme" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative" data-astro-cid-sckkx6r4>  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li class="active" data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-72" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>Optimizing Core Web Vitals on a Next.js app</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=case-studies/optimizing-core-web-vitals-on-a-nextjs-app" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/nextjs-casestudy/" target="_blank">patterns.dev - optimizing core web vitals on a next.js app</a></aside>
+<p>Vercel이 개발한 Next.js는 React 메타 프레임웍으로 React 개발 경험을 향상시킨다. Next.js는 프로덕션 에서 바로 사용 가능한 수준의 앱을 만들 수 있게 해 주고. SSG, 쉬운 설정, 빠른 새로고침, 이미지 최적화, 파일 시스템 라우팅, 최적화된 코드 스플리팅 및 번들링 기능을 제공한다.</p>
+<p>3P 의존 모듈을 사용하는 React +Next.js 앱을 최적화 하는 과정을 살펴보기 위해 우리는 <a href="https://movies.zaps.dev/">Next.js 기반의 영화 앱</a>을 만들었다. 이 앱은 <a href="https://www.themoviedb.org/">TMDB</a>의 기능을 모두 구현한 클라이언트이다. 포괄적이며 분류된 영화 목록을 검색하거나 탐색하고, 세부 정보를 확인하고, 멤버십 및 인증을 통해 개인별 즐겨찾기를 관리할 수 있는 등 다양한 기능들을 구현했다.</p>
+<img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app01.Cmabiafj_12mXft.webp" alt="" width="640" height="392" loading="lazy" decoding="async">
+<p>그 후 Next.js 영화 앱은 여러 성능 트윅을 진행하고 전반적인 사용자 경험 관점에서 유익했던 점을 식별하고 벤치마크했다. 이 글에서는 이 과정에서 이루었던 모든 성능 향상들과 각 트윅에 대해서 이야기 해 보고, 적용 결과에 대해서도 살펴보도록 하자.</p>
+<h2 id="누적된-성능-향상들">누적된 성능 향상들</h2>
+<p>우리는 모든 최적화를 적용한 후 상당한 총체적 성능 향상을 달성할 수 있었다. 이는 자연스럽게 사용자 경험 향상으로 이어진다. 아래 지표들은 성능을 최적화하기 위한 모든 수정 사항을 적용하기 전과 후에 캡쳐되었다.</p>
+<img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app02.Crq8ylN0_ZpwgdQ.webp" alt="" width="640" height="269" loading="lazy" decoding="async">
+<p>사용자 관점에서 이루어진 전체적인 향상들을 이해하기 위해 이어진 실제 페이지 로딩 경험 비교를 확인해 보자.</p>
+<ul>
+<li>개선 전</li>
+<li>일부 최적화 적용 후</li>
+<li>모든 촤적화 적용 후</li>
+</ul>
+<img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app03.D_OxdkWY_LA2rB.webp" alt="" width="640" height="634" loading="lazy" decoding="async">
+<p>전반적인 성능 향상 외에도 관련 페이지에 대한 코드를 변경한 후 Lighthouse및 WPT를 사용하여 지표들을 캡쳐했다. 이 테스트들은 서버의 슬립 상태에 따른 어떠한 렉이나 변경 이전과 이후의 어떤 조건들을 고려해 여러 번 반복하여 수행해 신뢰할 수 있는 지표를 얻을 수 있도록 했다.</p>
+<p>이런 내용들을 기억한 상태에서 이제 전반적인 성능 향상에 기여했던 변경 사항들이 어떻게 진행되었는지 이야기 해 보자.</p>
+<h2 id="대체된-패키지들">대체된 패키지들</h2>
+<p>처음에 영화 앱에서 필요로 하는 각기 다른 기능들을 빠르게 구현하기 위해 여러 3P React 컴포넌트들을 사용했다. 우리는 이 3P 리소스들 모두 개별적으로 가벼운 패키지로 대체해가며 지표들을 분석해보았다. 특히 무겁거나 메인 스레드를 블록하는 것들에 대해서 진행했다.</p>
+<p>이런 시도들의 대부분이 지표 측정치를 낮추는 데 매우 효과적이었다.</p>
+<ul>
+<li><strong>SVG 아이콘을 사용하기 위해 <a href="https://github.com/FortAwesome/Font-Awesome">Font-Awesome</a>대신 <a href="https://github.com/gregberge/svgr/tree/master/packages/webpack">@svgr/webpack</a>을 사용하여 페이지 속도를 34%이상 향상시켰고, LCP는 23%, TBT는 51% 향상되었다.</strong></li>
+<li><strong><a href="https://www.npmjs.com/package/react-burger-menu">react-burger-menu</a>를 사용하는 대신 커스텀 컴포넌트를 만들어 사용하고, <a href="https://github.com/codecks-io/react-sticky-box">react-sicky-box</a>에서 resize-observer-polyfill을 제거하여 전체적인 번들 크기가 gzipped 기준 34.28kB 감소하였다.</strong></li>
+<li><strong><a href="https://react-select.com/home">react-select</a> 대신 <a href="https://www.npmjs.com/package/react-select-search">react-select-search</a>를 사용하여 LCP가 35%향상, CLS는 완전히 해결되었으며 TBT는 18% 향상되었다.</strong></li>
+<li><strong><a href="https://www.npmjs.com/package/react-slick">react-slick</a> 대신 <a href="https://www.npmjs.com/package/react-glider">react-glider</a>를 사용하여 TBT가 77% 향상되었다.</strong></li>
+<li><strong>브라우저 네이티브 smooth scrolling대신 <a href="https://www.npmjs.com/package/react-scroll">react-scroll</a>을 사용하여 여러 브라우저에서 스크롤 기능을 제공했다.</strong></li>
+<li><strong><a href="https://www.npmjs.com/package/react-rating">react-rating</a> 대신 <a href="https://www.npmjs.com/package/react-stars">react-stars</a>를 사용하여 TBT를 33% 향상시켰다.</strong></li>
+</ul>
+<p>이어서 어떤게 어떻게 바뀌고 왜 바꿨는지 확인해 보자.</p>
+<h3 id="svg-아이콘-라이브러리">SVG 아이콘 라이브러리</h3>
+<p>영화 앱에서 필요한 모든 아이콘은 SVG를 사용하기로 했다. 처음에는 많이 쓰이고 또 CSS로 커스터마이징 한 벡터 그래픽 아이콘을 사용하려고 <a href="https://github.com/FortAwesome/Font-Awesome">Font-Awesome</a>을 적용했다.</p>
+<p>그러나 <a href="https://downtimemonkey.com/blog/images/plans-webpage-load-time.png">Font-Awesome은 라이브러리 자체를 로딩할 때 전송되는 크기가 크기 때문에 로딩 속도에 영향</a>을 준다. 이는 <a href="https://dev.to/lindaojo/how-to-improve-lighthouse-score-performance-57cb">Lighthouse 성능 점수에도 악영향</a>을 주고 있다.</p>
+<p>우리는 Font-Awesome을 <a href="https://github.com/gregberge/svgr/tree/master/packages/webpack">@svgr/webpack</a>으로 대체했다. 또 페이지에서 여러 아이콘들을 사용하는 경우 아래 예제 코드와 같이 라이브러리 자체를 가져오는 대신 필요한 아이콘만 개별적으로 가져다 쓰도록 변경했다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#CBA6F7">import</span><span style="color:#9399B2"> {</span><span style="color:#CDD6F4"> FontAwesomeIcon </span><span style="color:#9399B2">}</span><span style="color:#CBA6F7"> from</span><span style="color:#A6E3A1"> '@fortawesome/react-fontawesome'</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// replaced by</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> HeartIcon </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> 'public/assets/svgs/icons/heart.svg'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> PollIcon </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> 'public/assets/svgs/icons/poll.svg'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> CalendarIcon </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> 'public/assets/svgs/icons/calendar.svg'</span></span>
+<span class="line"><span style="color:#CBA6F7">import</span><span style="color:#CDD6F4"> DotCircleIcon </span><span style="color:#CBA6F7">from</span><span style="color:#A6E3A1"> 'public/assets/svgs/icons/dot-circle.svg'</span></span>
+<span class="line"></span></code></pre>
+<p>이는 Lighthouse점수를 전반적으로 향상시키는 데 도움이 되었다. 아래는 적용 전과 후의 점수 캡쳐 화면이다. 또 200KiB 이상의 전송량이 줄어든 것을 확인할 수 있다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Before</th><th>After</th></tr></thead><tbody><tr><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app04.ZGxPmWbW_ZO4uyt.webp" alt="" width="640" height="254" loading="lazy" decoding="async"></td><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app05.BUE2WJa6_LhICM.webp" alt="" width="640" height="270" loading="lazy" decoding="async"></td></tr><tr><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app06.Ck8FG23F_Z1HxQ5l.webp" alt="" width="640" height="308" loading="lazy" decoding="async"></td><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app07.DMLsotQI_onqWO.webp" alt="" width="640" height="311" loading="lazy" decoding="async"></td></tr></tbody></table>
+<h3 id="앱-메뉴">앱 메뉴</h3>
+<p>앱의 초기 버전에서는 좌측 햄버거 메뉴 구현을 위해 <a href="https://www.npmjs.com/package/react-burger-menu">react-burger-menu</a>를 사용했다. 해당 컴포넌트에는 CSS스타일과 애니메이션 효과들이 포함되어 있었다. 아래는 해당 라이브러리를 사용했던 앱에 대해 번들 분석을 한 결과이다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app08.CcOhuWoM_ZGtrhs.webp" alt="" width="640" height="372" loading="lazy" decoding="async"></td><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app09.DsrKDYIY_1Hhtcp.webp" alt="" width="640" height="289" loading="lazy" decoding="async"></td></tr></tbody></table>
+<p>우린 react-burger-menu의 모든 기능이 필요 없다 판단하였고 직접 만들어 제공할수도 있을 것이라 생각했다. 이는 필요 기능에는 차이가 없지만 번들 크기를 줄이는 데 큰 도움이 되었다. 번들 분석 트리맵에서 볼 수 있듯이. 좌측 햄버거 메뉴의 청크는 변경 전 gzipped 기준 <strong>6.73kB</strong> 였으나 변경 후 <strong>879B</strong> 로 감소했다.</p>
+<p>Parsed Size도 <strong>32.74kB</strong>에서 <strong>2.14kB</strong>로 감소했다. 해당 개선은 다운로드 시간 및 청크 구문 분석 시간 모두 줄이는 데 도움이 되었다.</p>
+<aside>💡역자 주: Parsed Size는 UglifyJS같은 minifier가 코드를 압축한 후의 크기를 의미한다. <a href="https://github.com/webpack-contrib/webpack-bundle-analyzer/issues/61#issuecomment-290634958" target="_blank" rel="noopener">webpack-bundle-analyzer 의 지표에 대한 설명</a>을 참고 바란다.</aside>
+<img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app10.CX16wspS_ZklkYr.webp" alt="" width="640" height="316" loading="lazy" decoding="async">
+<h3 id="정렬-기능을-위한-드롭다운">정렬 기능을 위한 드롭다운</h3>
+<p>영화 앱은 영화들을 장르나 출연 배우에 따라 정렬할 수 있다. 사용자는 인기도, 추천 수, 출시일, 제목을 기준으로 영화를 정렬할 수 있는데 이전에는 <a href="https://github.com/JedWatson/react-select">react-select</a> 컴포넌트를 사용하여 구현했다. 해당 컴포넌트는 다중 선택, 검색, 애니메이션, <a href="https://emotion.sh/">emotion</a>을 활용한 스타일링을 지원한다. 컴포넌트의 번들 크기는 <strong>27.2kB</strong>이며 7개의 의존 모듈도 포함되어 있다.</p>
+<p>하지만 영화 앱에서는 단일 선택 드롭다운 기능만 필요하고 스타일링 기능은 필요 없었으므로 이를 <a href="https://github.com/tbleckert/react-select-search">react-select-search</a> 컴포넌트로 대체했다. 이 컴포넌트는 가벼우며 (gzipped 기준 <strong>3.2kB</strong>)의존 모듈도 없다. 또 필요에 따라 다중 선택과 스타일링 기능을 이용할 수 있었다.</p>
+<p>아래는 컴포넌트의 변경과 그에 따른 Lighthouse 성능 개선으로 인한 변경 사항이다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Before</th><th>After</th></tr></thead><tbody><tr><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app11.B0ZNShNe_1SLzds.webp" alt="" width="640" height="127" loading="lazy" decoding="async"></td><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app12.D0w9AnUC_Z2dn4Tx.webp" alt="" width="640" height="536" loading="lazy" decoding="async"></td></tr><tr><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app13.C2QTAS0p_Z1ruDEh.webp" alt="" width="640" height="262" loading="lazy" decoding="async"></td><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app14.C0LYRTxE_Z24qm4H.webp" alt="" width="640" height="276" loading="lazy" decoding="async"></td></tr></tbody></table>
+<h3 id="출연진-캐러셀">출연진 캐러셀</h3>
+<p>우리는 React-Slick 컴포넌트를 사용하여 영화 상세 페이지에서 출연진들의 사진과 이름을 가로로 스와이프하여 볼 수 있도록 했다. React-Slick 컴포넌트는 꽤 무겁고(14.7kB) 의존 모듈도 5개나 된다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app15.DS3I2gPH_dornr.webp" alt="" width="640" height="325" loading="lazy" decoding="async"></td><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app16.cXTZpcAC_2dXjBE.webp" alt="" width="640" height="340" loading="lazy" decoding="async"></td></tr></tbody></table>
+<p>우린 더 가벼운 react-glider 라이브러리를 사용했다. 해당 라이브러리는 번들 크기도 작고. CSS인라이닝도 지원한다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app17.DEq7gSbd_2ceEk7.webp" alt="" width="640" height="325" loading="lazy" decoding="async"></td><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app18.qcfzmYgY_Z1dFz1u.webp" alt="" width="640" height="363" loading="lazy" decoding="async"></td></tr></tbody></table>
+<p>기능의 변경 없이 번들 사이즈가 <strong>14.7kB</strong> 에서 <strong>3.4kB</strong> 로 78% 나 크게 향상되었다. 또 미래에 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Scroll_Snap">CSS Scroll Snap</a>을 지원하도록 컴포넌트를 다시 만들수도 있다는 장점도 있었다.</p>
+<h3 id="스크롤-컴포넌트">스크롤 컴포넌트</h3>
+<p>영화 앱은 영화 목록 페이지네이션을 구현하여 여러 페이지에서 목록을 볼 수 있도록 했다. 각 이전 다음 페이지 버튼이 클릭될 때 화면은 맨 위로 스크롤이 뒤어야 한다. 이 스크롤을 부드럽게 처리하기 위해 우리는 네이티브 스크롤 옵션을 사용했다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="js"><code><span class="line"><span style="color:#CDD6F4">window</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">scroll</span><span style="color:#CDD6F4">(</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4"> top</span><span style="color:#94E2D5">:</span><span style="color:#FAB387"> 0</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> left</span><span style="color:#94E2D5">:</span><span style="color:#FAB387"> 0</span><span style="color:#9399B2">,</span><span style="color:#CDD6F4"> behavior</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> 'smooth'</span><span style="color:#9399B2"> }</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#6C7086;font-style:italic">// and</span></span>
+<span class="line"><span style="color:#CDD6F4">document</span></span>
+<span class="line"><span style="color:#94E2D5">  .</span><span style="color:#89B4FA;font-style:italic">querySelector</span><span style="color:#CDD6F4">(</span><span style="color:#A6E3A1">`.</span><span style="color:#9399B2">${</span><span style="color:#CDD6F4">SCROLL_TO_ELEMENT</span><span style="color:#9399B2">}</span><span style="color:#A6E3A1">`</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"><span style="color:#94E2D5">  ?.</span><span style="color:#89B4FA;font-style:italic">scrollIntoView</span><span style="color:#CDD6F4">(</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4"> behavior</span><span style="color:#94E2D5">:</span><span style="color:#A6E3A1"> 'smooth'</span><span style="color:#9399B2"> }</span><span style="color:#CDD6F4">)</span></span>
+<span class="line"></span></code></pre>
+<p>하지만 smooth scroll 기능은 크로스브라우징 이슈가 있다.</p>
+<img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app19.CRu19D6L_Z27pVGi.webp" alt="" width="640" height="250" loading="lazy" decoding="async">
+<p>수직 스크롤에 애니메이션을 적용하기 위해 <a href="https://github.com/fisshy/react-scroll">react-scroll</a> (gzipped 기준 6.8kB) 라이브러리를 사용했다. 이는 다음 비교에서 볼 수 있듯이 약간의 성능 저하는 있지만 모든 브라우저에서 부드러운 스크롤을 수행할 수 있게 되었다.</p>
+<p><strong><a href="https://drive.google.com/file/d/177o4KmlQhOmyr2ZRGg50f1_tConVC4XX/view?usp=sharing">변경 전 스크롤 동작</a></strong></p>
+<p><strong><a href="https://drive.google.com/file/d/1MUrX5JoNzm5c6ArWrBHpxFwmX7XrhOcS/view?usp=sharing">변경 후 스크롤 동작</a></strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>성능 지표</th><th>FCP(s)</th><th>Speed Index(s)</th><th>LCP(s)</th><th>TTI(s)</th><th>TBT(ms)</th><th>CLS</th><th>성능(%)</th></tr></thead><tbody><tr><td>Before</td><td>0.8</td><td>3.93</td><td>2.63</td><td>1.73</td><td>16.66</td><td>0</td><td>94.33</td></tr><tr><td>After</td><td>0.92</td><td>3.78</td><td>2.9</td><td>2.26</td><td>66</td><td>0</td><td>92.8</td></tr><tr><td>% Change</td><td>15</td><td>3.81</td><td>10.26</td><td>39.63</td><td>296.15</td><td>0</td><td></td></tr></tbody></table>
+<h3 id="레이팅-컴포넌트">레이팅 컴포넌트</h3>
+<p>원래 사용하고 있던 <a href="https://github.com/dreyescat/react-rating">React-rating</a>은 레이팅 기능에 여러 다양한 심볼을 사용할 수 있도록 해 준다 (예: 별, 원, 엄지척 등). 하지만 영화 앱에서는 별표만 사용하고 다른 기능은 필요하지 않았다. 다른 기능을 위한 비용이 <strong>2.6kB</strong> 되었다.</p>
+<img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app20.Di8abFn5_Z24vxX0.webp" alt="" width="640" height="211" loading="lazy" decoding="async">
+<p><a href="https://github.com/n49/react-stars">react-stars</a> 컴포넌트가 요구사항에 딱 맞는 기능만 가지고 있었다. 이 컴포넌트는 gzipped 기준 2kB 여서 우린 해당 컴포넌트를 인라이닝 CSS와 함께 사용했다.</p>
+<img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app21.BidPidHk_Z13zMNO.webp" alt="" width="640" height="237" loading="lazy" decoding="async">
+<p>라이브러리의 크기가 크게 차이나지는 않지만 react-rating은 컴포넌트에 SVG아이콘을 사용하는 반면, react-stars 컴포넌트는 ”★” 기호를 사용한다. 영화 목록 컴포넌트에서 컴포넌트가 20번 이상 반복되어 렌더링되다 보니 아이콘/이미지의 크기도 크기 절감에 기여하게 되었다. 이는 변경 전후의 Lighthouse 점수에서 확인할 수 있다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Before</th><th>After</th></tr></thead><tbody><tr><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app22.Df6QpQPg_oJuMQ.webp" alt="" width="640" height="264" loading="lazy" decoding="async"></td><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app23.tS5gXa2__WvxCe.webp" alt="" width="640" height="266" loading="lazy" decoding="async"></td></tr></tbody></table>
+<p>다른 지표들이 크게 변경되진 않았지만 TBT(33%)의 차이가 크게 벌어졌다. 이는 react-rating 컴포넌트의 청크가 메인 스레드에서 제외된 것에 기인한 것으로 보인다.</p>
+<h2 id="최적화를-위한-다른-기법들">최적화를 위한 다른 기법들</h2>
+<p>위와 같이 대체 라이브러리를 찾아 적용하고 테스트하는 것은 성능 분석 및 최적화 프로젝트의 일부였다. 우린 그것 말고도 성능을 향상시키는 것으로 알려진 여러 메커니즘들도 시도해보았다. 여러 시도 들에서 효과가 있던 것과 없던 것 모두 아래에서 살펴보자.</p>
+<h3 id="코드-스플리팅">코드 스플리팅</h3>
+<p>우리는 메뉴 컴포넌트에 대해 코드 스플리팅과 지연 로딩을 적용했다. 모바일에서는 닫힌 상태로 렌더되기 때문에 사용자가 실제로 필요할 때에만 추가적인 동작을 하게 구현할 수 있었다. 처음에는 좌측 버거 메뉴 사이드바 컴포넌트를 지연로딩 했고. 성능을 관찰해보았다. 그 다음 이를 위에서 언급한대로 커스텀 컴포넌트로 대체하였고 역시 지연 로딩을 적용하였다.</p>
+<p>또 React의 <a href="https://github.com/googlechromelabs/adaptive-loading/commit/1309d73ed5e773aa84574bf3959ebbe227594d85">lazy()</a>나 <a href="https://reactjs.org/docs/concurrent-mode-suspense.html">suspense()</a> 래퍼와 유사하게 동작하는 <a href="https://github.com/googlechromelabs/adaptive-loading/commit/1309d73ed5e773aa84574bf3959ebbe227594d85">LazyLoadingErrorBoundary</a> 컴포넌트를 적용하였다. 이로 인해 메뉴 컴포넌트는 페이지 로드 후에 로드되게 되었으며 FCP와 LCP에 큰 변화는 없지만, 다음 비교에서 볼 수 있듯이 TBT가 <strong>78%</strong> 만큼 상당히 감소했다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>성능 지표</th><th>FCP(s)</th><th>Speed Index(s)</th><th>LCP(s)</th><th>TTI(s)</th><th>TBT(ms)</th><th>CLS</th><th>성능(%)</th></tr></thead><tbody><tr><td>Before</td><td>0.86</td><td>4.2</td><td>3.46</td><td>2.53</td><td>70</td><td>0</td><td>87.66</td></tr><tr><td>After</td><td>0.83</td><td>3.63</td><td>3.3</td><td>1.73</td><td>20</td><td>0</td><td><strong>90.33</strong></td></tr><tr><td>% Change</td><td><strong>3.48</strong></td><td><strong>13.57</strong></td><td><strong>4.62</strong></td><td><strong>31.62</strong></td><td><strong>71.42</strong></td><td>0</td><td></td></tr></tbody></table>
+<h3 id="중요-리소스-인라이닝과-중요하지-않은-리소스-지연-처리">중요 리소스 인라이닝과 중요하지 않은 리소스 지연 처리</h3>
+<p>Lighthouse 감사는 아래 사항에 대해 조취를 취할 것을 지속적으로 제안하였다.</p>
+<img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app24.BPHCwZUZ_1VJ3aL.webp" alt="" width="640" height="101" loading="lazy" decoding="async">
+<p>CSS는 렌더 블록 리소스이기 때문에 페이지 렌더 전에 로드가 완료되어야 한다. 일부 CSS는 초기 페이지 로드에 표시되는 컨텐츠의 스타일 지정을 위해 필요한 경우가 있다. 이것은 페이지를 최적화하기 위해 인라이닝 처리 되어야 하는 중요한 CSS이다. 또한 처음에는 필요하지 않기 때문에 지연될 수 있는 CSS도 존재할 것이다.</p>
+<p>최적화 과정의 일환으로 다크/라이트 모드 전환에 필요한 CSS를 중요한 리소스로 분류하여 인라인 처리하였다.</p>
+<p><a href="https://nextjs.org/docs/basic-features/built-in-css-support#import-styles-from-node_modules">Next.js 문서</a>에 따르면 node_modules 내의 일부 CSS를 <code>/pages/_app.js</code> 에 포함시켜야 했다. 우리는 <a href="https://www.patterns.dev/posts/nextjs-casestudy/#heading=h.efcrrkswqtk7">react-glider</a>와 <a href="https://github.com/appleple/react-modal-video">react-modal-video</a>의 CSS를 포함시켜야 했는데. 이를 _app.js에 포함시키면 앱의 모든 페이지에서 쓰지 않는데도 앱의 렌더를 차단시킬 수 있다.</p>
+<p>각 컴포넌트가 필요한 CSS는 인라이닝 처리할 수 있다. 예를 들어 최적화 후. case 컴포넌트는 Glider 컴포넌트와 필요 CSS를 함께 가지고 있도록 리펙토링 되었다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#89B4FA">div</span><span style="color:#F9E2AF"> ref</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">ref</span><span style="color:#9399B2">}</span><span style="color:#F9E2AF"> className</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">'cast'</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;</span><span style="color:#F5C2E7">Glider</span><span style="color:#F9E2AF"> hasArrows</span><span style="color:#F9E2AF"> slidesToShow</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">slidesToShow</span><span style="color:#9399B2">}</span><span style="color:#F9E2AF"> slidesToScroll</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#FAB387">1</span><span style="color:#9399B2">}</span><span style="color:#F9E2AF"> itemWidth</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">GLIDER_ITEM_WIDTH</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#9399B2">    {</span><span style="color:#CDD6F4">cast</span><span style="color:#94E2D5">.</span><span style="color:#89B4FA;font-style:italic">map</span><span style="color:#CDD6F4">(</span><span style="color:#EBA0AC;font-style:italic">person</span><span style="color:#CBA6F7"> =></span><span style="color:#94E2D5"> &#x3C;</span><span style="color:#F5C2E7">PersonLink</span><span style="color:#F9E2AF"> key</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">person</span><span style="color:#94E2D5">.</span><span style="color:#CDD6F4">id</span><span style="color:#9399B2">}</span><span style="color:#F9E2AF"> person</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">person</span><span style="color:#9399B2">}</span><span style="color:#F9E2AF"> baseUrl</span><span style="color:#94E2D5">=</span><span style="color:#9399B2">{</span><span style="color:#CDD6F4">baseUrl</span><span style="color:#9399B2">}</span><span style="color:#94E2D5"> /></span><span style="color:#CDD6F4">)</span><span style="color:#9399B2">}</span></span>
+<span class="line"><span style="color:#94E2D5">  &#x3C;/</span><span style="color:#F5C2E7">Glider</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">div</span><span style="color:#94E2D5">></span></span>
+<span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#89B4FA">style</span><span style="color:#F9E2AF"> jsx</span><span style="color:#94E2D5">></span><span style="color:#9399B2">{</span><span style="color:#A6E3A1">`/*CSS Classes required for Glider*/`</span><span style="color:#9399B2">}</span><span style="color:#94E2D5">&#x3C;/</span><span style="color:#89B4FA">style</span><span style="color:#94E2D5">></span></span>
+<span class="line"></span></code></pre>
+<p>이로 인해 FCP, LCP, TTI 각 2% ~ 5%의 향상이 측정되었으며 페이지 성능은 <strong>79%</strong> 에서 <strong>81%</strong> 로 향상되었다.</p>
+<h3 id="이미지-가로세로비율-할당">이미지 가로세로비율 할당</h3>
+<p>지금까지 논의한 개선 사항들은 다양한 페이지에서 FCP, LCP, TBT, TTI를 개선하는데 도움이 되었다. 이제 Lighthouse 보고서의 마지막 측정 항목 개선 항목인 누적 레이아웃 이동 (CLS)에 대해서 이야기 해 보자. 이에 대한 자세히 알고 싶다면 필자의 <a href="https://web.dev/optimize-cls/">CLS최적화</a>를 참고하기 바란다. 최적화 적용 전 영화 상세 페이지에서 Lighthouse 보고서에는 CLS의 원인을 보여주고 있다.</p>
+<img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app25.LX4q_AC1_Zv1FHW.webp" alt="" width="640" height="736" loading="lazy" decoding="async">
+<p>CLS 점수가 0.016으로 임계치보다는 낮지만. 모바일 3g연결에서 페이지를 로드할 때에는 CLS가 발생하였다. 따라서 우리는 해당 엘리먼트에 최적화 작업을 진행해 CLS가 발생하지 않도록 하였다.
+이미지의 사이즈를 직접 지정하는 대신, <a href="https://css-tricks.com/aspect-ratio-boxes/">aspect-ratio-boxes</a> 기법을 적용하였다. 이로 인해 이미지가 들어갈 공간을 미리 확보하여 이미지가 로드 완료되었을 때 레이아웃이 움직이는것을 예방할 수 있다. 이 기법을 활용하여 CLS점수를 0으로 만들었다. 해당 측정 제안이 사라졌고 사용자 경험이 눈에 띄개 개선되었다.</p>
+<p>노트: 브라우저가 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio">aspect-ratio</a>를 지원하면 더 좋지만 아직 그 기능이 폭넓게 구현되지 않아 위의 방법을 사용했다.</p>
+<img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app26.DeltdA_a_wivdI.webp" alt="" width="640" height="532" loading="lazy" decoding="async">
+<h3 id="preconnects">Preconnects</h3>
+<p>Preconnects는 브라우저에게 페이지에서 곧 사용될 리소스들에 대한 힌트를 줄 수 있는 기능이다. <code>rel="preconnect"</code> 를 사용하면 브라우저는 다른 도메인에 대한 연결을 미리 만들어 빠르게 처리할 수 있도록 해 둔다. 이 힌트는 연결을 미리 준비하기 때문에 리소스 로드 속도를 개선시킬 수 있다.</p>
+<p>우리는 아래와 같이 preconnect 속성을 리소스들에 추가하였다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="jsx"><code><span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#89B4FA">link</span><span style="color:#F9E2AF"> rel</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">'preconnect'</span><span style="color:#F9E2AF"> href</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">'https://image.tmdb.org'</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#89B4FA">link</span><span style="color:#F9E2AF"> rel</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">'preconnect'</span><span style="color:#F9E2AF"> href</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">'https://api.themoviedb.org'</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#89B4FA">link</span><span style="color:#F9E2AF"> rel</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">'preconnect'</span><span style="color:#F9E2AF"> href</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">'https://www.google-analytics.com'</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#89B4FA">link</span><span style="color:#F9E2AF"> rel</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">'preconnect'</span><span style="color:#F9E2AF"> href</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">'https://content-autofill.googleapis.com'</span><span style="color:#94E2D5"> /></span></span>
+<span class="line"></span></code></pre>
+<p>아래 표와 같이 큰 차이는 없지만 식별 가능한 수준의 향상이 관측되었다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>성능 지표</th><th>FCP(s)</th><th>Speed Index(s)</th><th>LCP(s)</th><th>TTI(s)</th><th>TBT(ms)</th><th>CLS</th><th>성능(%)</th></tr></thead><tbody><tr><td>Before</td><td>0.9</td><td>3.9</td><td>3.43</td><td>2.93</td><td>60</td><td>0</td><td>88</td></tr><tr><td>After</td><td>0.83</td><td>3.5</td><td>2.86</td><td>2.63</td><td>53.33</td><td>0</td><td>93.33</td></tr><tr><td>% Change</td><td>7.77</td><td>10.25</td><td>16.61</td><td>10.23</td><td>6.67</td><td>0</td><td></td></tr></tbody></table>
+<h3 id="api호출-순서-최적화">API호출 순서 최적화</h3>
+<p>영화 앱은 TMDB의 클라이언트이기 때문에 영화 목록, 장르, 출연자, 연관 이미지 등의 정보를 얻기 위해 여러 API를 호출한다. API호출 순서 최적화르 위해 사용되는 원칙은 페이지의 메인영역을 위한 데이터를 받아오는 것이 다른 API호출때문에 지연되지 않도록 하는것이다. 이를 염두에 두고 순서를 아래와 같이 변경하였다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>순 서</th><th>Before</th><th>After</th></tr></thead><tbody><tr><td>1</td><td>영화 포스터에 대한 API를 호출하는 중에 장르나 구성에 대한 메타데이터를 받아오고 있어서 포스터 API가 지연된다</td><td>사이드 메뉴에 필요한 메타데이터와 영화 포스터 데이터를 동시에 조회한다</td></tr><tr><td>2</td><td>영화 포스터 데이터를 받아온다</td><td>다운로드 받은 영화 포스터 데이터로 홈 페이지를 렌더한다</td></tr><tr><td>3</td><td>다운로드 받은 영화 포스터 데이터로 홈 페이지를 렌더한다</td><td></td></tr></tbody></table>
+<h3 id="api응답-preload">API응답 preload</h3>
+<p>사용자가 영화 앱에 처음 방문했을 때 영화 API를 유명한 순으로 1페이지를 호출할 것이라는 것을 알고 있다. 실제 목록은 TMDB API로부터 받아오는데 이 때 두 가지 파라미터 장르 = “유명한”, 페이지 = “1” 를 전달하게 될 것이다. 따라서 해당 파라미터를 포함하는 API를 아래와 같이 preload 처리할 수 있다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#89B4FA">link</span></span>
+<span class="line"><span style="color:#F9E2AF">  rel</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"preload"</span></span>
+<span class="line"><span style="color:#F9E2AF">  as</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"fetch"</span></span>
+<span class="line"><span style="color:#F9E2AF">  href</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"https://api.themoviedb.org/3/movie/popular?api_key=844dba0bfd8f3a4f3799f6130ef9e335&#x26;page=1"</span></span>
+<span class="line"><span style="color:#F9E2AF">  crossorigin</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"true"</span></span>
+<span class="line"><span style="color:#94E2D5">/></span></span>
+<span class="line"></span></code></pre>
+<p>이 코드는 사용자가 다른 페이지에서는 무엇을 할 지 예측할 수 없기 때문에 홈 페이지에서만 사용하게 된다. 만약 사용자가 해당 데이터를 사용하지 않으면 불필요하게 리소스를 낭비하는 것으로 크롬 개발자 도구에서 알려준다. - “The resource <a href="https://api.themoviedb.org/3/movie/popular?api_key=844dba0bfd8f3a4f3799f6130ef9e335&#x26;page=1">https://api.themoviedb.org/3/movie/popular?api_key=844dba0bfd8f3a4f3799f6130ef9e335&#x26;page=1</a> was preloaded using link preload but not used within a few seconds from the window’s load event. Please make sure it has an appropriate as value and it is preloaded intentionally.”</p>
+<p>이로 인해 LCP와 TTI는 각각 <strong>12%</strong>, <strong>7.76%</strong> 증가하였고 전체적인 성능 증가는 <strong>91%</strong> 에서 <strong>94%</strong> 로 개선되었다.</p>
+<h3 id="tmdb-로고와-트레이드마크-preload">TMDB 로고와 트레이드마크 preload</h3>
+<p>TMDB의 로고와 트레이드마크는 모든 페이지에서 보여지므로 preloading을 적용할 수 있다. 미디어 쿼리를 사용하여 preload처리하였다.</p>
+<pre class="astro-code catppuccin-mocha" style="background-color:#1e1e2e;color:#cdd6f4; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#94E2D5">&#x3C;</span><span style="color:#89B4FA">link</span></span>
+<span class="line"><span style="color:#F9E2AF">  rel</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"preload"</span></span>
+<span class="line"><span style="color:#F9E2AF">  href</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"{LOGO_IMAGE_PATH}"</span></span>
+<span class="line"><span style="color:#F9E2AF">  as</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"image"</span></span>
+<span class="line"><span style="color:#F9E2AF">  media</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"(min-width: 80em)"</span></span>
+<span class="line"><span style="color:#94E2D5">/>&#x3C;</span><span style="color:#89B4FA">link</span></span>
+<span class="line"><span style="color:#F9E2AF">  rel</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"preload"</span></span>
+<span class="line"><span style="color:#F9E2AF">  href</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"{DARK_TMDB_IMAGE_PATH}"</span></span>
+<span class="line"><span style="color:#F9E2AF">  as</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"image"</span></span>
+<span class="line"><span style="color:#F9E2AF">  media</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"(prefers-color-scheme: dark) and (min-width: 80em)"</span></span>
+<span class="line"><span style="color:#94E2D5">/>&#x3C;</span><span style="color:#89B4FA">link</span></span>
+<span class="line"><span style="color:#F9E2AF">  rel</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"preload"</span></span>
+<span class="line"><span style="color:#F9E2AF">  href</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"{LIGHT_TMDB_IMAGE_PATH}"</span></span>
+<span class="line"><span style="color:#F9E2AF">  as</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"image"</span></span>
+<span class="line"><span style="color:#F9E2AF">  media</span><span style="color:#94E2D5">=</span><span style="color:#A6E3A1">"(prefers-color-scheme: light) and (min-width: 80em)"</span></span>
+<span class="line"><span style="color:#94E2D5">/></span></span>
+<span class="line"></span></code></pre>
+<p>결과적으로 5~6% 정도의 FCP 및 Speed Index 속도가 개선되었다.</p>
+<h2 id="사이트를-반응형으로-만들기">사이트를 반응형으로 만들기</h2>
+<p>영화 앱은 UI 래퍼를 렌더하기 위해 Next.js 의 SSR을 사용한다. 앱이 데스크톱과 모바일에서 모두 접속할 수 있기 때문에 반응형 디자인이 필수적이다. 그런데 <a href="https://nitayneeman.com/posts/combining-server-side-rendering-and-responsive-design-using-react/">반응형 디자인과 SSR을 조합하는게 조금 까다로운데</a>. 이유는</p>
+<ol>
+<li>컨텐츠가 렌더링 되는 서버에서는 클라이언트의 <code>window</code> 요소를 알 수 없다. 따라서 클라이언트의 상세 정보를 알기 위해 <a href="https://www.w3schools.com/jsref/met_win_matchmedia.asp">window.matchmedia()</a>같은 것을 사용할 수 없다. 또 <a href="https://caniuse.com/?search=client%20hint">클라이언트 힌트는 모든 브라우저에서 지원하지 않는다.</a></li>
+<li>CSS 미디어 쿼리를 사용할 경우 데스크탑이던 모바일이던 상관 없이 모든 요소가 렌더링된다.</li>
+</ol>
+<p>이런 문제들을 해결하기 위해 우리는 <a href="https://github.com/artsy/fresnel">@artsy/fresnel</a> 라이브러리를 사용했다. 서버에서 특별한 CSS breakpoint와 함께 렌더링을 양쪽 다 하긴 하지만 breakpoint에 매칭되는 컴포넌트만 마운팅된다. 따라서 중복 마크업과 불필요한 렌더링을 피할 수 있었다. 다음 이미지는 동일한 컨텐츠에 대해 변경 전화 후의 마크업 차이를 나타내고 있다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Before</th><th>After</th></tr></thead><tbody><tr><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app27.DSB4upQa_Z27kDHi.webp" alt="" width="640" height="376" loading="lazy" decoding="async"></td><td><img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app28.CAbShTB5_284pis.webp" alt="" width="640" height="375" loading="lazy" decoding="async"></td></tr></tbody></table>
+<p>다음은 변경 후 관찰된 Lighthouse 성능의 변화이다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>성능 지표</th><th>FCP(s)</th><th>Speed Index(s)</th><th>LCP(s)</th><th>TTI(s)</th><th>TBT(ms)</th><th>CLS</th><th>성능(%)</th></tr></thead><tbody><tr><td>Before</td><td>0.93</td><td>3.73</td><td>2.6</td><td>2.63</td><td>60</td><td>0.001</td><td>94.33</td></tr><tr><td>After</td><td>1.06</td><td>3.23</td><td>2.66</td><td>2.66</td><td>63.33</td><td>0</td><td>95</td></tr><tr><td>% Change</td><td>13.97</td><td>13.4</td><td>2.3</td><td>1.14</td><td>5.55</td><td>100</td><td></td></tr></tbody></table>
+<p>FCP, LCP, TTI, TBT에서 약간의 성능 감소가 있었지만 Speed Index와 성능이 향상되었다. @artsy/fresnel 사용으로 청크 크기가 증가했지만 마크업을 줄이면 좋은 절충안이 될 수 있다.</p>
+<h2 id="구글-애널리틱스-적용">구글 애널리틱스 적용</h2>
+<p>구글 애널리틱스를 포함하여 사이트가 사용자와 어떻게 소통하고 있는지를 알 수 있도록 했다. 다만 이로 인해 약간의 성능 저하가 예상되었다. 코드 변경에 따른 성능의 변화를 추적하기 위해 여러 프로세스들에 대해 변화량을 캡쳐했다. 예상대로 추가 컴포넌트로 인해 약간의 성능 저하가 있었다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>성능 지표</th><th>FCP(s)</th><th>Speed Index(s)</th><th>LCP(s)</th><th>TTI(s)</th><th>TBT(ms)</th><th>CLS</th><th>성능(%)</th></tr></thead><tbody><tr><td>Before</td><td>0.8</td><td>3.4</td><td>2.53</td><td>1.8</td><td>26.66</td><td>0.001</td><td>95.66</td></tr><tr><td>After</td><td>0.95</td><td>3.7</td><td>2.93</td><td>2.13</td><td>35</td><td>0</td><td>92.75</td></tr><tr><td>% Change</td><td>18.75</td><td>8.82</td><td>15.61</td><td>18.05</td><td>31.28</td><td>0</td><td></td></tr></tbody></table>
+<h2 id="도움이-되지-않았던-항목들">도움이 되지 않았던 항목들</h2>
+<p>Lighthouse 리포트의 피드백에 따라 여러 대체 항목과 아이디어들을 시도해 보았지만 성능상의 이점이 없어 포기한 것들도 있다. 아래는 그 요약이다.</p>
+<ol>
+<li>이미지 지연로딩을 위해 react-lazyload 패키지를 사용하고 있었다. 그런데 이 것이 스크롤과 레이팅 컴포넌트와 함께 메인 스레드가 오랫동안 실행되도록 만들었다.
+<img  src="/_astro/optimizing-core-web-vitals-on-a-nextjs-app29.DsTdl5TS_2oxjRO.webp" alt="" width="640" height="375" loading="lazy" decoding="async"></li>
+</ol>
+<blockquote>
+<p>우리는 이것을 <a href="https://addyosmani.com/blog/lazy-loading/">브라우저 네이티브 지연 로딩</a>으로 대체했고 후속 테스트를 통해 TBT 가 10ms에서 117ms 로 증가하여 LCP가 무시할 수 있는 수준으로 감소했음을 확인했다. 네이티브 이미지 지연 로딩은 뷰포트 근처의 몇 이미지를 로드하는 반면 react-lazyload는 뷰포트 내에 있는 이미지만 로드하여 TBT에서 이런 차이를 일으킨 것으로 보인다.</p>
+</blockquote>
+<p>요즘에는 이런 기능을 위해 <a href="https://nextjs.org/docs/api-reference/next/image">Next.js Image Component</a>를 활용할 수 있다.</p>
+<ol>
+<li>이미지에 aspect-ratio를 지정하기 전에 CLS이슈를 해결하기 위해 이미지에 크기를 지정했다. 그 방법도 CLS를 감소시키기 위해 제안되는 방법이긴 하지만 aspect-ratio 설정이 없이 그 방법만으로는 이슈가 해결되지 않았다.</li>
+<li>LCP를 줄이기 위해 SSR을 도입했지만 오히려 성능이 감소되었다. 이는 페이지를 렌더링하는데 필요한 영화데이터를 TMDB API호출을 통해 가져오기 때문일 수 있다. 이로 인해 서버에서 API요청/응답이 처리되는 시간이 늘어나 응답이 느려진 것이다.</li>
+</ol>
+<h2 id="도움이-될-수-있는-아이디어들">도움이 될 수 있는 아이디어들</h2>
+<p>아래 항목들은 미래에 시도해 보려고 하는 성능 향상 항목들이다. 여기에는 개별 컴포넌트를 더 가벼운 것으로 대체하는것 부터 본격적으로 SSR을 구현하는 것까지 다양하게 있다. 다음은 앱의 성능에 긍정적인 영향을 미치는지 확인하기 위해 확인해볼 수 있는 사항들이다.</p>
+<ol>
+<li><a href="https://web.dev/preload-responsive-images/">preloading을 포함한 반응형 이미지 구현에 관련된 논의</a></li>
+<li><a href="https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker">서비스 워커를 이용한 캐시</a></li>
+<li>현재 _app.js에는 redux 관련된 액션, 리듀서와 같은 로직들이 불필요하게 포함되어 있다. 개별 페이지들에 방문했을 때 이런것들이 다 필요없는데도 말이다. 우리는 <a href="https://github.com/vercel/next.js/tree/canary/examples/with-redux-code-splitting">redux 로직을 위한 코드 스플리팅</a>을 통해 이런 코드들을 제거하려고 하고 있다.</li>
+<li>redux 없이 SSR을 구현하고 <a href="https://github.com/vercel/next.js/tree/canary/examples/ssr-caching">SSR캐싱</a>을 적용한다.</li>
+<li><a href="https://github.com/appleple/react-modal-video">react-modal-video</a>를 가벼운 대체 패키지로 바꾼다.</li>
+<li><a href="https://github.com/hipstersmoothie/react-glider">react-slider</a> 대신 <a href="https://github.com/rcbyr/keen-slider">keen-slider</a>를 사용한다.</li>
+<li><a href="https://github.com/twobin/react-lazyload">react-lazyload</a>대신 <a href="https://github.com/wellyshen/react-cool-inview">react-cool-inview</a>를 사용한다.</li>
+<li>다양한 <a href="https://quick-teaching-tool.web.app/">React loading pattern</a>을 활용하여 3P 라이브러리들에 지연 로딩 및 코드 스플리팅을 적용한다.</li>
+<li><a href="https://github.com/vercel/next.js/pull/15875">Image-post-precessing</a>을 사용하여 hero image같은 것을 preload처리한다.</li>
+<li>SVG로딩 스피너를 CSS애니메이션으로 대체한다.</li>
+<li>이미지 렌더링에 내부 자바스크립트를 사용하는 컴포넌트 대신 HTML과 CSS를 활용하는 가벼운 컴포넌트를 사용한다.</li>
+</ol>
+<h2 id="결론">결론</h2>
+<p>성능 최적화는 지금까지도 지속되고 있는 프로세스이다. 지난 6개월 동안 우린 이런 변경사항들을 적용하여 많은 모법 사례들을 테스트 해 보았다. 사실 얼마든지 더 할수도 있긴 하지만 어느 시점에서는 성능 최적화보다 다른 대안을 찾는 것이 나을 수 있다. 사이트에 새로운 기능이 추가될 때 마다 성능 검토는 반복되어 이뤄질 것이다. 그러나 우리는 이런 과정에서 얻은 교훈들을 캡쳐하여 이 글을 읽는 분들 뿐만 아니라 미래를 위한 매뉴얼 역할을 하고 싶었다.</p>
+<p><em>이 글에 기여한 Anton Karlovskiy와 Leena Sohoni-Kasture에게 특별한 감사를 전합니다.</em></p> </div> </div>  </div> </div> </div>  </main> </body></html> 

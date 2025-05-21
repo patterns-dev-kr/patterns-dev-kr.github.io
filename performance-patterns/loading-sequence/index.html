@@ -1,0 +1,438 @@
+<!DOCTYPE html><html lang="ko" data-astro-cid-sckkx6r4> <head><meta charset="utf-8"><meta content="ie=edge" http-equiv="x-ua-compatible"><meta content="initial-scale=1, maximum-scale=5, width=device-width, viewport-fit=cover" name="viewport"><meta content="er9zvCmECxtt0KP_BjDZ4WplZsNT5ApeDBK4wYD7aI0" name="google-site-verification"><meta content="eaca9475c8a73d77aa2e34ac3d3e8097cef7397d" name="naver-site-verification"><meta content="Astro v4.16.6" name="generator"><title>Patterns.dev.kr</title><link rel="canonical" href="https://patterns-dev-kr.github.io/performance-patterns/loading-sequence/"><meta name="description" content="모던 웹 앱 디자인 패턴"><meta name="robots" content="index, follow"><meta property="og:title" content="리소스 로딩 순서 최적화"><meta property="og:type" content="article"><meta property="og:image" content="./introduction.jpg"><meta property="og:url" content="https://patterns-dev-kr.github.io/performance-patterns/loading-sequence/"><meta property="og:image:url" content="./introduction.jpg"><meta property="og:image:alt" content="리소스 로딩 순서 최적화"><link crossorigin href="https://fonts.gstatic.com" rel="preconnect"><link href="/favicon.png" rel="icon" sizes="any" type="image/png"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="swap"><script src="https://www.googletagmanager.com/gtag/js?id=G-3XKKTEVFKQ" type="text/partytown"></script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-3XKKTEVFKQ')
+    </script><script>
+      document.addEventListener('astro:page-load', () => {
+        if (navigator.userAgent.indexOf('Win') > -1) {
+          document.documentElement.classList.add('win')
+        }
+      })
+    </script><link rel="stylesheet" href="/_astro/_slug_.CnWBadwT.css">
+<link rel="stylesheet" href="/_astro/_slug_.OicVUOHF.css"><script type="module" src="/_astro/hoisted.4sIGGDry.js"></script>
+<script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[]).concat(["dataLayer.push"])})(window,'partytown','forward');/* Partytown 0.10.2 - MIT builder.io */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,d,l,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(l=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(d=setTimeout(v,1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.10.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<l.length;n++)(o=r.createElement("script")).innerHTML=l[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(d)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script><style>[data-astro-transition-scope="astro-mw4a64ze-1"] { view-transition-name: sidebar; }@layer astro { ::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(sidebar) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-mw4a64ze-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-mw4a64ze-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body data-astro-cid-sckkx6r4> <header data-header class="fixed left-0 right-0 top-0 z-10 h-20 px-3 transition-all ease-out [&.scroll]:h-12 [&.scroll]:bg-th-bg [&.scroll]:shadow-md" data-astro-cid-3ef6ksr2> <div class="container flex h-full items-center justify-between font-lexend text-th-text" data-astro-cid-3ef6ksr2> <div class="flex items-center gap-4" data-astro-cid-3ef6ksr2> <button class="flex h-6 w-6 flex-grow-0 items-center justify-center lg:hidden" data-menu-button type="button" data-astro-cid-3ef6ksr2> <svg width="1em" height="1em" viewBox="0 0 32 32" class="text-2xl" data-astro-cid-3ef6ksr2 data-icon="carbon:menu">  <symbol id="ai:carbon:menu"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"/></symbol><use xlink:href="#ai:carbon:menu"></use>  </svg> </button> <a aria-label="Go to Home" class="text-2xl font-bold leading-none text-th-text no-underline" href="/" data-astro-cid-3ef6ksr2>patterns</a> </div> <nav class="flex items-center text-sm" data-astro-cid-3ef6ksr2> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" data-active href="/" data-astro-cid-3ef6ksr2>Read</a> <a class="relative flex items-center px-3 font-light text-th-text no-underline data-[active]:font-medium" href="/about" data-astro-cid-3ef6ksr2>About</a> <custom-theme-switcher data-astro-cid-dz5h74bc> <button class="relative flex h-8 w-8 place-content-center place-items-center rounded-sm" title="Change color theme" type="button" data-astro-cid-dz5h74bc> <svg width="1em" height="1em" viewBox="0 0 24 24" data-light data-astro-cid-dz5h74bc data-icon="octicon:sun-24">  <symbol id="ai:octicon:sun-24"><path fill="currentColor" d="M12 19a7 7 0 1 1 0-14a7 7 0 0 1 0 14m0-1.5a5.5 5.5 0 1 0 0-11a5.5 5.5 0 1 0 0 11m-5.657.157a.75.75 0 0 1 0 1.06l-1.768 1.768a.749.749 0 0 1-1.275-.326a.75.75 0 0 1 .215-.734l1.767-1.768a.75.75 0 0 1 1.061 0M3.515 3.515a.75.75 0 0 1 1.06 0l1.768 1.768a.749.749 0 0 1-.326 1.275a.75.75 0 0 1-.734-.215L3.515 4.575a.75.75 0 0 1 0-1.06M12 0a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0V.75A.75.75 0 0 1 12 0M4 12a.75.75 0 0 1-.75.75H.75a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 4 12m8 8a.75.75 0 0 1 .75.75v2.5a.75.75 0 0 1-1.5 0v-2.5A.75.75 0 0 1 12 20m12-8a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h2.5A.75.75 0 0 1 24 12m-6.343 5.657a.75.75 0 0 1 1.06 0l1.768 1.768a.75.75 0 0 1-.018 1.042a.75.75 0 0 1-1.042.018l-1.768-1.767a.75.75 0 0 1 0-1.061m2.828-14.142a.75.75 0 0 1 0 1.06l-1.768 1.768a.75.75 0 0 1-1.042-.018a.75.75 0 0 1-.018-1.042l1.767-1.768a.75.75 0 0 1 1.061 0"/></symbol><use xlink:href="#ai:octicon:sun-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-dark data-astro-cid-dz5h74bc data-icon="octicon:moon-24">  <symbol id="ai:octicon:moon-24"><path fill="currentColor" d="m14.768 3.96l-.002-.005a9 9 0 0 0-.218-.779c-.13-.394.21-.8.602-.67q.435.144.855.328l.01.005A10.002 10.002 0 0 1 12 22a10 10 0 0 1-9.162-5.985l-.004-.01a10 10 0 0 1-.329-.855c-.13-.392.277-.732.67-.602q.386.126.78.218l.004.002A9 9 0 0 0 14.999 6a9 9 0 0 0-.231-2.04M16.5 6c0 5.799-4.701 10.5-10.5 10.5q-.64 0-1.26-.075A8.5 8.5 0 1 0 16.425 4.74q.075.62.075 1.259Z"/></symbol><use xlink:href="#ai:octicon:moon-24"></use>  </svg> <svg width="1em" height="1em" viewBox="0 0 24 24" data-auto data-astro-cid-dz5h74bc data-icon="octicon:devices-24">  <symbol id="ai:octicon:devices-24"><path fill="currentColor" d="M1 3.75C1 2.784 1.784 2 2.75 2h18.5c.966 0 1.75.784 1.75 1.75v4a.75.75 0 0 1-1.5 0v-4a.25.25 0 0 0-.25-.25H2.75a.25.25 0 0 0-.25.25v11.5c0 .138.112.25.25.25h9a.75.75 0 0 1 0 1.5h-1.287c-.126 1.266-.564 2.445-1.223 3.5h2.51a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.565-1.243c.964-1.105 1.598-2.382 1.769-3.757H2.75A1.75 1.75 0 0 1 1 15.25z"/><path fill="currentColor" d="M14 11.75c0-.967.783-1.75 1.75-1.75h5.5c.966 0 1.75.783 1.75 1.75v8.5A1.75 1.75 0 0 1 21.25 22h-5.5A1.75 1.75 0 0 1 14 20.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h5.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25Z"/></symbol><use xlink:href="#ai:octicon:devices-24"></use>  </svg> </button> </custom-theme-switcher> <script>
+  // for avoid FOUC
+  const loadTheme = () => {
+    if (typeof localStorage === 'undefined') {
+      return { preferred: 'light', theme: 'auto' }
+    }
+
+    const value = localStorage.getItem('theme')
+
+    return {
+      preferred: matchMedia('(prefers-color-scheme: light)').matches
+        ? 'light'
+        : 'dark',
+      theme: value === 'dark' || value === 'light' ? value : 'auto',
+    }
+  }
+
+  const { preferred, theme } = loadTheme()
+  const {
+    documentElement: { classList },
+  } = document
+
+  if (theme === 'auto') {
+    classList.add('auto')
+  } else {
+    classList.remove('auto')
+  }
+
+  const actual = theme === 'auto' ? preferred : theme
+
+  if (actual === 'dark') {
+    classList.add('dark')
+  } else {
+    classList.remove('dark')
+  }
+</script>   </nav> </div> </header>   <main class="relative" data-astro-cid-sckkx6r4>  <div class="px-3 transition-colors"> <div class="container relative mx-auto flex justify-center pt-20 text-th-text"> <custom-sidebar data-astro-cid-ssfzsv2f> <aside aria-label="Sidebar" data-astro-cid-ssfzsv2f> <button data-menu-close type="button" data-astro-cid-ssfzsv2f> <svg width="1em" height="1em" viewBox="0 0 32 32" class="h-6 w-6" data-astro-cid-ssfzsv2f data-icon="carbon:close">  <symbol id="ai:carbon:close"><path fill="currentColor" d="M17.414 16L24 9.414L22.586 8L16 14.586L9.414 8L8 9.414L14.586 16L8 22.586L9.414 24L16 17.414L22.586 24L24 22.586z"/></symbol><use xlink:href="#ai:carbon:close"></use>  </svg> </button> <h2 class="title" data-astro-cid-ssfzsv2f>Design Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/design-patterns/introduction" data-astro-cid-ssfzsv2f> Design Pattern 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/singleton-pattern" data-astro-cid-ssfzsv2f> Singleton 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/proxy-pattern" data-astro-cid-ssfzsv2f> Proxy 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/provider-pattern" data-astro-cid-ssfzsv2f> Provider 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/prototype-pattern" data-astro-cid-ssfzsv2f> Prototype 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/container-presentational-pattern" data-astro-cid-ssfzsv2f> Container/Presentational 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/observer-pattern" data-astro-cid-ssfzsv2f> Observer 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/module-pattern" data-astro-cid-ssfzsv2f> Module 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mixin-pattern" data-astro-cid-ssfzsv2f> Mixin 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/mediator-middleware-pattern" data-astro-cid-ssfzsv2f> Mediator/Middleware 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hoc-pattern" data-astro-cid-ssfzsv2f> HOC 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/render-props-pattern" data-astro-cid-ssfzsv2f> Render Props 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/hooks-pattern" data-astro-cid-ssfzsv2f> Hooks 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/flyweight-pattern" data-astro-cid-ssfzsv2f> Flyweight 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/factory-pattern" data-astro-cid-ssfzsv2f> Factory 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/compound-pattern" data-astro-cid-ssfzsv2f> Compound 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/command-pattern" data-astro-cid-ssfzsv2f> Command 패턴 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/design-patterns/learnaing-javascript-design-patterns" data-astro-cid-ssfzsv2f> Learning JavaScript Design Patterns </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Rendering Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/introduction" data-astro-cid-ssfzsv2f> 소개 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-reactjs" data-astro-cid-ssfzsv2f> Reactjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/overview-of-nextjs" data-astro-cid-ssfzsv2f> Nextjs의 개요 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/client-side-rendering" data-astro-cid-ssfzsv2f> 클라이언트 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/server-side-rendering" data-astro-cid-ssfzsv2f> 서버 사이드 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/static-rendering" data-astro-cid-ssfzsv2f> 정적 렌더링 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/incremental-static-generation" data-astro-cid-ssfzsv2f> Incremental Static Generation </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/progressive-hydration" data-astro-cid-ssfzsv2f> Progressive Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/streaming-server-side-rendering" data-astro-cid-ssfzsv2f> Streaming Server Side Rendering </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/react-server-components" data-astro-cid-ssfzsv2f> React Server Components </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/selective-hydration" data-astro-cid-ssfzsv2f> Selective Hydration </a> </li><li data-astro-cid-ssfzsv2f> <a href="/rendering-patterns/the-island-architecture" data-astro-cid-ssfzsv2f> The Island Architecture </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Performance Patterns</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li class="active" data-astro-cid-ssfzsv2f> <a href="/performance-patterns/loading-sequence" data-astro-cid-ssfzsv2f> 리소스 로딩 순서 최적화 </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/static-import" data-astro-cid-ssfzsv2f> Static Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/dynamic-import" data-astro-cid-ssfzsv2f> Dynamic Import </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-visibility" data-astro-cid-ssfzsv2f> Import On Visibility </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/import-on-interaction" data-astro-cid-ssfzsv2f> Import On Interaction </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/route-based-splitting" data-astro-cid-ssfzsv2f> Route Based Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/bundle-splitting" data-astro-cid-ssfzsv2f> Bundle Splitting </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prpl-pattern" data-astro-cid-ssfzsv2f> PRPL Pattern </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/tree-shaking" data-astro-cid-ssfzsv2f> Tree Shaking </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/preload" data-astro-cid-ssfzsv2f> Preload </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/prefetch" data-astro-cid-ssfzsv2f> Prefetch </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/third-parties" data-astro-cid-ssfzsv2f> Third Parties </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/list-virtualization" data-astro-cid-ssfzsv2f> List Virtualization </a> </li><li data-astro-cid-ssfzsv2f> <a href="/performance-patterns/compressing-javascript" data-astro-cid-ssfzsv2f> Compressing JavaScript </a> </li> </ul> <h2 class="title" data-astro-cid-ssfzsv2f>Case Studies</h2> <ul class="list" data-astro-cid-ssfzsv2f> <li data-astro-cid-ssfzsv2f> <a href="/case-studies/airbnb-case-study" data-astro-cid-ssfzsv2f> Airbnb Case Study </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/hey-com" data-astro-cid-ssfzsv2f> Hey.com </a> </li><li data-astro-cid-ssfzsv2f> <a href="/case-studies/optimizing-core-web-vitals-on-a-nextjs-app" data-astro-cid-ssfzsv2f> Optimizing Core Web Vitals on a Next.js app </a> </li> </ul> </aside> <div class="dimmed" data-astro-cid-ssfzsv2f></div> </custom-sidebar>   <div class="max-w-full flex-auto">  <div class="px-2 py-2 lg:ml-72" data-astro-cid-fzx4jmue> <h1 class="mb-4 break-all text-4xl tracking-tight" data-astro-cid-fzx4jmue>리소스 로딩 순서 최적화</h1> <div class="mb-2" data-astro-cid-fzx4jmue> <a class="text-sm" href="https://docs.google.com/forms/d/e/1FAIpQLScQPXWUlnKvkAhf7JJMENcPywlPKMmIFCYonxEByqKNJ3lu2g/viewform?usp=pp_url&entry.2111705104=performance-patterns/loading-sequence" rel="noreferrer" target="_blank" data-astro-cid-fzx4jmue>
+📮 피드백 보내기
+</a> </div> <div class="_content prose prose-stone mb-20 max-w-full dark:prose-invert prose-headings:font-semibold prose-h1:mt-20 prose-a:relative prose-a:no-underline prose-a:after:absolute prose-a:after:bottom-0 prose-a:after:left-0 prose-a:after:right-0 prose-a:after:h-[1px] prose-a:after:bg-th-text/80 prose-a:after:content-['']" data-astro-cid-fzx4jmue> <aside>📜 원문: <a href="https://www.patterns.dev/posts/loading-sequence/" target="_blank">patterns.dev - loading sequence</a></aside>
+<p><strong>알림:</strong> 이 글은 크롬의 <a href="https://web.dev/introducing-aurora/">Aurora 팀</a>의 인사이트에 영감을 받아 작성되었다. 특히 리소스 로딩 순서 최적화에 대해 연구중인 <a href="http://twitter.com/shubhie">Shubhie Panicker</a>의 도움을 많이 받았다.</p>
+<p>최적화가 잘 된 웹 페이지는 로드될 때 몇몇 중요한 컴포넌트와 리소스들을 바로 사용할 수 있게 준비하여 부드러운 사용자 경험을 제공한다. 이는 사용자에게 앱의 성능이 좋다는 인식을 줄 수 있고 좋은 사용자 경험은 결과적으로 <a href="https://web.dev/vitals/">Core Web Vitals</a>에 좋은 점수로 이어진다.</p>
+<p>앱의 성능을 측정하기 위한 <a href="https://web.dev/fcp/">First Content Paint</a>, <a href="https://web.dev/lcp/">Largest Contentful Paint</a>, <a href="https://web.dev/fid/">First Input Delay</a> 등의 주요 <a href="https://web.dev/metrics/">성능 지표</a>들은 주요 리소스들의 로딩 순서에 직접적인 영향을 받는다. 예를 들어 LCP의 경우 <a href="https://en.wikipedia.org/wiki/Web_banner#Other_types">hero image</a>가 로드되지 않으면 계속 늘어질 것이다. 이 글은 이런 리소스의 로드와 web vitals의 상관 관계에 대해 이야기하고, 더 나은 web vitals를 위해 리소스 로딩 순서를 어떻게 최적화해야 하는지에 대해 다룬다.</p>
+<p>이상적인 리소스 로딩 순서에 대해 학습하기 전에. 먼저 리소스 로딩 순서를 올바르게 처리하기 어려운 이유에 대해 알아보자.</p>
+<h2 id="리소스-로딩-순서-최적화가-어려운-이유">리소스 로딩 순서 최적화가 어려운 이유</h2>
+<p>예전에 좋은 기회로 파트너들의 웹사이트 성능을 분석해볼 수 있었는데, 여러 파트너 웹 사이트에서 페이지를 효율적으로 로드하는데 방해가 되는 여러 유사한 문제들을 발견할 수 있었다.</p>
+<p>문제들 중에는 브라우저가 페이지의 리소스에 대해 우선순위를 처리하는 방법이 개발자의 기대와 다른 경우가 꽤 많았다. 이는 웹 사이트의 성능에 발목을 잡게 된다. 필자는 이런 상황이 발생하는 이유에 대해 분석해보았으며 내용은 아래와 같다.</p>
+<h3 id="리소스-순서-처리">리소스 순서 처리</h3>
+<p><a href="https://web.dev/vitals">Web Vitals</a>를 최적화하기 위해서는 각 성능 지표들이 의미하는 바를 이해하는것 뿐만이 아니라. 각 지표들과 연관된 각기 다른 리소스들이 어떤 관계를 갖는지를 잘 이해해야 한다. 지표 중 FCP, LCP, FID는 나열된 순서대로 측정되므로, 각 지표 달성을 위한 리소스들 역시 순서대로 제공되어야 한다.</p>
+<p>종종 리소스들이 올바른 순서로 제공되지 않거나 파이프라인 되지 않는 경우가 있다. 이는 개발자가 리소스 로드와 각 지표들의 종속성을 인지하지 못 하고 있기 때문일 수 있는데. 이로 인해 각 지표들이 측정되기 위한 관련 리소스들이 필요한 시점에 이용 불가능한 상황이 발생할 수 있다.</p>
+<p><strong>예시:</strong></p>
+<ol>
+<li>FCP측정 시. 뒤 이어 LCP가 측정되기 위해 hero image가 사용가능하도록 준비되어 있어야 한다.</li>
+<li>LCP측정 시. 페이지 상호 작용이 바로 가능해져야 하기 때문에(FID) 자바스크립트들이 모두 다운로드되고 분석되고 준비가 되어 있거나 혹은 이미 실행되어 있어야 한다.</li>
+</ol>
+<h3 id="네트워크cpu-활용성">네트워크/CPU 활용성</h3>
+<p>리소스들이 네트워크나 CPU가 적절히 활용되도록 파이프라이닝 되지 않는다. 그 결과 네트워크 처리 과정에는 CPU가 놀고, CPU가 처리중일 땐 네트워크가 노는 “Dead Time”이 발생하게 된다.</p>
+<p>스크립트들의 다운로드가 동시적으로 이뤄질때와 순차적으로 이뤄질때의 상황이 좋은 예시이다. 스크립트의 다운로드에 네트워크 대역폭이 동일하게 나눠 처리될 경우 모든 스크립트들이 다운로드되는 시간은 동시적이나 순차적이나 동일할 것이다. 다만 동시적으로 다운로드할 경우 다운로드가 진행되는 동안 CPU는 놀고 있을 것이다, 그러나 스크립트를 순차적으로 다운로드할 경우 CPU는 먼저 받은 스크립트를 즉시 처리할 수 있게 된다. 이로 인해 CPU와 네트워크를 조금 더 잘 활용할 수 있게 된다.</p>
+<h3 id="서드파티3p-패키지들">서드파티(3P) 패키지들</h3>
+<p>웹사이트에 일반적인 기능을 제공하기 위해 3P라이브러리가 자주 쓰이곤 한다. 서드파티들은 광고, 분석, 소셜 위젯, 라이브챗과 기타 임베드들을 제공하여 웹사이트를 발전시킨다. 서드파티 라이브러리들은 자체적인 JS, 이미지, 폰트 등과 같은 리소스들을 포함하고 있다.</p>
+<p>3P들은 이를 사용하는 웹사이트들의 로딩 성능 최적화를 지원할 의무는 없기 때문에 무거운 자바스크립트를 실행시켜 상호작용 가능해지기까지의 시간을 지연시키거나, 다른 중요 리소스들의 다운로드를 방해할 수 있다.</p>
+<p>3P를 이용하는 개발자들은 3P들이 앱의 성능에 미치는 영향보다 제공되는 기능에 더 초점을 맞춰 사용여부를 결정하는 경향이 있다. 이로 인해 3P 리소스는 앱의 전체 리소스 로딩 순서를 고려하지 않고 그냥 추가되어 버리는 경우가 많다. 이것들이 쌓이면 나중에 이를 컨트롤하기 어려워진다.</p>
+<h3 id="플랫폼별-특이사항들">플랫폼별 특이사항들</h3>
+<p>각 브라우저들은 요청의 우선순위 처리 및 관련 힌트 처리의 구현이 다를 수 있다. 이런 플랫폼별의 특이점들 잘 알고 있다면 최적화가 쉽겠지만, 특정 브라우저의 동작이 다른 경우 리소스 로딩 순서를 일관되도록 맞추는 것이 매우 어려워진다.</p>
+<p>크로미움 플랫폼의 <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=788757">preload 버그</a>를 예로 들 수 있다. <a href="https://medium.com/reloading/preload-prefetch-and-priorities-in-chrome-776165961bbf">preload 지시자</a>를 사용하면 브라우저에게 중요 리소스들을 가능한 빨리 다운로드 받을 수 있도록 할 수 있다. 다만 주의할 점은 해당 리소스가 현재 페이지에서 사용될 것이 확실할 때에만 사용해야 한다는 점이다. 위의 크로미움 버그는 preload로 지정된 리소스들이 다른 우선순위 높음으로 설정된 리소스보다도 먼저 요청되는 문제였는데. 이런 문제들은 최적화 계획을 세우는데 걸림돌이 된다.</p>
+<h3 id="http2의-우선순위-처리">HTTP2의 우선순위 처리</h3>
+<p>HTTP2 프로토콜은 자체적으로 리소스들의 우선순위나 순서를 설정하기 위한 옵션들을 제공하지 않고 있다. 우선순위 지정을 위한 기능들을 사용할 수 있게 되더라도, <a href="https://github.com/andydavies/http2-prioritization-issues">HTTP2의 리소스 우선순위 처리 기능 자체가 처리하기 어려운 근본적인 문제</a>를 가지고 있다. 애초에 서버나 CDN들은 개별 요청에 대해 순서라는것을 추측할 수 없는데, 일부 CDN들은 요청의 우선 순위를 재지정하기도 하고, 다른 CDN들은 부분적으로만 구현했거나, 결함이 있다거나, 애초에 우선순위를 구현하지 않는 경우다.</p>
+<h3 id="리소스-별-최적화">리소스 별 최적화</h3>
+<p>리소스 순서를 최적화하려면 서빙되는 리소스 자체도 최적으로 제공되어 빠르게 로드될 수 있도록 해야 한다. 중요한 CSS는 인라인되어야 하며. 이미지들은 적합한 사이즈로 리사이즈되어야 하고 JS는 코드 스플리팅이 적용되어 점진적으로 클라이언트에 전달되어야 한다.</p>
+<p>프레임워크 자체적으로는 JS와 데이터를 코드 스플리팅하여 점진적으로 서빙하는 기능이 부족하다. 개발자는 개발한 코드들을 여러 청크로 나누기 위해 아래 기능들에 의존해야 한다.</p>
+<ol>
+<li>최신 React (<a href="https://reactjs.org/docs/concurrent-mode-reference.html">Suspense / Concurrent Mode / Data Fetching</a>) - 이 기능은 아직 실험적 기능으로 제공되고 있다.</li>
+<li><a href="https://reactjs.org/docs/code-splitting.html">dynamic imports</a>를 통한 지연 로딩 - 사용할 때 직관적이지는 않고 코드를 나눌 경계를 개발자가 직접 찾아 적용해야 한다.</li>
+</ol>
+<p>코드 스플리팅도 너무 과하지 않게 적용하여 성능을 떨어트리지 않도록 균형을 찾아야 한다.</p>
+<p>가급적 작게 나누는 것이 유리한데, 그 이유는:</p>
+<ol>
+<li>각 라우팅과 상호작용 시 받게 되는 JS를 최소화한다.</li>
+<li>일반적인 의존에 대해서는 캐싱할 수 있도록 한다. 따라서 라이브러리의 변경이 모든 번들의 재-다운로드를 유발하지 않게 한다.</li>
+</ol>
+<p>반면에 JS를 너무 잘게 나눌 경우 각 코드 조각들이 낮은 압축률을 갖게 되므로 브라우저의 성능에 영향을 미칠 수 있다.</p>
+<p>리소스 최적화에는 사용하지 않는 dead code들을 제거하는 것도 필요하다. 필요 없거나 고립된 JS들이 종종 클라이언트 측에 전송되어 성능에 부정적인 영향을 미친다. 라이브러리 혹은 npm 패키지가 esmodule로 번들되어 있지 않다면 tree shake등의 최적화를 적용할 때 제약이 생긴다.</p>
+<hr>
+<p>위의 글을 보며 눈치 챈 사람도 있겠지만, 이런 이슈들은 어느 한 리소스 또는 플랫품에 국한되는 것이 아니다. 이런 문제들을 해결하려면 전체 기술 스택들과 다양한 리소스들을 통합해 최적의 성능 지표를 달성하는 방법을 이해해야 한다. 전체적인 최적화 전략을 살펴보기 전에, 최적화 라는 목적을 달성하기 위해 각 리소스들에 고려되어야 하는 사항들에 대해 살펴보자.</p>
+<h2 id="각-리소스들에-대한-관계-제약사항-및-우선순위들">각 리소스들에 대한 관계, 제약사항 및 우선순위들</h2>
+<p>이전 섹션에서 우리는 FCP와 LCP같은 이벤트들을 위한 필수 리소스들에 대해서 알아보았다. 최적화 방법에 대해서 이야기하기 전에 이런 각 종속성에 대해서 먼저 살펴보자. 아래 내용은 이상적인 리소스 로드 순서를 정의하기 전에 고려해야 할 리소스 별 권장 사항, 제약사항, 및 기타 사항들이다.</p>
+<h3 id="중요-css">중요 CSS</h3>
+<p><a href="https://web.dev/extract-critical-css/">중요 CSS</a>는 FCP에 필요한 최소 CSS를 말한다. 이런 CSS들은 별도의 파일로 포함되기 보다 HTML 자체에 인라인으로 포함되는것이 좋다. 해당 라우팅 경로에 필요한 CSS에 대해서 주어진 시간 안에 다운로드되어야 하며. 중요 CSS들은 모두 올바르게 분리가 되어 있어야 한다.</p>
+<p>인라이닝이 불가한 경우 중요 CSS들은 문서 다운로드와 동시에 preload되어 서빙될 수도 있다. 여러 도메인에서 중요 CSS들을 서빙하거나 구글 폰트와 같은 서드파티 CSS들을 직접 사용하지 않도록 하자. 개발하고 배포하는 웹 서버에서 직접 중요 CSS들을 서빙하도록 해야 한다.</p>
+<p>CSS를 받아오는 데 지연이 생기거나 잘못된 순서로 CSS를 받아올 경우 FCP와 LCP에 영향을 줄 수 있다. 이런 상황을 예방하기 위해 인라이닝 되지 않은 CSS들은 우선순위가 부여되어야 하며 퍼스트 파티 JS, ATF 이미지들보다 먼저 로드되도록 조정해야 한다.</p>
+<aside>💡ATF(Above the fold) 스크롤하지 않아도 보여야 하는 이미지들. 신문 가판대에서 사람들에게 보이는 윗 부분을 above the fold 가려지는 아랫 부분을 below the fold 라 하는것에 유래됨</aside>
+<p>CSS인라이닝도 너무 과하게 할 경우 HTML자체의 볼륨이 커져 메인 스레드에서 스타일을 파싱하는데 오랜 시간을 소요하게 된다. 이는 FCP에 악영향을 주게 된다. 따라서 어떤 리소스가 중요 리소스인지 잘 구별해야 한다.</p>
+<p>인라인 처리된 CSS는 캐시할 수 없다. 해결 방법으로는 캐시될 수 있는 CSS에 대해서 중복 요청을 허용하도록 하는 것인데, 이럴 경우 전체 페이지의 레이아웃이 계속 발생하여 FID에 악영향을 미칠 수 있다.</p>
+<h3 id="폰트">폰트</h3>
+<p>중요 CSS와 동일하게 <a href="https://web.dev/font-best-practices/">중요 폰트</a>를 위한 CSS역시 인라인처리 되어야 한다. 인라이닝이 어려울 경우 스크립트는 <a href="https://web.dev/uses-rel-preconnect/">preconnect</a>처리되어 로드되어야 한다. 구글 폰트와 같은 외부 도메인에서 로드하여 지연이 발생하는 경우 FCP에 악영향을 미친다. Preconnect는 브라우저에게 이런 리소스들을 받기 위한 연결을 먼저 시도하도록 할 수 있다.</p>
+<p>폰트 인라이닝 역시 HTML을 크게 만들어 초기화를 지연시키고 다른 중요 리소스의 다운로드를 방해할 수 있다. <a href="https://css-tricks.com/css-basics-fallback-font-stacks-robust-web-typography/">폰트 폴백</a> 처리를 통해 FCP를 방해하지 않고 텍스트를 바로 볼 수 있도록 할 수도 있다. 하지만 폰트 폴백을 사용하면 폰트가 로드되기 전과 로드 후의 레이아웃이 틀어져 <a href="https://web.dev/cls/">CLS</a>를 유발할 수 있다. 또한 실제 폰트가 로드될 때 스타일이나 레이아웃의 변경으로 인해 메인 스레드를 방해하여 FID에 안 좋은 영향을 줄 수도 있다.</p>
+<h3 id="atfabove-the-fold-이미지들">ATF(Above the Fold) 이미지들</h3>
+<p>ATF이미지는 뷰포트 내에 존재하여 페이지 로드 시 사용자에게 처음 표시되는 이미지를 뜻한다. hero image가 하나의 예시가 될 수 있다. 모든 ATF이미지들은 크기가 명시되어 있어야 한다. 그렇지 않으면 렌더링될 때 레이아웃의 변경이 일어나기 때문에 CLS에 악영향을 준다. ATF를 위한 placeholder 영역도 서버렌더링을 통해 제공할 수 있다.</p>
+<p>hero image의 로딩이 지연되거나 빈 placeholder영역은 LCP를 지연시킨다. 게다가 placeholder의 크기와 로드된 이미지의 크기가 다를 경우 교체되는 과정에서 LCP가 다시 트리거 될 수 있다. 이상적으로는 ATF이미지가 FCP에 영향을 주지 않아야 하지만 실제로는 FCP에 영향을 줄 수 있다.</p>
+<h3 id="btfbelow-the-fold-이미지들">BTF(Below the Fold) 이미지들</h3>
+<p>페이지 로드 직후 뷰포트에 보여지지 않는 이미지들을 의미한다. 따라서 이 이미지들은 layzloding적용 대상이 된다. lazyloading을 적용하여 1P JS나 페이지 내에 중요하게 사용되는 3P 스크립트가 로드되는것을 방해하지 않도록 한다. 만약 BTF이미지가 1P JS나 중요한 3P 리소스보다 일찍 로드될 경우 FID가 지연될 수 있다.</p>
+<h3 id="1p-javascript">1P JavaScript</h3>
+<p>1P JS들은 앱의 상호작용이 준비되는것에 관련되어 있다. 1P JS들은 이미지나 3P JS에게 우선순위에서 밀려 늦게 로드되거나, 3P JS보다 늦게 메인 스레드에서 처리될 수도 있다. 따라서 1P JS들은 ATF이미지의 전에 로드되어야 하며, 3P JS보다 먼저 메인스레드에서 실행되어야 한다. 서버 렌더링 환경에서 1P JS는 FCP 나 LCP자체를 방해하지 않는다.</p>
+<h3 id="3p-javascript">3P JavaScript</h3>
+<p>HTML의 <code>&#x3C;head></code> 에 동기적으로 포함된 3P스크립트는 CSS 및 폰트 파싱을 블록하여 FCP에 악영향을 준다. 동기적으로 포함된 스크립트는 또 HTML본문의 파싱을 지연시킨다. 메인 스레드에서 실행되는 3P 스크립트는 1P 스크립트의 실행을 지연시키고 hydration도 지연시켜 FID를 지연시킨다. 따라서 3P 스크립트 로딩은 조금 더 잘 처리해야 한다.</p>
+<hr>
+<p>이런 권장사항과 제약사항들은 기술 스택이나 브라우저 관계 없이 적용된다. 또한 어떤 권장사항은 상황에 따라 제약조건이 될 수도 있다. 예를 들어 폰트와 CSS 인라이닝 자체는 좋지만 과도하게 적용하면 HTML이 커진다. 적절한 균형을 찾아 적용해야 한다.</p>
+<p>이어지는 표는 크롬이 다양한 리소스를 로드할 때 적용되는 우선순위이다. 우선순위에 대한 정보와 리소스 종류에 대한 고려사항들을 조합하여 확인해 보면 이어서 제안하는 로딩 순서를 이해하는데 도움이 될 것이다.</p>
+<img  src="/_astro/loading-sequence01.UTXD5Ubd_2olzE8.webp" alt="" width="640" height="673" loading="lazy" decoding="async">
+<p>다음은 위 표의 주요 내용을 정리한 것이다.</p>
+<ul>
+<li>CSS와 폰트들은 가장 높은 우선순위를 갖는다. 이는 중요 CSS와 폰트를 우선순위 처리하는데 도움이 된다.</li>
+<li>스크립트는 문서에서 어느 위치에 포함되었는지 그리고 async, defer, blocking(일반적인 스크립트 포함 방법) 적용 여부에 따라 다른 우선 순위를 갖는다. 첫 번째 이미지(또는 문서의 초기 이미지) 전에 요청된 Blocking스크립트는 첫 번째 이미지 다음에 요청된 Blocking스크립트보다 높은 우선순위를 갖는다. async, defer, injected 스크립트는 문서의 어디에 포함되던 가장 낮은 순위를 갖는다. 따라서 <a href="https://javascript.info/script-async-defer">async, defer 속성</a>을 적절히 사용하여 여러 스크립트간의 우선순위를 지정할 수 있다.</li>
+<li>뷰포트에 표시되는 이미지는 뷰포트에 보이지 않는 이미지보다 우선순위가 높다. 이는 BTF이미지보다 ATF에 우선순위를 두는 것에 도움이 된다.</li>
+</ul>
+<p>이제 위에 설명했던 내용들을 토대로 최적화된 리소스 로딩 순서에 대해 알아보자.</p>
+<h2 id="이상적인-리소스-로딩-순서">이상적인 리소스 로딩 순서</h2>
+<p>위에서 다루었던 지식들을 토대로 1P, 3P 리소스의 로딩을 최적화하기 위한 이상적인 로딩 순서 제안을 확인해 보자. 이 리소스 로딩 순서 제안은 <a href="https://nextjs.org/">Next.js</a>의 서버사이드 렌더링에서 최적화를 위해 사용되고 있다.</p>
+<h3 id="현재-상태">현재 상태</h3>
+<p>필자가 여러 파트너 사이트들의 성능을 분석했었을 때. 최적화 전의 Next.js 의 SSR 앱에서 다음과 같은 상황을 많이 관찰할 수 있었다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>종류</th><th>내용</th></tr></thead><tbody><tr><td>CSS</td><td>CSS 는 JS보다 먼저 preload되지만 인라인 처리 되어있지 않았다.</td></tr><tr><td>JavaScript</td><td>1P JS는 preload처리되어있다.<br>3P JS는 관리되지 않았으며 문서 내에 여러 위치에서 나타나 렌더를 블록할 수 있었다.</td></tr><tr><td>Fonts</td><td>폰트는 인라인 처리되지 않았고 preconnect도 사용하지 않았다.<br>폰트는 외부 스타일시트에 의해 로드되어 로딩이 지연되었다.<br>폰트가 렌더를 블록한 경우가 많았다.</td></tr><tr><td>Images</td><td>Hero image는 우선순위가 부여되지 않았다.<br>ATF, BTF이미지 모두 최적화되어있지 않았다.</td></tr></tbody></table>
+<p>다음 이미지는 파트너 사이트 중 한 곳의 리소스 로딩 순서를 측정한 것이다. 이미지에는 +로 잘 처리한 부분과 -로 아쉬운 부분들이 표시되어 있다.</p>
+<img  src="/_astro/loading-sequence02.B2Ylku2a_DC3Y.webp" alt="" width="640" height="527" loading="lazy" decoding="async">
+<h3 id="3p-가-없는-경우의-제안">3P 가 없는 경우의 제안</h3>
+<p>다음의 표는 이전에 논의했던 모든 제약 사항들을 고려한 리소스 로딩 순서이다. 먼저 3P가 없는 상황의 로딩 순서를 살펴보자. 그 다음 3P 리소스들을 어떻게 할 지 이어서 볼 것이다. 참고로 이 표에서 구글 폰트는 1P에 포함되어 있다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>브라우저 메인스레드 이벤트 순서</th><th></th><th>리소스의 네트워크 요청 순서</th><th></th></tr></thead><tbody><tr><td>1</td><td>HTML을 파싱함</td><td>인라이닝 처리된 작은 1P 스크립트</td><td>1</td></tr><tr><td>2</td><td>인라이닝 처리된 작은 1P 스크립트 실행</td><td>인라이닝된 중요 CSS (외부 리소스일 경우 Preload)</td><td>2</td></tr><tr><td></td><td></td><td>인라이닝된 중요 폰트 (외부 리소스일 경우 Preconnect)</td><td>3</td></tr><tr><td>3</td><td>FCP 리소스들을 파싱함 (중요 CSS, 폰트)</td><td>LCP 이미지 (외부 리소스일 경우 Preconnect)</td><td>4</td></tr><tr><td><strong>First Contentful Paint (FCP)</strong></td><td></td><td>폰트들 (인라이닝 된 폰트 CSS로부터 (Preconnect))</td><td>5</td></tr><tr><td>4</td><td>LCP 리소스를 렌더함 (Hero image, text)</td><td>중요하지 않은 (async) CSS</td><td>6</td></tr><tr><td></td><td></td><td>상호작용을 위한 1P JS들</td><td>7</td></tr><tr><td></td><td></td><td>ATF 이미지들 (Preconnect)</td><td>8</td></tr><tr><td><strong>Largest Contentful Paint (LCP)</strong></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td>BTF 이미지들</td><td>9</td></tr><tr><td>5</td><td>중요한 ATF 이미지를 렌더함</td><td></td><td></td></tr><tr><td><strong>화면이 완성되어 보여짐</strong></td><td></td><td></td><td></td></tr><tr><td>6</td><td>중요하지 않은 (async) CSS 를 파싱함</td><td></td><td></td></tr><tr><td>7</td><td>1P JS 실행하고 hydration 처리</td><td>지연로딩되는 JS 코드들</td><td>10 </td></tr><tr><td><strong>First Input Delay (FID)</strong></td><td></td><td></td><td></td></tr></tbody></table>
+<p>위 순서에서 이해하기 어려운 부분이 있다면 아래 항목들을 참고하도록 하자.</p>
+<ol>
+<li>preload는 모든 선행 리소스들에 대해 수동 preload를 강제하고 순서를 수동으로 지정하도록 유도하므로 가급적 피하는 것이 좋다. 특히 폰트에 대해 적용할 경우 중요 폰트를 구별해내기 어렵기 때문에 사용하지 않는 것이 좋다.</li>
+<li>폰트 CSS는 인라인 처리되는것이 좋다. 외부 도메인에서 받아오는 경우 preconnect를 사용하자.</li>
+<li>preconnect는 외부 도메인에서 받아오는 모든 리소스에 적용하는 것을 추천한다. 이렇게 하면 리소스 다운로드를 위한 연결이 미리 생성된다.</li>
+<li>중요하지 않은 CSS들은 사용자 인터렉션이 시작되기 전에 받아와야 한다 (FID). 이렇게 하면 CSS의 후속 렌더링으올 인한 스타일 문제를 예방할 수 있다.</li>
+<li>1P 스크립트들은 ATF이미지가 네트워크를 통해 받아지기 전에 받아야 한다. JS를 다운받고 파싱하는데 시간이 걸리기 때문이다.</li>
+<li>1P JS가 파싱될 때 HTML파싱과 ATF이미지 다운로드는 메인스레드에서 병렬적으로 이뤄질 수 있다.</li>
+</ol>
+<h3 id="3p-가-있는-경우의-제안">3P 가 있는 경우의 제안</h3>
+<p>마침내 모던 웹 앱에서 일반적으로 로드되어 사용되는 모든 리소스들에 대한 순서에 대한 제안에 이르렀다. 아래 표는 3P 리소스를 사용하는 경우에. 위와 같이 메인 브라우저 스레드에서의 이벤트 순서와 네트워크 요청에 대한 내용이다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>브라우저 메인스레드 이벤트 순서</th><th></th><th>리소스의 네트워크 요청 순서</th><th></th></tr></thead><tbody><tr><td>1</td><td>HTML을 파싱함</td><td>FCP를 방해하는 3P 리소스</td><td>1</td></tr><tr><td></td><td></td><td>인라이닝 처리된 작은 1P 스크립트</td><td>2</td></tr><tr><td>2</td><td>인라이닝 처리된 작은 1P 스크립트 실행</td><td>인라이닝 처리된 중요 CSS (외부 리소스일 경우 Preload)</td><td>3</td></tr><tr><td>3</td><td>FCP를 방해하는 3P 리소스를 파싱함</td><td>인라이닝 처리된 중요 폰트 (외부 리소스일 경우 Preconnect)</td><td>4</td></tr><tr><td>4</td><td>FCP 리소스들을 파싱함 (중요 CSS, 폰트)</td><td>LCP에 필요한 3P 용 ATF 이미지</td><td>5</td></tr><tr><td><strong>First Contentful Paint (FCP)</strong></td><td></td><td>LCP 이미지 (외부 리소스일 경우 Preconnect)</td><td>6</td></tr><tr><td>5</td><td>LCP에 필요한 3P용 ATF이미지가 렌더됨</td><td>폰트들 (인라이닝 된 폰트 CSS로부터 (Preconnect))</td><td>7</td></tr><tr><td></td><td></td><td>중요하지 않은 (async) CSS</td><td>8</td></tr><tr><td>6</td><td>LCP 리소스가 렌더됨 (Hero image, text)</td><td>첫 사용자 상호작용 전 실행되어야 하는 3P</td><td>9</td></tr><tr><td></td><td></td><td>상호작용을 위한 1P JS들</td><td>10</td></tr><tr><td><strong>Largest Contentful Paint (LCP)</strong></td><td></td><td>AFT이미지들 (Preconnect)</td><td>11</td></tr><tr><td>7</td><td>중요한 ATF 이미지를 렌더함</td><td>기본 3P JS들</td><td>12</td></tr><tr><td>8</td><td>중요하지 않은 (async) CSS를 파싱함</td><td></td><td></td></tr><tr><td>9</td><td>첫 사용자 상호작용에 필요한 3P를 실행함</td><td>BTF 이미지들</td><td>13</td></tr><tr><td>10</td><td>1P JS 실행하고 hydration 처리</td><td>지연로딩되는 JS 코드들</td><td>14</td></tr><tr><td><strong>First Input Delay (FID)</strong></td><td></td><td>덜 중요한 3P JS</td><td>15 </td></tr></tbody></table>
+<p>이 제안에서는 3P 스크립트가 필요 순서대로 최적화되어 다운로드되도록 하는것이 핵심이다.</p>
+<p>스크립트가 다른 도메인에 존재할 경우 다음의 3P 요청들에 대해 preconnect를 적용하는것이 좋다. 이는 다운로드를 최적화하는데 도움이 된다.</p>
+<ul>
+<li>#1 - FCP를 방해하는 3P 리소스들</li>
+<li>#5 - LCP에 필요한 3P용 ATF 이미지</li>
+<li>#9 - FID 전에 실행되어야 하는 3P</li>
+<li>#12 - 기본 3P JS</li>
+</ul>
+<p>원하는 순서를 적용하기 위해 <a href="https://github.com/vercel/next.js/discussions/18172">Next의 ScriptLoader</a> 컴포넌트를 사용하는 것을 추천한다. 이 컴포넌트는 “리소스 렌더링 순서를 최적화하고 외부 스크립트들이 페이지 로드에 병목 현상을 발생시키는 것을 막는 것”에 맞춰 개발되어 있다. 이 기능은 우리가 지금까지 논의했던 로딩 순서와 밀접한 관련이 있다. 이 컴포넌트를 사용하면 각각의 사용 사례에 대응하는 시점들에 스크립트들을 스케쥴링 할 수 있다. 아래는 사용가능한 로딩 우선순위 값이다.</p>
+<p><strong>After-Interactive:</strong> 특정 3P 스크립트를 다음 hydration이후 로드하도록 한다. 태그 매니저, 광고, 애널리틱스와 같이 1P 다음에 실행되어야 하지만 일찍 실행되어야 하는 스크립트들에 적용할 수 있다.</p>
+<p><strong>Before-Interactive:</strong> 특정 3P 스크립트들을 hydration전에 로드하도록 한다. <a href="https://polyfill.io/v3/">polyfills.io</a>, 봇 탐지, 보안 및 인증, 사용자 연결 관리 (GDPR) 등. 1P 스크립트 실행 전에 실행되기 원하는 스크립트들에 적용할 수 있다.</p>
+<p><strong>Lazy-Onload:</strong> 특정 3P 스크립트 외에 다른 리소스들에 우선순위를 지정하고 지연로딩하도록 한다. 구글 피드백과 같은 CRM 스크립트나 공유 버튼, 댓글과 같은 SNS 스크립트 등에 적용할 수 있다.</p>
+<p>preconnect와 같은 스크립트 속성과 ScriptLoader를 함께 사용하면 모든 스크립트에 대해 원하는 순서를 적용하는데 도움이 될 수 있다.</p>
+<h2 id="결론">결론</h2>
+<p>앱 최적화의 의무는 플랫폼을 사용하는 개발자와 플랫폼 자체를 만드는 개발자 모두 가지고 있으므로 함께 문제를 해결해야 한다. 양쪽 모두 리소스 순서를 안과 밖에서 쉽게 지정할 수 있도록 하려고 노력하고 있다. 시도되고 검증된 다양한 사례들에 대한 추천들과 ScriptLoader와 같은 주도권을 갖고 제안하는 사례들은 React-Next.js 스택에서 이상적인 리소스 로딩 순서를 구현할 수 있도록 하고 있다. 이제 우리가 만드는 새로운 앱들이 위의 권장 사항을 준수하는지 확인해 보도록 하자!</p>
+<p><em>이 글을 작성하는 데 모든 공헌을 한 <a href="https://www.linkedin.com/in/leena-sohoni-0636b2">Leena Sohoni</a>(기술 분석가/작가)에게 특별한 감사를 전합니다.</em></p> </div> </div>  </div> </div> </div>  </main> </body></html> 
